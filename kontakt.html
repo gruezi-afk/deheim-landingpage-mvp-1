@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontakt – Deheim</title>
+  <meta name="description" content="Kontaktiere Deheim – wir melden uns innert 1–2 Arbeitstagen.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Mona+Sans:wght@500;600;700&family=Platypi:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    // Animationen nur mit JavaScript und wenn «Bewegung reduzieren» nicht aktiv ist
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('motion');
+    }
+  </script>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="site-header">
+    <nav class="nav">
+      <a class="nav__logo" href="index.html" aria-label="Deheim – zur Startseite">
+        <img class="nav__logo-img" src="assets/logo-deheim.svg" alt="" width="217" height="47">
+      </a>
+      <div class="nav__links" id="nav-links">
+        <a class="link-button" href="index.html#services">Services</a>
+        <a class="link-button" href="index.html#team">Team</a>
+        <a class="button nav__menu-cta" href="kontakt.html">Kontakt</a>
+        <div class="lang-switch lang-switch--menu" role="group" aria-label="Sprache wählen">
+          <a href="#" lang="de" aria-current="true">DE</a>
+          <a href="#" lang="en" hreflang="en">EN</a>
+          <a href="#" lang="fr" hreflang="fr">FR</a>
+        </div>
+      </div>
+      <div class="nav__cta">
+        <div class="lang-switch" role="group" aria-label="Sprache wählen">
+          <a href="#" lang="de" aria-current="true">DE</a>
+          <a href="#" lang="en" hreflang="en">EN</a>
+          <a href="#" lang="fr" hreflang="fr">FR</a>
+        </div>
+        <a class="button" href="kontakt.html" aria-current="page">Kontakt</a>
+      </div>
+      <button class="fab nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menü öffnen" data-nav-toggle>
+        <img class="nav__toggle-open" src="assets/menu.svg" alt="" width="27" height="8.25">
+        <img class="nav__toggle-close" src="assets/close-menu.svg" alt="" width="24.716" height="24.716">
+      </button>
+    </nav>
+  </header>
+
+  <main class="contact" id="top">
+    <div class="contact__intro">
+      <h1 class="contact__title">Kontakt</h1>
+      <p class="contact__lead">We’ll get back to you within 1–2 business days.</p>
+    </div>
+
+    <form class="contact__form" data-contact-form novalidate>
+      <fieldset class="contact__group">
+        <legend class="text-base-b contact__legend">Ich bin interessiert an:</legend>
+        <div class="contact__choices">
+          <div class="contact__choices-col">
+              <label class="choice">
+                <input class="choice__input" type="radio" name="interesse" value="onboarding">
+                <span class="choice__label">Neighborhood Onboarding</span>
+              </label>
+              <label class="choice">
+                <input class="choice__input" type="radio" name="interesse" value="activation">
+                <span class="choice__label">Neighborhood Activation</span>
+              </label>
+              <label class="choice">
+                <input class="choice__input" type="radio" name="interesse" value="fest">
+                <span class="choice__label">Neighborhood Fest</span>
+              </label>
+          </div>
+          <div class="contact__choices-col">
+              <label class="choice">
+                <input class="choice__input" type="radio" name="interesse" value="partnership">
+                <span class="choice__label">Partnership</span>
+              </label>
+              <label class="choice">
+                <input class="choice__input" type="radio" name="interesse" value="sponsoring">
+                <span class="choice__label">Sponsoring</span>
+              </label>
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="contact__fields">
+        <div class="field">
+          <label class="visually-hidden" for="contact-firstname">Vorname</label>
+          <input class="field__input" id="contact-firstname" aria-describedby="contact-firstname-error" name="vorname" type="text" placeholder="Vorname" autocomplete="given-name" required>
+          <p class="field__caption" id="contact-firstname-error" hidden></p>
+        </div>
+        <div class="field">
+          <label class="visually-hidden" for="contact-lastname">Name</label>
+          <input class="field__input" id="contact-lastname" aria-describedby="contact-lastname-error" name="name" type="text" placeholder="Name" autocomplete="family-name" required>
+          <p class="field__caption" id="contact-lastname-error" hidden></p>
+        </div>
+        <div class="field field--full">
+          <label class="visually-hidden" for="contact-email">Email</label>
+          <input class="field__input" id="contact-email" aria-describedby="contact-email-error" name="email" type="email" placeholder="Email" autocomplete="email" required>
+          <p class="field__caption" id="contact-email-error" hidden></p>
+        </div>
+      </div>
+
+      <div class="field field--message">
+        <label class="field__label" for="contact-message">Nachricht</label>
+        <textarea class="field__input field__textarea" id="contact-message" name="nachricht" placeholder="Deine Nachricht..." rows="4"></textarea>
+      </div>
+
+      <div class="contact__options">
+        <label class="choice">
+          <input class="choice__input" type="checkbox" name="anruf" value="ja">
+          <span class="choice__label">I’d like to schedule a call instead of email follow-up</span>
+        </label>
+        <label class="choice choice--checkbox">
+          <input class="choice__input" type="checkbox" name="datenschutz" required>
+          <span class="choice__label">Ich habe die <a href="#">Datenschutzerklärung</a> gelesen und akzeptiert.</span>
+        </label>
+      </div>
+
+      <p class="contact__error" role="alert" hidden data-contact-error></p>
+
+      <div>
+        <button class="button button--with-icon" type="submit">
+          <span>Senden</span>
+          <span class="button__fab" aria-hidden="true"><span class="icon icon--arrow-right"></span></span>
+        </button>
+      </div>
+    </form>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="newsletter">
+        <div class="newsletter__text">
+          <h2 class="heading-newsletter trim">Newsletter abonnieren</h2>
+          <p class="text-base">einmal im Monat, keine Werbung</p>
+        </div>
+        <form class="newsletter__form" data-newsletter>
+          <label class="visually-hidden" for="newsletter-email">E-Mail</label>
+          <input class="text-base" id="newsletter-email" type="email" name="email" placeholder="email@muster.ch" required>
+          <button class="button" type="submit">Anmelden</button>
+        </form>
+      </div>
+
+      <div class="footer__columns">
+        <div class="footer__col">
+          <p class="text-xs">Deheim Agency</p>
+          <a class="link-button" href="https://maps.google.com/?q=Postfach+9392+3001+Bern" target="_blank" rel="noopener">
+            Google Maps Anfahrt
+            <span class="link-button__icon" aria-hidden="true"><span class="icon icon--arrow-up-right"></span></span>
+          </a>
+          <p class="footer__line">Postfach 9392</p>
+          <p class="footer__line">CH-3001 Bern</p>
+        </div>
+        <div class="footer__col">
+          <p class="text-xs">Kontakt</p>
+          <a class="link-button" href="mailto:gruezi@deheim.org">
+            gruezi@deheim.org
+            <span class="link-button__icon" aria-hidden="true"><span class="icon icon--arrow-up-right"></span></span>
+          </a>
+          <a class="footer__line" href="tel:+41793641130">+41 79 364 11 30</a>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <div class="footer__lang">
+          <a class="text-base-b" href="#" lang="de" aria-current="true">DE</a>
+          <a class="text-base" href="#" lang="en" hreflang="en">EN</a>
+          <a class="text-base" href="#" lang="fr" hreflang="fr">FR</a>
+        </div>
+        <div class="footer__legal text-base">
+          <a href="#">Impressum</a>
+          <a href="#">Datenschutz</a>
+        </div>
+        <div class="footer__social">
+          <a class="link-button" href="#">LinkedIn <span class="link-button__icon link-button__icon--small" aria-hidden="true"><span class="icon icon--arrow-up-right-small"></span></span></a>
+          <a class="link-button" href="#">Facebook <span class="link-button__icon link-button__icon--small" aria-hidden="true"><span class="icon icon--arrow-up-right-small"></span></span></a>
+          <a class="link-button" href="#">Instagram <span class="link-button__icon link-button__icon--small" aria-hidden="true"><span class="icon icon--arrow-up-right-small"></span></span></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

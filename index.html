@@ -9,6 +9,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Mona+Sans:wght@500;600;700&family=Platypi:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script>
+    // Animationen nur mit JavaScript und wenn «Bewegung reduzieren» nicht aktiv ist
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('motion');
+    }
+  </script>
 </head>
 <body>
 
@@ -16,18 +22,35 @@
   <header class="site-header">
     <nav class="nav">
       <a class="nav__logo" href="#top" aria-label="Deheim – zur Startseite">
-        <span class="logo-mark"><img src="assets/logo-mark.svg" alt=""></span>
-        <img src="assets/logo-word.svg" alt="">
+        <img class="nav__logo-img" src="assets/logo-deheim.svg" alt="" width="217" height="47">
       </a>
-      <div class="nav__links">
+      <div class="nav__links" id="nav-links">
         <a class="link-button" href="#services">Services</a>
         <a class="link-button" href="#team">Team</a>
+        <a class="button nav__menu-cta" href="kontakt.html">Kontakt</a>
+        <div class="lang-switch lang-switch--menu" role="group" aria-label="Sprache wählen">
+          <a href="#" lang="de" aria-current="true">DE</a>
+          <a href="#" lang="en" hreflang="en">EN</a>
+          <a href="#" lang="fr" hreflang="fr">FR</a>
+        </div>
       </div>
       <div class="nav__cta">
-        <a class="button" href="mailto:gruezi@deheim.org">Kontakt</a>
+        <div class="lang-switch" role="group" aria-label="Sprache wählen">
+          <a href="#" lang="de" aria-current="true">DE</a>
+          <a href="#" lang="en" hreflang="en">EN</a>
+          <a href="#" lang="fr" hreflang="fr">FR</a>
+        </div>
+        <a class="button" href="kontakt.html">Kontakt</a>
       </div>
+      <button class="fab nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menü öffnen" data-nav-toggle>
+        <img class="nav__toggle-open" src="assets/menu.svg" alt="" width="27" height="8.25">
+        <img class="nav__toggle-close" src="assets/close-menu.svg" alt="" width="24.716" height="24.716">
+      </button>
     </nav>
   </header>
+
+  <!-- Schwebender Kontakt-Button (nur Mobile) -->
+  <a class="button mobile-cta" href="kontakt.html" data-mobile-cta>Kontakt</a>
 
   <main id="top">
 
@@ -109,42 +132,64 @@
       </p>
     </section>
 
-    <!-- Services -->
-    <section class="carousel-section" id="services" data-carousel>
+    <!-- Services (Figma: «List Card Benefits») -->
+    <section class="benefits" id="services">
       <div class="section-title">
         <h2 class="heading-4xl trim">Our Services</h2>
-        <div class="carousel-controls">
-          <button class="fab" type="button" data-carousel-prev aria-label="Zurück">
-            <img class="fab__icon fab__icon--disabled" src="assets/arrow-left.svg" alt="">
-            <img class="fab__icon fab__icon--enabled fab__icon--flip" src="assets/arrow-right.svg" alt="">
-          </button>
-          <button class="fab" type="button" data-carousel-next aria-label="Weiter">
-            <img class="fab__icon fab__icon--disabled fab__icon--flip" src="assets/arrow-left.svg" alt="">
-            <img class="fab__icon fab__icon--enabled" src="assets/arrow-right.svg" alt="">
-          </button>
-        </div>
       </div>
-      <div class="carousel" data-carousel-track>
-        <article class="service-card">
-          <img class="cover" src="assets/service-1.jpg" alt="">
-          <div class="service-card__label" style="--label-bg: var(--orange-200)">
-            <h3 class="text-2xl trim">Neighborhood Onboarding</h3>
-          </div>
-        </article>
-        <article class="service-card">
-          <img class="cover" src="assets/service-1.jpg" alt="">
-          <img class="cover" src="assets/service-2.jpg" alt="">
-          <div class="service-card__label" style="--label-bg: var(--green-200)">
-            <h3 class="text-2xl trim">Neighborhood Activation</h3>
-          </div>
-        </article>
-        <article class="service-card">
-          <img class="cover" src="assets/service-3.jpg" alt="">
-          <div class="service-card__label" style="--label-bg: var(--blue-200)">
-            <h3 class="text-2xl trim">Neighborhood Fest</h3>
-          </div>
-        </article>
-      </div>
+      <ol class="benefits__list">
+        <li class="benefit" style="--stack-offset: 48px">
+          <article class="benefit-card" style="--card-bg: var(--blue-200)">
+            <div class="benefit-card__content">
+              <div class="benefit-card__heading">
+                <span class="benefit-card__number">01</span>
+                <h3 class="benefit-card__title">Neighborhood Onboarding</h3>
+              </div>
+              <div class="benefit-card__body">
+                <p class="benefit-card__text">Moving into a new building means dozens of households starting from zero at the same time. That moment is a one-time chance: everyone is new, everyone is open. We use it. Before and shortly after move-in, we bring future neighbors together: first shared dinners, simple ways to meet, and the beginnings of shared traditions.</p>
+                <a class="link-button" href="kontakt.html?interesse=onboarding">Let’s talk <span class="link-button__icon" aria-hidden="true"><span class="icon icon--arrow-right"></span></span></a>
+              </div>
+            </div>
+            <div class="benefit-card__media">
+              <img class="cover" src="assets/service-1.jpg" alt="" loading="lazy">
+            </div>
+          </article>
+        </li>
+        <li class="benefit" style="--stack-offset: 78px">
+          <article class="benefit-card" style="--card-bg: var(--orange-200)">
+            <div class="benefit-card__content">
+              <div class="benefit-card__heading">
+                <span class="benefit-card__number">02</span>
+                <h3 class="benefit-card__title">Neighborhood Activation</h3>
+              </div>
+              <div class="benefit-card__body">
+                <p class="benefit-card__text">Moving into a new building means dozens of households starting from zero at the same time. That moment is a one-time chance: everyone is new, everyone is open. We use it. Before and shortly after move-in, we bring future neighbors together: first shared dinners, simple ways to meet, and the beginnings of shared traditions.</p>
+                <a class="link-button" href="kontakt.html?interesse=activation">Let’s talk <span class="link-button__icon" aria-hidden="true"><span class="icon icon--arrow-right"></span></span></a>
+              </div>
+            </div>
+            <div class="benefit-card__media">
+              <img class="cover" src="assets/service-2.jpg" alt="" loading="lazy">
+            </div>
+          </article>
+        </li>
+        <li class="benefit" style="--stack-offset: 110px">
+          <article class="benefit-card" style="--card-bg: var(--green-200)">
+            <div class="benefit-card__content">
+              <div class="benefit-card__heading">
+                <span class="benefit-card__number">03</span>
+                <h3 class="benefit-card__title">Neighborhood Fest</h3>
+              </div>
+              <div class="benefit-card__body">
+                <p class="benefit-card__text">Moving into a new building means dozens of households starting from zero at the same time. That moment is a one-time chance: everyone is new, everyone is open. We use it. Before and shortly after move-in, we bring future neighbors together: first shared dinners, simple ways to meet, and the beginnings of shared traditions.</p>
+                <a class="link-button" href="kontakt.html?interesse=fest">Let’s talk <span class="link-button__icon" aria-hidden="true"><span class="icon icon--arrow-right"></span></span></a>
+              </div>
+            </div>
+            <div class="benefit-card__media">
+              <img class="cover" src="assets/service-3.jpg" alt="" loading="lazy">
+            </div>
+          </article>
+        </li>
+      </ol>
     </section>
 
     <!-- Testimonials -->
@@ -160,22 +205,22 @@
             <figure class="testimonial">
               <div class="testimonial__image" style="--tile-bg: var(--blue-200)"><img src="assets/hero-6.png" alt=""></div>
               <div class="testimonial__card">
-                <blockquote class="text-xl trim">«Nothing fights for attention. Every element has a reason to exist, and nothing is trying too hard»</blockquote>
-                <figcaption><span class="text-base-b">Lukas Lauber</span><span class="text-base">Head of Deheim</span></figcaption>
+                <blockquote class="testimonial__quote">«Nothing fights for attention. Every element has a reason to exist, and nothing is trying too hard»</blockquote>
+                <figcaption><span class="testimonial__name">Lukas Lauber</span><span>Head of Deheim</span></figcaption>
               </div>
             </figure>
             <figure class="testimonial">
               <div class="testimonial__image" style="--tile-bg: var(--green-200)"><img src="assets/hero-1.png" alt=""></div>
               <div class="testimonial__card">
-                <blockquote class="text-xl trim">«Nothing fights for attention. Every element has a reason to exist, and nothing is trying too hard»</blockquote>
-                <figcaption><span class="text-base-b">Lukas Lauber</span><span class="text-base">Head of Deheim</span></figcaption>
+                <blockquote class="testimonial__quote">«Nothing fights for attention. Every element has a reason to exist, and nothing is trying too hard»</blockquote>
+                <figcaption><span class="testimonial__name">Lukas Lauber</span><span>Head of Deheim</span></figcaption>
               </div>
             </figure>
             <figure class="testimonial">
               <div class="testimonial__image" style="--tile-bg: var(--blue-200)"><img src="assets/hero-6.png" alt=""></div>
               <div class="testimonial__card">
-                <blockquote class="text-xl trim">«Nothing fights for attention. Every element has a reason to exist, and nothing is trying too hard»</blockquote>
-                <figcaption><span class="text-base-b">Lukas Lauber</span><span class="text-base">Head of Deheim</span></figcaption>
+                <blockquote class="testimonial__quote">«Nothing fights for attention. Every element has a reason to exist, and nothing is trying too hard»</blockquote>
+                <figcaption><span class="testimonial__name">Lukas Lauber</span><span>Head of Deheim</span></figcaption>
               </div>
             </figure>
           </div>
@@ -192,7 +237,7 @@
         <div class="cta__content">
           <h2 class="heading-4xl trim">Hast du Interesse?</h2>
           <p class="text-base">Melde dich! Gemeinsam mit Entwicklern, Hausverwaltungen und Gemeinden setzen wir das um!</p>
-          <a class="button" href="mailto:gruezi@deheim.org">Kontakt</a>
+          <a class="button" href="kontakt.html">Kontakt</a>
         </div>
       </div>
     </section>
@@ -203,65 +248,96 @@
         <h2 class="heading-4xl trim">The Team</h2>
         <div class="carousel-controls">
           <button class="fab" type="button" data-carousel-prev aria-label="Zurück">
-            <img class="fab__icon fab__icon--disabled" src="assets/arrow-left.svg" alt="">
+            <img class="fab__icon fab__icon--disabled fab__icon--flip" src="assets/arrow-left.svg" alt="">
             <img class="fab__icon fab__icon--enabled fab__icon--flip" src="assets/arrow-right.svg" alt="">
           </button>
           <button class="fab" type="button" data-carousel-next aria-label="Weiter">
-            <img class="fab__icon fab__icon--disabled fab__icon--flip" src="assets/arrow-left.svg" alt="">
+            <img class="fab__icon fab__icon--disabled" src="assets/arrow-left.svg" alt="">
             <img class="fab__icon fab__icon--enabled" src="assets/arrow-right.svg" alt="">
           </button>
         </div>
       </div>
       <div class="carousel" data-carousel-track>
-        <article class="team-card">
-          <img class="cover" src="assets/team-1.png" alt="Porträt von Lukas Lauber">
+        <article class="team-card" data-team-member data-team-contact data-bio="Luki founded Deheim and leads sales, business development and our neighborhood projects. After winning the SHC Challenge in 2021, he opened a design hotel with 114 communal-living flats and founded coolinarik.ch, which connects people through cooking workshops.">
+          <img class="cover" src="assets/team-1.png" alt="Porträt von Lukas Lauber" loading="lazy">
           <div class="team-card__text">
             <h3 class="heading-4xl trim">Lukas Lauber</h3>
-            <p class="text-base">Head of Deheim</p>
+            <p class="text-base">Founder &amp; Business Development</p>
           </div>
+          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="Mehr über Lukas Lauber"></button>
         </article>
-        <article class="team-card">
-          <img class="cover" src="assets/team-2.png" alt="Porträt von Alanis Diem">
+        <article class="team-card" data-team-member data-bio="Alanis leads the curation and planning of our common spaces. With a Master’s in Architecture from ETH Zurich, she designs how shared spaces work in everyday life and hosts pre-move-in workshops. She is also a seasoned chef who has run numerous pop-ups.">
+          <img class="cover" src="assets/team-2.png" alt="Porträt von Alanis Diem" loading="lazy">
           <div class="team-card__text">
             <h3 class="heading-4xl trim">Alanis Diem</h3>
             <p class="text-base">Common Space Design &amp; Social Programming</p>
           </div>
+          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="Mehr über Alanis Diem"></button>
         </article>
-        <article class="team-card">
-          <img class="cover" src="assets/team-3.png" alt="Porträt von Beāte Gaida Garleja">
+        <article class="team-card" data-team-member data-bio="Beāte brings a sharp eye for branding and deep knowledge of real estate. She is completing a Master’s in Real Estate and has worked at Swiss Life Asset Managers for over four years. At Deheim, she is our sparring partner for positioning and communication.">
+          <img class="cover" src="assets/team-3.png" alt="Porträt von Beāte Gaida Garleja" loading="lazy">
           <div class="team-card__text">
             <h3 class="heading-4xl trim">Beāte Gaida Garleja</h3>
             <p class="text-base">Residential Real Estate Advisor</p>
           </div>
+          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="Mehr über Beāte Gaida Garleja"></button>
         </article>
-      </div>
-    </section>
-
-    <!-- Partner:innen -->
-    <section class="partners">
-      <div class="section-title partners__title">
-        <h2 class="heading-4xl trim">Unsere Partner:innen</h2>
-        <p class="text-base">Seit 2022 haben wir über 30 co-kreative Formate umgesetzt. Mit Caritas, Pro Senectute, AOZ und mehreren Kantonen. CHF 65k gesammelt. Hunderte Menschen zusammengebracht.</p>
-      </div>
-      <div class="marquee logo-banner">
-        <div class="marquee__track">
-          <ul class="logo-banner__list">
-            <li class="logo-tile">Logo</li>
-            <li class="logo-tile">Logo</li>
-            <li class="logo-tile">Logo</li>
-            <li class="logo-tile">Logo</li>
-            <li class="logo-tile">Logo</li>
-            <li class="logo-tile">Logo</li>
-            <li class="logo-tile">Logo</li>
-            <li class="logo-tile">Logo</li>
-          </ul>
-        </div>
-      </div>
-      <div class="partners__action">
-        <a class="button button--with-icon" href="mailto:gruezi@deheim.org?subject=Partner%3Ain%20werden">
-          <span>Partner:in werden</span>
-          <span class="button__fab"><img src="assets/arrow-right-small.svg" alt=""></span>
-        </a>
+        <article class="team-card" data-team-member data-bio="Raphaël is an EHL graduate and leads event and experience execution. Previously Event Operations Manager at Slowness Hospitality, he programs events, finds local talents and builds the structures that make concepts deliverable.">
+          <img class="cover" src="assets/team-raphael.jpg" alt="Porträt von Raphaël Vallette d’Osia" loading="lazy">
+          <div class="team-card__text">
+            <h3 class="heading-4xl trim">Raphaël Vallette d’Osia</h3>
+            <p class="text-base">Event Production &amp; Cultural Programming</p>
+          </div>
+          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="Mehr über Raphaël Vallette d’Osia"></button>
+        </article>
+        <article class="team-card" data-team-member data-bio="Tobias is an experienced workshop host in transcultural collaboration with a Master’s in Psychology. He guides residents as they share traditions, brainstorm ideas and decide together which neighborhood initiatives to bring to life.">
+          <img class="cover" src="assets/team-tobias.jpg" alt="Porträt von Tobias Boschung" loading="lazy">
+          <div class="team-card__text">
+            <h3 class="heading-4xl trim">Tobias Boschung</h3>
+            <p class="text-base">Facilitator Co-Creation</p>
+          </div>
+          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="Mehr über Tobias Boschung"></button>
+        </article>
+        <article class="team-card" data-team-member data-bio="Tanya is a Service Designer and UX Researcher. She develops co-creative formats that bring residents, communities and stakeholders together to shape the future of shared living.">
+          <img class="cover" src="assets/team-tanya.jpg" alt="Porträt von Tanya Raschle" loading="lazy">
+          <div class="team-card__text">
+            <h3 class="heading-4xl trim">Tanya Raschle</h3>
+            <p class="text-base">Service Design &amp; Co-Creative Formats</p>
+          </div>
+          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="Mehr über Tanya Raschle"></button>
+        </article>
+        <article class="team-card" data-team-member data-bio="Mauro is a cooking teacher, experienced chef and core member of COOLINARIK. He hosts workshops for diverse groups and creates an atmosphere where everyone enjoys cooking together – tasty, safe and full of smiles.">
+          <img class="cover" src="assets/team-mauro.jpg" alt="Porträt von Mauro Leuenberger" loading="lazy">
+          <div class="team-card__text">
+            <h3 class="heading-4xl trim">Mauro Leuenberger</h3>
+            <p class="text-base">Community Cooking &amp; Workshop Lead</p>
+          </div>
+          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="Mehr über Mauro Leuenberger"></button>
+        </article>
+        <article class="team-card" data-team-member data-bio="Emma is our Sustainability Advisor with a Master’s in Sustainability Management. She analyzes buildings’ energy and waste use, focuses on agroecological food systems and connects communities with local farmers.">
+          <img class="cover" src="assets/team-emma.jpg" alt="Porträt von Emma Gouverneyre" loading="lazy">
+          <div class="team-card__text">
+            <h3 class="heading-4xl trim">Emma Gouverneyre</h3>
+            <p class="text-base">Sustainable Living Strategist</p>
+          </div>
+          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="Mehr über Emma Gouverneyre"></button>
+        </article>
+        <article class="team-card" data-team-member data-bio="Gwendolyn joined after her bachelor’s project on Deheim. With a background in Interaction Design, she develops the website, curates partner properties, works on SEO and documents life in our neighborhoods.">
+          <img class="cover" src="assets/team-gwendolyn.jpg" alt="Porträt von Gwendolyn Wetli" loading="lazy">
+          <div class="team-card__text">
+            <h3 class="heading-4xl trim">Gwendolyn Wetli</h3>
+            <p class="text-base">UX Design &amp; Documentation</p>
+          </div>
+          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="Mehr über Gwendolyn Wetli"></button>
+        </article>
+        <article class="team-card" data-team-member data-bio="Our network of passionate workshop hosts – from pizzaiolos and fermentation specialists to Afghan chefs and mochi makers – invites residents to cook, taste and learn together in relaxed, hands-on workshops.">
+          <img class="cover" src="assets/team-coolinarik.jpg" alt="Gruppenfoto von Team Coolinarik" loading="lazy">
+          <div class="team-card__text">
+            <h3 class="heading-4xl trim">Team Coolinarik</h3>
+            <p class="text-base">Hosts</p>
+          </div>
+          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="Mehr über Team Coolinarik"></button>
+        </article>
       </div>
     </section>
 
@@ -287,7 +363,7 @@
           <p class="text-xs">Deheim Agency</p>
           <a class="link-button" href="https://maps.google.com/?q=Postfach+9392+3001+Bern" target="_blank" rel="noopener">
             Google Maps Anfahrt
-            <span class="arrow-up-right"><img src="assets/arrow-up-right.svg" alt=""></span>
+            <span class="link-button__icon" aria-hidden="true"><span class="icon icon--arrow-up-right"></span></span>
           </a>
           <p class="footer__line">Postfach 9392</p>
           <p class="footer__line">CH-3001 Bern</p>
@@ -296,7 +372,7 @@
           <p class="text-xs">Kontakt</p>
           <a class="link-button" href="mailto:gruezi@deheim.org">
             gruezi@deheim.org
-            <span class="arrow-up-right"><img src="assets/arrow-up-right.svg" alt=""></span>
+            <span class="link-button__icon" aria-hidden="true"><span class="icon icon--arrow-up-right"></span></span>
           </a>
           <a class="footer__line" href="tel:+41793641130">+41 79 364 11 30</a>
         </div>
@@ -304,21 +380,57 @@
 
       <div class="footer__bottom">
         <div class="footer__lang">
-          <a class="text-base-b" href="#" aria-current="true">DE</a>
-          <a class="text-base" href="#">FR</a>
+          <a class="text-base-b" href="#" lang="de" aria-current="true">DE</a>
+          <a class="text-base" href="#" lang="en" hreflang="en">EN</a>
+          <a class="text-base" href="#" lang="fr" hreflang="fr">FR</a>
         </div>
         <div class="footer__legal text-base">
           <a href="#">Impressum</a>
           <a href="#">Datenschutz</a>
         </div>
         <div class="footer__social">
-          <a class="link-button" href="#">LinkedIn <span class="arrow-up-right arrow-up-right--small"><img src="assets/arrow-up-right-small.svg" alt=""></span></a>
-          <a class="link-button" href="#">Facebook <span class="arrow-up-right arrow-up-right--small"><img src="assets/arrow-up-right-small.svg" alt=""></span></a>
-          <a class="link-button" href="#">Instagram <span class="arrow-up-right arrow-up-right--small"><img src="assets/arrow-up-right-small.svg" alt=""></span></a>
+          <a class="link-button" href="#">LinkedIn <span class="link-button__icon link-button__icon--small" aria-hidden="true"><span class="icon icon--arrow-up-right-small"></span></span></a>
+          <a class="link-button" href="#">Facebook <span class="link-button__icon link-button__icon--small" aria-hidden="true"><span class="icon icon--arrow-up-right-small"></span></span></a>
+          <a class="link-button" href="#">Instagram <span class="link-button__icon link-button__icon--small" aria-hidden="true"><span class="icon icon--arrow-up-right-small"></span></span></a>
         </div>
       </div>
     </div>
   </footer>
+
+  <!-- Team-Overlay -->
+  <dialog class="team-dialog" aria-labelledby="team-dialog-name" data-team-dialog>
+    <div class="team-dialog__inner">
+      <div class="team-dialog__top">
+        <button class="fab team-dialog__close" type="button" aria-label="Schliessen" data-team-close>
+          <img src="assets/close.svg" alt="" width="13.591" height="13.591">
+        </button>
+      </div>
+      <div class="team-dialog__body">
+        <div class="team-dialog__media">
+          <div class="team-dialog__photo"><img class="cover" src="" alt="" data-team-photo></div>
+          <div class="team-dialog__contact" data-team-contact-box>
+            <a href="tel:+41793641130">+41 79 364 11 30</a>
+            <a href="mailto:gruezi@deheim.org">gruezi@deheim.org</a>
+          </div>
+        </div>
+        <div class="team-dialog__text">
+          <div class="team-dialog__heading">
+            <h2 class="team-dialog__name" id="team-dialog-name" data-team-name></h2>
+            <p class="team-dialog__role" data-team-role></p>
+          </div>
+          <p class="team-dialog__bio" data-team-bio></p>
+        </div>
+      </div>
+      <div class="team-dialog__nav">
+        <button class="fab" type="button" aria-label="Vorherige Person" data-team-prev>
+          <img class="fab__icon--flip" src="assets/arrow-right.svg" alt="" width="14.716" height="14.25">
+        </button>
+        <button class="fab" type="button" aria-label="Nächste Person" data-team-next>
+          <img src="assets/arrow-right.svg" alt="" width="14.716" height="14.25">
+        </button>
+      </div>
+    </div>
+  </dialog>
 
   <script src="script.js"></script>
 </body>

@@ -46,7 +46,7 @@ if (newsletter) {
     const thanks = document.createElement('p');
     thanks.className = 'text-base newsletter__thanks';
     thanks.setAttribute('role', 'status');
-    thanks.textContent = 'Danke! Du bist angemeldet.';
+    thanks.textContent = 'Thanks! You’re subscribed.';
     newsletter.replaceChildren(thanks);
   });
 }
@@ -88,7 +88,7 @@ if (contactForm) {
   const labels = {
     onboarding: 'Neighborhood Onboarding',
     activation: 'Neighborhood Activation',
-    fest: 'Neighborhood Fest',
+    pizza: 'Neighborhood Pizza Party',
     partnership: 'Partnership',
     sponsoring: 'Sponsoring',
   };

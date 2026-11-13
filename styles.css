@@ -557,6 +557,7 @@ textarea {
 
 .stat-card__number {
   flex: 1 0 auto;
+  margin-bottom: var(--space-s);
   font-family: var(--font-script);
   font-weight: 400;
   /* Max. 120px, aber nie breiter als die Karte («6’000» ist ca. 2.7× so breit wie hoch) */
@@ -718,7 +719,7 @@ textarea {
   justify-content: space-between;
   gap: var(--space-xxs);
   width: 436px;
-  padding: var(--space-l);
+  padding: 32px;
   border-radius: var(--radius-m);
   background: var(--white);
 }
@@ -744,10 +745,11 @@ textarea {
 }
 
 /* ===== CTA ===== */
+/* CTA steht nach dem Team: oben kein eigener Abstand (Team-Section bringt ihn mit) */
 .cta-section {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: var(--space-section) var(--margin);
+  padding: 0 var(--margin) var(--space-section);
 }
 
 .cta {
@@ -996,7 +998,7 @@ textarea {
 
   /* CTA */
   .cta-section {
-    padding: var(--space-m) var(--margin);
+    padding: 0 var(--margin) var(--space-xl);
   }
 
   .cta {
@@ -1228,9 +1230,11 @@ textarea {
     padding-top: 120px;
   }
 
+  /* H1 auf Mobile grösser: skaliert mit der Breite (393px ≈ 59px), max. 64px */
   .hero .display {
     padding: 32px var(--margin) var(--space-section);
-    letter-spacing: -0.48px;
+    font-size: min(64px, 15vw);
+    letter-spacing: -0.01em;
   }
 
   .hero-strip {
@@ -1247,9 +1251,12 @@ textarea {
     border-radius: 10.361px;
   }
 
+  /* Lead-Text über die ganze Breite, mit normalem Seitenrand */
   .hero__intro {
-    max-width: 345px;
-    padding: var(--space-section) 24px;
+    max-width: none;
+    width: 100%;
+    padding: var(--space-section) var(--margin);
+    box-sizing: border-box;
   }
 
   /* Zahlen */
@@ -1342,7 +1349,7 @@ textarea {
 
   /* CTA */
   .cta-section {
-    padding: var(--space-section) var(--margin);
+    padding: 0 var(--margin) var(--space-section);
   }
 
   .cta {
@@ -1950,54 +1957,71 @@ html:has(.team-dialog[open]) {
     border-radius: 32px;
   }
 
+  /* Figma (Team-Overlay, Mobile): Name + X oben, Bio, Kontakt, Foto mit Pfeilen unten rechts.
+     Raster statt Spalten, damit die Pfeile im Foto liegen und nie den Text verdecken. */
   .team-dialog__inner {
-    position: relative;
-    gap: var(--space-xs);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    /* letzte Zeile (Foto) füllt die restliche Höhe */
+    grid-template-rows: auto auto auto minmax(240px, 1fr);
+    column-gap: var(--space-s);
+    row-gap: 0;
     height: 100%;
     max-height: none;
-    padding: 24px var(--margin);
+    padding: 24px;
   }
 
-  /* Schliessen-Button liegt im Foto oben rechts */
-  .team-dialog__top {
-    position: absolute;
-    top: calc(24px + 16px);
-    right: calc(var(--margin) + 16px);
-    z-index: 2;
-  }
-
-  .team-dialog__body {
-    flex-direction: column;
-    align-items: stretch;
-    gap: var(--space-l);
-    padding: 0;
-  }
-
-  .team-dialog__media {
-    flex: none;
-    height: 351px;
-    padding: var(--space-xs);
-  }
-
-  .team-dialog__photo {
-    position: absolute;
-    inset: 0;
-    height: auto;
-  }
-
-  .team-dialog__contact {
-    gap: 0;
-    padding: var(--space-s);
-  }
-
+  .team-dialog__body,
+  .team-dialog__media,
   .team-dialog__text {
-    flex: none;
-    gap: 32px;
-    padding: 0;
+    display: contents;
+  }
+
+  .team-dialog__top {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: start;
   }
 
   .team-dialog__heading {
+    grid-column: 1;
+    grid-row: 1;
     gap: 24px;
+  }
+
+  .team-dialog__bio {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    margin-top: 24px;
+  }
+
+  .team-dialog__contact {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    gap: 0;
+    margin-top: var(--space-s);
+    padding: var(--space-s);
+  }
+
+  .team-dialog__photo {
+    grid-column: 1 / -1;
+    grid-row: 4;
+    position: relative;
+    inset: auto;
+    height: auto;
+    min-height: 240px;
+    margin-top: 32px;
+  }
+
+  /* Pfeile liegen immer unten rechts im Foto (= unten rechts im Overlay) */
+  .team-dialog__nav {
+    grid-column: 1 / -1;
+    grid-row: 4;
+    align-self: end;
+    justify-self: end;
+    position: relative;
+    z-index: 1;
+    padding: var(--space-s);
   }
 
   .team-dialog__role,
@@ -2028,36 +2052,36 @@ html:has(.team-dialog[open]) {
   padding-top: var(--stack-offset, 48px);
 }
 
+/* Service-Karte (Figma: Card-Long). Raster: Nummer | Titel/Zielgruppe + Text/Link | Bild
+   Desktop: 2 Zeilen (Kopf, Text) links, Bild rechts über beide Zeilen */
 .benefit-card {
+  --text-pad: var(--space-m);
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: clamp(var(--space-l), 7.5vw, var(--space-section));
-  padding: var(--space-m);
+  grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  column-gap: var(--space-l);
+  row-gap: var(--space-l);
+  padding: calc(var(--space-m) + var(--text-pad));
+  padding-right: var(--space-m);
   border-radius: var(--radius-m);
   background: var(--card-bg);
 }
 
-.benefit-card__content {
-  align-self: start;
+.benefit-card__number {
+  grid-column: 1;
+  grid-row: 1;
+  font-size: var(--font-base);
+  font-weight: 700;
+  line-height: 1.34;
+}
+
+.benefit-card__head {
+  grid-column: 2;
+  grid-row: 1;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: var(--space-l);
-  padding: var(--space-m);
-}
-
-.benefit-card__heading {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--space-l);
-}
-
-.benefit-card__number {
-  flex: none;
-  font-size: var(--font-2xl);
-  font-weight: 600;
-  line-height: 1.27;
-  text-box: trim-both cap alphabetic;
+  min-width: 0;
 }
 
 .benefit-card__title {
@@ -2069,14 +2093,74 @@ html:has(.team-dialog[open]) {
   text-box: trim-both cap alphabetic;
 }
 
+.benefit-card__audience {
+  font-size: var(--font-xl);
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  text-box: trim-both cap alphabetic;
+}
+
+.benefit-card__body {
+  grid-column: 2;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-l);
+  min-width: 0;
+}
+
 .benefit-card__text {
   font-size: var(--font-base);
   line-height: 1.4;
 }
 
-/* Wrapper um Text + Link: nur auf XL eine eigene Spalte, sonst neutral */
-.benefit-card__body {
-  display: contents;
+/* Bild mit Verlauf und grossem «Scope» in Weiss unten links */
+.benefit-card__media {
+  grid-column: 3;
+  grid-row: 1 / -1;
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  min-width: 0;
+  min-height: 360px;
+  /* Bild reicht bis 30px an den Kartenrand, Text hat 60px Innenabstand */
+  margin: calc(-1 * var(--text-pad)) 0 calc(-1 * var(--text-pad)) clamp(0px, 7.5vw - var(--space-l), 72px);
+  padding: var(--space-l);
+  /* Bilder weniger stark abgerundet (12px wie alle anderen Bilder) */
+  border-radius: var(--radius-m);
+  overflow: hidden;
+  container-type: inline-size;
+}
+
+.benefit-card__media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(102, 102, 102, 0), rgba(0, 0, 0, 0.2));
+  pointer-events: none;
+}
+
+.benefit-card__scope {
+  position: relative;
+  z-index: 1;
+  color: var(--white);
+  /* Max. Figma-Grösse, aber an die Bildbreite angepasst; Zeilen gleichmässig umbrechen */
+  font-size: min(var(--font-4xl), 12cqi);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+  text-box: trim-both cap alphabetic;
+}
+
+.benefits .section-title {
+  align-items: flex-end;
+}
+
+.benefits__intro {
+  max-width: 560px;
 }
 
 /* «Let’s talk» auf den farbigen Karten: Hover weiss */
@@ -2084,51 +2168,28 @@ html:has(.team-dialog[open]) {
   color: var(--white);
 }
 
-.benefit-card__media {
-  position: relative;
-  min-width: 0;
-  min-height: 300px;
-  border-radius: 32px;
-  overflow: hidden;
-}
-
 /* Tablet (Figma: Card-Long, Variant2) */
 @media (max-width: 1100px) {
   .benefit-card {
-    display: flex;
-    align-items: stretch;
-    gap: var(--space-l);
-    min-height: 433px;
+    --text-pad: 0px;
+    column-gap: 30px;
+    row-gap: 30px;
     padding: 30px;
   }
 
-  .benefit-card__content {
-    flex: 1 1 0;
-    align-self: stretch;
-    justify-content: space-between;
+  .benefit-card__head,
+  .benefit-card__body {
     gap: 30px;
-    min-width: 0;
-    padding: 0;
-  }
-
-  .benefit-card__heading {
-    gap: 30px;
-  }
-
-  .benefit-card__number {
-    font-size: var(--font-base);
-    font-weight: 700;
-    line-height: 1.34;
-    text-box: normal;
   }
 
   .benefit-card__media {
-    flex: 1 1 0;
-    min-height: 0;
+    min-height: 380px;
+    margin: 0 0 0 18px;
+    padding: 32px;
   }
 }
 
-/* Mobile (Figma: Card-Long, Variant3): Titel, Text, Bild, Link untereinander */
+/* Mobile (Figma: Card-Long, Variant3): Nummer + Titel, Text, Bild, Link */
 @media (max-width: 600px) {
   .benefits {
     padding: var(--space-section) 0;
@@ -2149,48 +2210,60 @@ html:has(.team-dialog[open]) {
   }
 
   .benefit-card {
-    flex-direction: column;
+    grid-template-columns: auto minmax(0, 1fr);
+    grid-template-rows: none;
     gap: 24px;
-    min-height: 0;
     padding: 32px 24px;
-  }
-
-  /* Inhalt auflösen, damit das Bild zwischen Text und Link stehen kann */
-  .benefit-card__content {
-    display: contents;
-  }
-
-  .benefit-card__heading {
-    order: 1;
-    gap: 24px;
+    container-type: inline-size;
   }
 
   .benefit-card__number {
     font-size: 17px;
   }
 
-  /* 42px wie in Figma, auf sehr schmalen Screens etwas kleiner, damit «Neighborhood» passt */
+  .benefit-card__head {
+    gap: 0;
+  }
+
+  /* Max. 42px wie in Figma, aber nie breiter als die Karte, damit «Neighborhood» immer passt */
   .benefit-card__title {
-    min-width: 0;
-    font-size: min(42px, 10.8vw);
+    font-size: min(42px, calc((100cqi - 44px) / 6.8));
+  }
+
+  /* Zielgruppe ist im Mobile-Design nicht vorgesehen */
+  .benefit-card__audience {
+    display: none;
+  }
+
+  .benefit-card__body {
+    display: contents;
   }
 
   .benefit-card__text {
-    order: 2;
+    grid-column: 1 / -1;
+    order: 1;
     font-size: 17px;
   }
 
   .benefit-card__media {
-    order: 3;
-    flex: none;
-    width: 100%;
+    grid-column: 1 / -1;
+    grid-row: auto;
+    order: 2;
     height: 256px;
-    border-radius: 32px;
+    min-height: 0;
+    margin: 0;
+    padding: 32px;
+  }
+
+  /* Figma: 42px; bei langem Scope etwas kleiner, damit «3 workshops,» in eine Zeile passt */
+  .benefit-card__scope {
+    font-size: min(42px, 15cqi);
   }
 
   .benefit-card .link-button {
-    order: 4;
-    align-self: flex-start;
+    grid-column: 1 / -1;
+    order: 3;
+    justify-self: start;
   }
 }
 
@@ -2534,44 +2607,30 @@ html:has(.team-dialog[open]) {
     font-size: 16px;
   }
 
-  /* Service-Karten (Figma: Card-Long, Property=XL): drei Spalten */
+  /* Service-Karten (Figma: Card-Long, Property=XL): Nummer+Titel | Text+Link | Bild */
   .benefit-card {
-    display: flex;
-    align-items: flex-start;
-    gap: 120px;
+    --text-pad: 0px;
+    grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-rows: auto;
+    column-gap: 120px;
     padding: 48px;
   }
 
-  .benefit-card__content {
-    display: contents;
+  .benefit-card__head {
+    grid-column: 2;
+    margin-left: -72px;
   }
 
-  .benefit-card__heading {
-    flex: 1 1 0;
-    gap: 48px;
-    min-width: 0;
-  }
-
-  .benefit-card__number {
-    font-size: 19px;
-    font-weight: 700;
-    line-height: 1.34;
-    text-box: normal;
-  }
-
-  .benefit-card__title {
-    font-size: 64px;
+  .benefit-card__audience {
+    font-size: 28px;
+    line-height: 1.27;
   }
 
   .benefit-card__body {
-    flex: 1 1 0;
+    grid-column: 3;
+    grid-row: 1;
     align-self: stretch;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
     justify-content: space-between;
-    gap: 48px;
-    min-width: 0;
   }
 
   .benefit-card__text {
@@ -2579,10 +2638,61 @@ html:has(.team-dialog[open]) {
   }
 
   .benefit-card__media {
-    flex: 1 1 0;
-    min-width: 340px;
-    height: 354px;
+    grid-column: 4;
+    grid-row: 1;
+    height: 338px;
     min-height: 0;
-    border-radius: 32px;
+    margin: 0;
+  }
+
+  .benefit-card__scope {
+    font-size: min(64px, 12cqi);
+  }
+}
+
+
+/* ===== Neue Texte: Quellen und Intro-Zeilen ===== */
+.stat-card__source,
+.statement__source {
+  font-size: var(--font-xs);
+  font-weight: 500;
+  line-height: 1.4;
+  opacity: 0.7;
+}
+
+.stat-card__source {
+  margin-top: var(--space-xs);
+}
+
+.statement__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+}
+
+.section-title__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .benefits .section-title {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .carousel-section .section-title__text {
+    gap: 0;
+  }
+
+  .carousel-section .section-title__text h2 {
+    padding-bottom: 16px;
+  }
+
+  .carousel-section .section-title__text p {
+    padding: 0 var(--margin) 32px;
   }
 }

@@ -1,6 +1,6 @@
 # Deheim Landingpage
 
-Statische Website für Deheim, umgesetzt nach dem Figma-Design. Live: https://deheim-landing-page-v1.vercel.app/
+Statische Website für Deheim, umgesetzt nach dem Figma-Design. Live: https://deheim.vercel.app/ (Vercel-Account gruezi@deheim.org, Repo gruezi-afk/deheim-landingpage-mvp-1)
 Jeder Push auf `main` geht automatisch über Vercel live.
 
 ## Sprachen

@@ -2317,10 +2317,17 @@ html:has(.team-dialog[open]) {
 .benefit-card__title {
   font-family: var(--font-script);
   font-weight: 500;
-  font-size: min(var(--font-4xl), calc((100cqi - var(--head-offset)) / 6.7));
+  /* --title-em: Breite des längsten Wortes in em, mit etwas Luft
+     (EN «Neighborhood» 6.6 em, DE «Nachbarschafts-» 7.6 em) */
+  --title-em: 7;
+  font-size: min(var(--font-4xl), calc((100cqi - var(--head-offset)) / var(--title-em)));
   line-height: 1;
   letter-spacing: -0.03em;
   text-box: trim-both cap alphabetic;
+}
+
+:lang(de) .benefit-card__title {
+  --title-em: 8;
 }
 
 /* Zielgruppe (Base B) direkt über dem Text */

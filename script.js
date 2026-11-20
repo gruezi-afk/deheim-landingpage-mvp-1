@@ -20,8 +20,9 @@ document.querySelectorAll('[data-carousel]').forEach((section) => {
   const next = section.querySelector('[data-carousel-next]');
 
   const step = () => {
-    const card = track.firstElementChild;
-    const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+    // Karte = markiertes Element (Testimonials) oder direktes Kind des Tracks (Team)
+    const card = track.querySelector('[data-carousel-item]') || track.firstElementChild;
+    const gap = parseFloat(getComputedStyle(card.parentElement).columnGap) || 0;
     return card.getBoundingClientRect().width + gap;
   };
 

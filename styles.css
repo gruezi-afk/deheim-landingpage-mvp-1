@@ -744,6 +744,11 @@ textarea {
   font-weight: 700;
 }
 
+/* Pfeile gibt es nur auf Mobile (dort ist das Laufband eine Swipe-Reihe) */
+.testimonials__controls {
+  display: none;
+}
+
 /* ===== CTA ===== */
 /* CTA steht nach dem Team: oben kein eigener Abstand (Team-Section bringt ihn mit) */
 .cta-section {
@@ -1345,6 +1350,64 @@ textarea {
 
   .testimonials .display {
     letter-spacing: -0.48px;
+  }
+
+  /* Mobile: kein Laufband, sondern eine Reihe zum Swipen (eine Karte pro Wisch) */
+  .testimonials .marquee--reverse {
+    display: none;
+  }
+
+  .testimonials .marquee {
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--margin);
+    overscroll-behavior-x: contain;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .testimonials .marquee::-webkit-scrollbar {
+    display: none;
+  }
+
+  .testimonials .marquee__track {
+    width: auto;
+    animation: none;
+    transform: none;
+  }
+
+  /* Die Kopie fürs Endlos-Laufband wird auf Mobile nicht gebraucht */
+  .testimonials .marquee__track > .testimonial-row[aria-hidden] {
+    display: none;
+  }
+
+  .testimonials .testimonial-row {
+    gap: 8px;
+    padding: 0 var(--margin);
+  }
+
+  /* Karte etwas schmaler als der Screen, damit die nächste anschaut und zum Wischen einlädt */
+  .testimonials .testimonial {
+    flex-direction: column;
+    width: calc(100vw - 2 * var(--margin) - 32px);
+    scroll-snap-align: start;
+  }
+
+  .testimonials .testimonial__image {
+    width: 100%;
+    height: 240px;
+  }
+
+  .testimonials .testimonial__card {
+    flex: 1;
+    width: 100%;
+    padding: 24px;
+  }
+
+  /* Pfeile unter den Karten, wie beim Team */
+  .testimonials__controls {
+    display: flex;
+    padding: 0 var(--margin) 32px; /* Abstand nach oben kommt vom gap der Section */
   }
 
   /* CTA */

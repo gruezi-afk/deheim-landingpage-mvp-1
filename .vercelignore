@@ -1,0 +1,7 @@
+src/
+i18n/
+content/
+tools/
+TODO.md
+Type/
+.playwright-mcp/

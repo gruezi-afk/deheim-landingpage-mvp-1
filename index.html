@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Deheim – We turn strangers into neighbors</title>
-  <meta name="description" content="Deheim turns strangers into neighbors. We create neighborhoods where people know each other, help each other, and love to stay.">
+  <title>Deheim – Aus Fremden werden Nachbarn</title>
+  <meta name="description" content="Deheim macht aus Fremden Nachbarn. Wir schaffen Nachbarschaften, in denen sich Menschen kennen, helfen und gerne bleiben.">
   <!-- Vorschau beim Teilen (WhatsApp, LinkedIn, Instagram, Slack …) -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Deheim">
-  <meta property="og:title" content="Deheim – We turn strangers into neighbors">
-  <meta property="og:description" content="Deheim turns residential buildings into thriving communities, with shared experiences and lasting neighborhood traditions.">
+  <meta property="og:title" content="Deheim – Aus Fremden werden Nachbarn">
+  <meta property="og:description" content="Deheim macht aus Wohnhäusern lebendige Gemeinschaften, mit gemeinsamen Erlebnissen und Nachbarschaftstraditionen, die bleiben.">
   <meta property="og:url" content="https://deheim-landing-page-v1.vercel.app/">
   <meta property="og:image" content="https://deheim-landing-page-v1.vercel.app/assets/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Deheim logo on illustrated house facades">
+  <meta property="og:image:alt" content="Deheim-Logo auf illustrierten Hausfassaden">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://deheim-landing-page-v1.vercel.app/assets/og-image.jpg">
   <link rel="icon" href="/favicon.ico" sizes="48x48">
@@ -30,35 +30,41 @@
       document.documentElement.classList.add('motion');
     }
   </script>
+  <link rel="canonical" href="https://deheim-landing-page-v1.vercel.app/">
+  <link rel="alternate" hreflang="de" href="https://deheim-landing-page-v1.vercel.app/">
+  <link rel="alternate" hreflang="en" href="https://deheim-landing-page-v1.vercel.app/en/">
+  <link rel="alternate" hreflang="fr" href="https://deheim-landing-page-v1.vercel.app/fr/">
+  <link rel="alternate" hreflang="x-default" href="https://deheim-landing-page-v1.vercel.app/">
+  <meta property="og:locale" content="de_CH">
 </head>
 <body>
 
   <!-- Navigation -->
   <header class="site-header">
     <nav class="nav">
-      <a class="nav__logo" href="#top" aria-label="Deheim – home">
+      <a class="nav__logo" href="#top" aria-label="Deheim – zur Startseite">
         <img class="nav__logo-img" src="assets/logo-deheim.svg" alt="" width="217" height="47">
       </a>
       <div class="nav__links" id="nav-links">
         <a class="link-button link-button--nav-ext" href="vision.html">Vision <span class="link-button__icon" aria-hidden="true"><span class="icon icon--arrow-nav"></span></span></a>
-        <a class="link-button" href="#services">Services</a>
+        <a class="link-button" href="#services">Angebot</a>
         <a class="link-button" href="#team">Team</a>
-        <a class="button nav__menu-cta" href="kontakt.html">Contact</a>
-        <div class="lang-switch lang-switch--menu" role="group" aria-label="Choose language">
-          <a href="#" lang="de" hreflang="de">DE</a>
-          <a href="#" lang="en" aria-current="true">EN</a>
-          <a href="#" lang="fr" hreflang="fr">FR</a>
+        <a class="button nav__menu-cta" href="kontakt.html">Kontakt</a>
+        <div class="lang-switch lang-switch--menu" role="group" aria-label="Sprache wählen">
+          <a href="./" lang="de" aria-current="true">DE</a>
+          <a href="en/" lang="en" hreflang="en">EN</a>
+          <a href="fr/" lang="fr" hreflang="fr">FR</a>
         </div>
       </div>
       <div class="nav__cta">
-        <div class="lang-switch" role="group" aria-label="Choose language">
-          <a href="#" lang="de" hreflang="de">DE</a>
-          <a href="#" lang="en" aria-current="true">EN</a>
-          <a href="#" lang="fr" hreflang="fr">FR</a>
+        <div class="lang-switch" role="group" aria-label="Sprache wählen">
+          <a href="./" lang="de" aria-current="true">DE</a>
+          <a href="en/" lang="en" hreflang="en">EN</a>
+          <a href="fr/" lang="fr" hreflang="fr">FR</a>
         </div>
-        <a class="button" href="kontakt.html">Contact</a>
+        <a class="button" href="kontakt.html">Kontakt</a>
       </div>
-      <button class="fab nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu" data-nav-toggle>
+      <button class="fab nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menü öffnen" data-nav-toggle>
         <img class="nav__toggle-open" src="assets/menu.svg" alt="" width="27" height="8.25">
         <img class="nav__toggle-close" src="assets/close-menu.svg" alt="" width="24.716" height="24.716">
       </button>
@@ -66,13 +72,13 @@
   </header>
 
   <!-- Schwebender Kontakt-Button (nur Mobile) -->
-  <a class="button mobile-cta" href="kontakt.html" data-mobile-cta>Contact</a>
+  <a class="button mobile-cta" href="kontakt.html" data-mobile-cta>Kontakt</a>
 
   <main id="top">
 
     <!-- Hero -->
     <section class="hero">
-      <h1 class="display trim">We turn strangers<br>into neighbors</h1>
+      <h1 class="display trim">Aus Fremden<br>werden Nachbarn</h1>
 
       <div class="hero-strip marquee" aria-hidden="true">
         <div class="marquee__track">
@@ -90,7 +96,7 @@
       </div>
 
       <p class="text-lg hero__intro">
-        Deheim transforms residential buildings into thriving communities. By helping residents co-create shared experiences and lasting neighborhood traditions, we foster belonging and make properties more desirable places to live.
+        Deheim macht aus Wohnhäusern lebendige Gemeinschaften. Wir helfen Bewohnerinnen und Bewohnern, gemeinsame Erlebnisse und bleibende Nachbarschaftstraditionen zu gestalten. So entsteht Zugehörigkeit, und Liegenschaften werden zu Orten, an denen man gerne wohnt.
       </p>
     </section>
 
@@ -98,28 +104,28 @@
     <section class="facts">
       <div class="facts__inner">
         <div class="facts__aside">
-          <p class="text-3xl">For property managers, cooperatives, developers, and municipalities that want higher tenant retention, better occupancy, and happier residents.</p>
+          <p class="text-3xl">Für Verwaltungen, Genossenschaften, Entwickler und Gemeinden, die Mieterinnen und Mieter länger halten, Wohnungen besser vermieten und zufriedenere Bewohnerinnen und Bewohner wollen.</p>
         </div>
         <div class="facts__grid">
           <div class="stat-card">
             <p class="stat-card__number trim">40+</p>
-            <p class="text-base-b">Co-creative workshops and events since 2022, bringing hundreds of people to one table.</p>
-            <p class="stat-card__source">Source: Our own track record</p>
+            <p class="text-base-b">Ko-kreative Workshops und Anlässe seit 2022, die Hunderte Menschen an einen Tisch gebracht haben.</p>
+            <p class="stat-card__source">Quelle: eigene Erfahrung</p>
           </div>
           <div class="stat-card">
-            <p class="stat-card__number trim">62%</p>
-            <p class="text-base-b">Residents who know their neighbors are more likely to renew their lease. Every tenant change costs a Swiss landlord CHF 3,000–8,000.</p>
-            <p class="stat-card__source">Source: RealPage; Verit, Handelszeitung</p>
+            <p class="stat-card__number trim">62 %</p>
+            <p class="text-base-b">Wer die Nachbarn kennt, verlängert eher den Mietvertrag. Jeder Mieterwechsel kostet Vermieter in der Schweiz CHF 3’000–8’000.</p>
+            <p class="stat-card__source">Quelle: RealPage; Verit, Handelszeitung</p>
           </div>
           <div class="stat-card">
-            <p class="stat-card__number trim">17.8%</p>
-            <p class="text-base-b">Rent premium for well-designed, well-activated buildings, which also lease up 23% faster. Space alone does nothing. Activation does.</p>
-            <p class="stat-card__source">Source: Newmark Knight Frank, 124 buildings</p>
+            <p class="stat-card__number trim">17,8 %</p>
+            <p class="text-base-b">Mietaufschlag für gut gestaltete und belebte Häuser, die sich zudem 23 % schneller vermieten. Raum allein bewirkt nichts. Belebung schon.</p>
+            <p class="stat-card__source">Quelle: Newmark Knight Frank, 124 Gebäude</p>
           </div>
           <div class="stat-card">
             <p class="stat-card__number trim">4/6</p>
-            <p class="text-base-b">Of the top six reasons residents stay are about their connection to neighbors and community.</p>
-            <p class="stat-card__source">Source: SatisFacts Research</p>
+            <p class="text-base-b">So viele der sechs wichtigsten Gründe fürs Bleiben drehen sich um Nachbarn und Gemeinschaft.</p>
+            <p class="stat-card__source">Quelle: SatisFacts Research</p>
           </div>
         </div>
       </div>
@@ -127,18 +133,18 @@
 
     <!-- Statement -->
     <section class="statement">
-      <p class="text-base-b statement__lead">Deheim fills the void between anonymous new developments and full-commitment housing cooperatives.</p>
+      <p class="text-base-b statement__lead">Deheim füllt die Lücke zwischen anonymen Neubauten und Genossenschaften, die volles Engagement verlangen.</p>
       <div class="statement__body">
-        <p class="text-lg">More than one in three people in Switzerland feel lonely at least sometimes. Cooperatives have year-long waiting lists. Shared spaces in new buildings stand empty. People want to belong, but they are wary of commitment. Deheim designs the formats, hosts the events, and takes the pressure off.</p>
-        <p class="statement__source">Source: Obsan / Federal Statistical Office, Swiss Health Survey</p>
+        <p class="text-lg">Mehr als jede dritte Person in der Schweiz fühlt sich zumindest manchmal einsam. Genossenschaften haben jahrelange Wartelisten. Gemeinschaftsräume in Neubauten stehen leer. Die Menschen wollen dazugehören, scheuen aber Verpflichtungen. Deheim entwickelt die Formate, führt die Anlässe durch und nimmt den Druck weg.</p>
+        <p class="statement__source">Quelle: Obsan / Bundesamt für Statistik, Schweizerische Gesundheitsbefragung</p>
       </div>
     </section>
 
     <!-- Services (Figma: «List Card Benefits») -->
     <section class="benefits" id="services">
       <div class="section-title">
-        <h2 class="heading-4xl trim">Our Services</h2>
-        <p class="text-lg benefits__intro">Every event is designed, hosted, and documented by us. Visual proof of social connection in your neighborhood.</p>
+        <h2 class="heading-4xl trim">Unser Angebot</h2>
+        <p class="text-lg benefits__intro">Jeden Anlass konzipieren, begleiten und dokumentieren wir selbst. Sichtbare Belege für Gemeinschaft in deiner Nachbarschaft.</p>
       </div>
       <ol class="benefits__list">
         <li class="benefit" style="--stack-offset: 48px">
@@ -146,17 +152,17 @@
             <div class="benefit-card__content">
               <div class="benefit-card__head">
                 <span class="benefit-card__number">01</span>
-                <h3 class="benefit-card__title">Neighborhood Onboarding</h3>
+                <h3 class="benefit-card__title">Nachbarschafts-Onboarding</h3>
               </div>
               <div class="benefit-card__body">
-                <p class="benefit-card__audience">For new developments</p>
-                <p class="benefit-card__text">Before or shortly after move-in, we bring residents together in a workshop to shape their neighborhood’s culture and first traditions. Then everyone meets at a welcome party with local producers and good food.</p>
+                <p class="benefit-card__audience">Für Neubauten</p>
+                <p class="benefit-card__text">Vor oder kurz nach dem Einzug bringen wir die Bewohnerinnen und Bewohner in einem Workshop zusammen. Dort gestalten sie die Kultur und die ersten Traditionen ihrer Nachbarschaft. Danach treffen sich alle an einem Willkommensfest mit lokalen Produzenten und gutem Essen.</p>
               </div>
-              <a class="link-button" href="kontakt.html?interesse=onboarding">Let’s talk <span class="link-button__icon" aria-hidden="true"><span class="icon icon--arrow-right"></span></span></a>
+              <a class="link-button" href="kontakt.html?interesse=onboarding">Lass uns reden <span class="link-button__icon" aria-hidden="true"><span class="icon icon--arrow-right"></span></span></a>
             </div>
             <div class="benefit-card__media">
               <img class="cover" src="assets/service-1.jpg" alt="" loading="lazy">
-              <p class="benefit-card__scope">Scope: 2&nbsp;workshops, 1&nbsp;party</p>
+              <p class="benefit-card__scope">Umfang: 2 Workshops, 1 Fest</p>
             </div>
           </article>
         </li>
@@ -165,17 +171,17 @@
             <div class="benefit-card__content">
               <div class="benefit-card__head">
                 <span class="benefit-card__number">02</span>
-                <h3 class="benefit-card__title">Neighborhood Activation</h3>
+                <h3 class="benefit-card__title">Nachbarschafts-Aktivierung</h3>
               </div>
               <div class="benefit-card__body">
-                <p class="benefit-card__audience">For managed properties that need a fresh start</p>
-                <p class="benefit-card__text">Many neighbors have lived next door for years without meeting. We create easy, low-threshold ways to meet: a workshop, a farm visit, a co-creative dinner. Then we help residents turn what works into lasting traditions. More on request.</p>
+                <p class="benefit-card__audience">Für bestehende Liegenschaften, die einen Neustart brauchen</p>
+                <p class="benefit-card__text">Viele Nachbarn wohnen seit Jahren Tür an Tür, ohne sich zu kennen. Wir schaffen einfache, niederschwellige Gelegenheiten zum Kennenlernen: einen Workshop, einen Hofbesuch, ein ko-kreatives Abendessen. Danach helfen wir, aus dem, was funktioniert, bleibende Traditionen zu machen. Mehr auf Anfrage.</p>
               </div>
-              <a class="link-button" href="kontakt.html?interesse=activation">Let’s talk <span class="link-button__icon" aria-hidden="true"><span class="icon icon--arrow-right"></span></span></a>
+              <a class="link-button" href="kontakt.html?interesse=activation">Lass uns reden <span class="link-button__icon" aria-hidden="true"><span class="icon icon--arrow-right"></span></span></a>
             </div>
             <div class="benefit-card__media">
               <img class="cover" src="assets/service-2.jpg" alt="" loading="lazy">
-              <p class="benefit-card__scope">Scope: 3&nbsp;workshops, 1&nbsp;party</p>
+              <p class="benefit-card__scope">Umfang: 3 Workshops, 1 Fest</p>
             </div>
           </article>
         </li>
@@ -184,17 +190,17 @@
             <div class="benefit-card__content">
               <div class="benefit-card__head">
                 <span class="benefit-card__number">03</span>
-                <h3 class="benefit-card__title">Neighborhood Pizza Party</h3>
+                <h3 class="benefit-card__title">Nachbarschafts-Pizzafest</h3>
               </div>
               <div class="benefit-card__body">
-                <p class="benefit-card__audience">For a quick and easy first step</p>
-                <p class="benefit-card__text">The easiest way to start. We bring the ovens, our crew, local ingredients, and music. A short workshop over the dough first, then the courtyard opens for everyone: grab a pizza, or make your own.</p>
+                <p class="benefit-card__audience">Für einen schnellen, einfachen Einstieg</p>
+                <p class="benefit-card__text">Der einfachste Einstieg. Wir bringen die Öfen, unser Team, lokale Zutaten und Musik mit. Zuerst ein kurzer Workshop über dem Teig, dann öffnet der Innenhof für alle: Pizza holen oder selber machen.</p>
               </div>
-              <a class="link-button" href="kontakt.html?interesse=pizza">Let’s talk <span class="link-button__icon" aria-hidden="true"><span class="icon icon--arrow-right"></span></span></a>
+              <a class="link-button" href="kontakt.html?interesse=pizza">Lass uns reden <span class="link-button__icon" aria-hidden="true"><span class="icon icon--arrow-right"></span></span></a>
             </div>
             <div class="benefit-card__media">
               <img class="cover" src="assets/service-3.jpg" alt="" loading="lazy">
-              <p class="benefit-card__scope">Scope: 1&nbsp;party</p>
+              <p class="benefit-card__scope">Umfang: 1 Fest</p>
             </div>
           </article>
         </li>
@@ -204,8 +210,8 @@
     <!-- Testimonials -->
     <section class="testimonials" data-carousel>
       <div class="section-title section-title--center">
-        <h2 class="display trim">Deheim is creating value<br>through social connection</h2>
-        <p class="text-lg testimonials__intro">The moment two people who would never have met start talking. Here is what that sounds like, from the cooking workshops where it all began.</p>
+        <h2 class="display trim">Deheim schafft Wert<br>durch Begegnung</h2>
+        <p class="text-lg testimonials__intro">Der Moment, in dem zwei Menschen ins Gespräch kommen, die sich sonst nie begegnet wären. So klingt das, aus den Kochworkshops, mit denen alles begann.</p>
       </div>
 
       <!-- Eine Reihe zum Swipen/Blättern mit Pfeilen, jedes Zitat einmal (kein Laufband) -->
@@ -214,42 +220,42 @@
           <figure class="testimonial" data-carousel-item>
             <div class="testimonial__image"><img src="assets/testimonial-1.jpg" alt="" loading="lazy"></div>
             <div class="testimonial__card">
-              <blockquote class="testimonial__quote">«At the start nobody talks, you know how it is. Then someone hands you an onion and a knife and asks you to show the young man next to you how your mother did it. After that, you can’t stop them from talking.»</blockquote>
+              <blockquote class="testimonial__quote">«Am Anfang redet niemand, du kennst das. Dann drückt dir jemand eine Zwiebel und ein Messer in die Hand und bittet dich, dem jungen Mann neben dir zu zeigen, wie es deine Mutter gemacht hat. Danach hören sie nicht mehr auf zu reden.»</blockquote>
               <figcaption><span class="testimonial__name">Doris, 66</span></figcaption>
             </div>
           </figure>
           <figure class="testimonial" data-carousel-item>
             <div class="testimonial__image"><img src="assets/testimonial-2.jpg" alt="" loading="lazy"></div>
             <div class="testimonial__card">
-              <blockquote class="testimonial__quote">«Meeting people from completely different backgrounds is amazing. Staring at a stranger is hard, there’s pressure. But when you can escape into peeling apples, it’s a different vibe.»</blockquote>
+              <blockquote class="testimonial__quote">«Menschen mit einem ganz anderen Hintergrund zu treffen, ist grossartig. Einen Fremden anzuschauen ist schwierig, da ist Druck. Aber wenn man sich ins Äpfelschälen flüchten kann, ist die Stimmung eine ganz andere.»</blockquote>
               <figcaption><span class="testimonial__name">Andri, 65</span></figcaption>
             </div>
           </figure>
           <figure class="testimonial" data-carousel-item>
             <div class="testimonial__image"><img src="assets/testimonial-3.jpg?v=2" alt="" style="--img-y: 5%" loading="lazy"></div>
             <div class="testimonial__card">
-              <blockquote class="testimonial__quote">«I won the pizza contest. The prize was a bottle of wine, so I gave it to Joel. Now he has to drive me to my hobby horsing competition.»</blockquote>
+              <blockquote class="testimonial__quote">«Ich habe den Pizza-Wettbewerb gewonnen. Der Preis war eine Flasche Wein, also habe ich sie Joel geschenkt. Jetzt muss er mich an mein Hobby-Horsing-Turnier fahren.»</blockquote>
               <figcaption><span class="testimonial__name">Lina, 9</span></figcaption>
             </div>
           </figure>
           <figure class="testimonial" data-carousel-item>
             <div class="testimonial__image"><img src="assets/testimonial-4.jpg" alt="" loading="lazy"></div>
             <div class="testimonial__card">
-              <blockquote class="testimonial__quote">«We came with our kids to the Easter cooking workshop. The kids met the farmer who brought the eggs, we met three families from our area. It brought us closer, and we made new friends.»</blockquote>
+              <blockquote class="testimonial__quote">«Wir kamen mit unseren Kindern zum Oster-Kochworkshop. Die Kinder lernten den Bauern kennen, der die Eier brachte, und wir drei Familien aus unserer Gegend. Das hat uns nähergebracht, und wir haben neue Freunde gefunden.»</blockquote>
               <figcaption><span class="testimonial__name">Sandra, 39</span></figcaption>
             </div>
           </figure>
           <figure class="testimonial" data-carousel-item>
             <div class="testimonial__image"><img src="assets/testimonial-5.jpg" alt="" loading="lazy"></div>
             <div class="testimonial__card">
-              <blockquote class="testimonial__quote">«I live alone, and I like meeting new people here. I’ve been to a few events now. And honestly, the food just slaps.»</blockquote>
+              <blockquote class="testimonial__quote">«Ich wohne allein und lerne hier gerne neue Leute kennen. Ich war jetzt schon an ein paar Anlässen. Und ehrlich: Das Essen ist einfach der Hammer.»</blockquote>
               <figcaption><span class="testimonial__name">Joel, 30</span></figcaption>
             </div>
           </figure>
           <figure class="testimonial" data-carousel-item>
             <div class="testimonial__image"><img src="assets/testimonial-6.jpg" alt="" loading="lazy"></div>
             <div class="testimonial__card">
-              <blockquote class="testimonial__quote">«The only senior I ever really talked to was my grandma. Now I have good friends triple my age, and that has lifted up my life.»</blockquote>
+              <blockquote class="testimonial__quote">«Die einzige ältere Person, mit der ich je richtig geredet habe, war meine Grossmutter. Jetzt habe ich gute Freunde, die dreimal so alt sind wie ich, und das hat mein Leben bereichert.»</blockquote>
               <figcaption><span class="testimonial__name">Yaari, 19</span></figcaption>
             </div>
           </figure>
@@ -257,11 +263,11 @@
       </div>
 
       <div class="carousel-controls testimonials__controls">
-        <button class="fab" type="button" data-carousel-prev aria-label="Previous">
+        <button class="fab" type="button" data-carousel-prev aria-label="Zurück">
           <img class="fab__icon fab__icon--disabled fab__icon--flip" src="assets/arrow-left.svg" alt="">
           <img class="fab__icon fab__icon--enabled fab__icon--flip" src="assets/arrow-right.svg" alt="">
         </button>
-        <button class="fab" type="button" data-carousel-next aria-label="Next">
+        <button class="fab" type="button" data-carousel-next aria-label="Weiter">
           <img class="fab__icon fab__icon--disabled" src="assets/arrow-left.svg" alt="">
           <img class="fab__icon fab__icon--enabled" src="assets/arrow-right.svg" alt="">
         </button>
@@ -272,100 +278,100 @@
     <section class="carousel-section" id="team" data-carousel>
       <div class="section-title">
         <div class="section-title__text">
-          <h2 class="heading-4xl trim">The Team</h2>
-          <p class="text-lg team__intro">Hosts, designers, and cooks. Not consultants.</p>
+          <h2 class="heading-4xl trim">Das Team</h2>
+          <p class="text-lg team__intro">Gastgeber, Gestalterinnen und Köche. Keine Berater.</p>
         </div>
         <div class="carousel-controls">
-          <button class="fab" type="button" data-carousel-prev aria-label="Previous">
+          <button class="fab" type="button" data-carousel-prev aria-label="Zurück">
             <img class="fab__icon fab__icon--disabled fab__icon--flip" src="assets/arrow-left.svg" alt="">
             <img class="fab__icon fab__icon--enabled fab__icon--flip" src="assets/arrow-right.svg" alt="">
           </button>
-          <button class="fab" type="button" data-carousel-next aria-label="Next">
+          <button class="fab" type="button" data-carousel-next aria-label="Weiter">
             <img class="fab__icon fab__icon--disabled" src="assets/arrow-left.svg" alt="">
             <img class="fab__icon fab__icon--enabled" src="assets/arrow-right.svg" alt="">
           </button>
         </div>
       </div>
       <div class="carousel" data-carousel-track>
-        <article class="team-card" data-team-member data-team-contact data-bio="Luki founded Deheim and leads sales, business development and our neighborhood projects. After winning the SHC Challenge in 2021, he opened a design hotel with 114 communal-living flats and founded coolinarik.ch, which connects people through cooking workshops.">
-          <img class="cover" src="assets/team-1.jpg" alt="Portrait of Lukas Lauber" loading="lazy">
+        <article class="team-card" data-team-member data-team-contact data-bio="Luki hat Deheim gegründet und leitet Verkauf, Geschäftsentwicklung und unsere Nachbarschaftsprojekte. Nach dem Sieg an der SHC Challenge 2021 eröffnete er ein Designhotel mit 114 Community-Living-Wohnungen und gründete coolinarik.ch, das Menschen über Kochworkshops verbindet.">
+          <img class="cover" src="assets/team-1.jpg" alt="Porträt von Lukas Lauber" loading="lazy">
           <div class="team-card__text">
             <h3 class="heading-4xl trim">Lukas Lauber</h3>
-            <p class="text-base">Founder &amp; Business Development</p>
+            <p class="text-base">Gründer &amp; Business Development</p>
           </div>
-          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="More about Lukas Lauber"></button>
+          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="Mehr über Lukas Lauber"></button>
         </article>
-        <article class="team-card" data-team-member data-bio="Alanis leads the curation and planning of our common spaces. With a Master’s in Architecture from ETH Zurich, she designs how shared spaces work in everyday life and hosts pre-move-in workshops. She is also a seasoned chef who has run numerous pop-ups.">
-          <img class="cover" src="assets/team-2.jpg" alt="Portrait of Alanis Diem" loading="lazy">
+        <article class="team-card" data-team-member data-bio="Alanis kuratiert und plant unsere Gemeinschaftsräume. Mit ihrem Master in Architektur der ETH Zürich gestaltet sie, wie gemeinsame Räume im Alltag funktionieren, und leitet Workshops vor dem Einzug. Ausserdem ist sie eine erfahrene Köchin und hat zahlreiche Pop-ups geführt.">
+          <img class="cover" src="assets/team-2.jpg" alt="Porträt von Alanis Diem" loading="lazy">
           <div class="team-card__text">
             <h3 class="heading-4xl trim">Alanis Diem</h3>
-            <p class="text-base">Common Space Design &amp; Social Programming</p>
+            <p class="text-base">Gemeinschaftsräume &amp; soziales Programm</p>
           </div>
-          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="More about Alanis Diem"></button>
+          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="Mehr über Alanis Diem"></button>
         </article>
-        <article class="team-card" data-team-member data-bio="Beāte brings a sharp eye for branding and deep knowledge of real estate. She is completing a Master’s in Real Estate and has worked at Swiss Life Asset Managers for over four years. At Deheim, she is our sparring partner for positioning and communication.">
-          <img class="cover" src="assets/team-3.jpg" alt="Portrait of Beāte Gaida Garleja" loading="lazy">
+        <article class="team-card" data-team-member data-bio="Beāte hat ein scharfes Auge für Branding und kennt den Immobilienmarkt bestens. Sie schliesst einen Master in Real Estate ab und arbeitet seit über vier Jahren bei Swiss Life Asset Managers. Bei Deheim ist sie unsere Sparringspartnerin für Positionierung und Kommunikation.">
+          <img class="cover" src="assets/team-3.jpg" alt="Porträt von Beāte Gaida Garleja" loading="lazy">
           <div class="team-card__text">
             <h3 class="heading-4xl trim">Beāte Gaida Garleja</h3>
-            <p class="text-base">Residential Real Estate Advisor</p>
+            <p class="text-base">Beraterin Wohnimmobilien</p>
           </div>
-          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="More about Beāte Gaida Garleja"></button>
+          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="Mehr über Beāte Gaida Garleja"></button>
         </article>
-        <article class="team-card" data-team-member data-bio="Raphaël is an EHL graduate and leads event and experience execution. Previously Event Operations Manager at Slowness Hospitality, he programs events, finds local talents and builds the structures that make concepts deliverable.">
-          <img class="cover" src="assets/team-raphael.jpg" alt="Portrait of Raphaël Vallette d’Osia" loading="lazy">
+        <article class="team-card" data-team-member data-bio="Raphaël hat an der EHL studiert und leitet die Umsetzung unserer Anlässe. Zuvor war er Event Operations Manager bei Slowness Hospitality. Er programmiert Anlässe, findet lokale Talente und baut die Strukturen, mit denen Konzepte Wirklichkeit werden.">
+          <img class="cover" src="assets/team-raphael.jpg" alt="Porträt von Raphaël Vallette d’Osia" loading="lazy">
           <div class="team-card__text">
             <h3 class="heading-4xl trim">Raphaël Vallette d’Osia</h3>
-            <p class="text-base">Event Production &amp; Cultural Programming</p>
+            <p class="text-base">Eventproduktion &amp; Kulturprogramm</p>
           </div>
-          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="More about Raphaël Vallette d’Osia"></button>
+          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="Mehr über Raphaël Vallette d’Osia"></button>
         </article>
-        <article class="team-card" data-team-member data-bio="Tobias is an experienced workshop host in transcultural collaboration with a Master’s in Psychology. He guides residents as they share traditions, brainstorm ideas and decide together which neighborhood initiatives to bring to life.">
-          <img class="cover" src="assets/team-tobias.jpg" alt="Portrait of Tobias Boschung" loading="lazy">
+        <article class="team-card" data-team-member data-bio="Tobias ist ein erfahrener Workshop-Leiter für transkulturelle Zusammenarbeit und hat einen Master in Psychologie. Er begleitet Bewohnerinnen und Bewohner, wenn sie Traditionen teilen, Ideen sammeln und gemeinsam entscheiden, welche Nachbarschaftsinitiativen sie umsetzen.">
+          <img class="cover" src="assets/team-tobias.jpg" alt="Porträt von Tobias Boschung" loading="lazy">
           <div class="team-card__text">
             <h3 class="heading-4xl trim">Tobias Boschung</h3>
-            <p class="text-base">Facilitator Co-Creation</p>
+            <p class="text-base">Moderation Ko-Kreation</p>
           </div>
-          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="More about Tobias Boschung"></button>
+          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="Mehr über Tobias Boschung"></button>
         </article>
-        <article class="team-card" data-team-member data-bio="Tanya is a Service Designer and UX Researcher. She develops co-creative formats that bring residents, communities and stakeholders together to shape the future of shared living.">
-          <img class="cover" src="assets/team-tanya.jpg" alt="Portrait of Tanya Raschle" loading="lazy">
+        <article class="team-card" data-team-member data-bio="Tanya ist Service Designerin und UX Researcherin. Sie entwickelt ko-kreative Formate, die Bewohnerinnen und Bewohner, Gemeinschaften und Beteiligte zusammenbringen, um die Zukunft des gemeinsamen Wohnens zu gestalten.">
+          <img class="cover" src="assets/team-tanya.jpg" alt="Porträt von Tanya Raschle" loading="lazy">
           <div class="team-card__text">
             <h3 class="heading-4xl trim">Tanya Raschle</h3>
-            <p class="text-base">Service Design &amp; Co-Creative Formats</p>
+            <p class="text-base">Service Design &amp; ko-kreative Formate</p>
           </div>
-          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="More about Tanya Raschle"></button>
+          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="Mehr über Tanya Raschle"></button>
         </article>
-        <article class="team-card" data-team-member data-bio="Mauro is a cooking teacher, experienced chef and core member of COOLINARIK. He hosts workshops for diverse groups and creates an atmosphere where everyone enjoys cooking together – tasty, safe and full of smiles.">
-          <img class="cover" src="assets/team-mauro.jpg" alt="Portrait of Mauro Leuenberger" loading="lazy">
+        <article class="team-card" data-team-member data-bio="Mauro ist Kochlehrer, erfahrener Koch und Kernmitglied von COOLINARIK. Er leitet Workshops für ganz unterschiedliche Gruppen und schafft eine Stimmung, in der alle gerne zusammen kochen – lecker, sicher und mit viel Lachen.">
+          <img class="cover" src="assets/team-mauro.jpg" alt="Porträt von Mauro Leuenberger" loading="lazy">
           <div class="team-card__text">
             <h3 class="heading-4xl trim">Mauro Leuenberger</h3>
-            <p class="text-base">Community Cooking &amp; Workshop Lead</p>
+            <p class="text-base">Gemeinschaftskochen &amp; Workshop-Leitung</p>
           </div>
-          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="More about Mauro Leuenberger"></button>
+          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="Mehr über Mauro Leuenberger"></button>
         </article>
-        <article class="team-card" data-team-member data-bio="Emma is our Sustainability Advisor with a Master’s in Sustainability Management. She analyzes buildings’ energy and waste use, focuses on agroecological food systems and connects communities with local farmers.">
-          <img class="cover" src="assets/team-emma.jpg" alt="Portrait of Emma Gouverneyre" loading="lazy">
+        <article class="team-card" data-team-member data-bio="Emma ist unsere Beraterin für Nachhaltigkeit und hat einen Master in Sustainability Management. Sie analysiert Energie- und Abfallverbrauch von Gebäuden, beschäftigt sich mit agrarökologischen Ernährungssystemen und verbindet Gemeinschaften mit lokalen Bauernhöfen.">
+          <img class="cover" src="assets/team-emma.jpg" alt="Porträt von Emma Gouverneyre" loading="lazy">
           <div class="team-card__text">
             <h3 class="heading-4xl trim">Emma Gouverneyre</h3>
-            <p class="text-base">Sustainable Living Strategist</p>
+            <p class="text-base">Strategin für nachhaltiges Wohnen</p>
           </div>
-          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="More about Emma Gouverneyre"></button>
+          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="Mehr über Emma Gouverneyre"></button>
         </article>
-        <article class="team-card" data-team-member data-bio="Gwendolyn joined after her bachelor’s project on Deheim. With a background in Interaction Design, she develops the website, curates partner properties, works on SEO and documents life in our neighborhoods.">
-          <img class="cover" src="assets/team-gwendolyn.jpg" alt="Portrait of Gwendolyn Wetli" loading="lazy">
+        <article class="team-card" data-team-member data-bio="Gwendolyn kam nach ihrer Bachelorarbeit über Deheim dazu. Mit ihrem Hintergrund in Interaction Design entwickelt sie die Website, kuratiert Partnerliegenschaften, kümmert sich um SEO und dokumentiert das Leben in unseren Nachbarschaften.">
+          <img class="cover" src="assets/team-gwendolyn.jpg" alt="Porträt von Gwendolyn Wetli" loading="lazy">
           <div class="team-card__text">
             <h3 class="heading-4xl trim">Gwendolyn Wetli</h3>
-            <p class="text-base">UX Design &amp; Documentation</p>
+            <p class="text-base">UX Design &amp; Dokumentation</p>
           </div>
-          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="More about Gwendolyn Wetli"></button>
+          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="Mehr über Gwendolyn Wetli"></button>
         </article>
-        <article class="team-card" data-team-member data-bio="Our network of passionate workshop hosts – from pizzaiolos and fermentation specialists to Afghan chefs and mochi makers – invites residents to cook, taste and learn together in relaxed, hands-on workshops.">
-          <img class="cover" src="assets/team-coolinarik.jpg" alt="Group photo of Team Coolinarik" loading="lazy">
+        <article class="team-card" data-team-member data-bio="Unser Netzwerk aus leidenschaftlichen Workshop-Leitenden – von Pizzaioli und Fermentations-Profis bis zu afghanischen Köchinnen und Mochi-Machern – lädt Bewohnerinnen und Bewohner ein, in entspannten Workshops zusammen zu kochen, zu probieren und zu lernen.">
+          <img class="cover" src="assets/team-coolinarik.jpg" alt="Gruppenfoto von Team Coolinarik" loading="lazy">
           <div class="team-card__text">
             <h3 class="heading-4xl trim">Team Coolinarik</h3>
-            <p class="text-base">Hosts</p>
+            <p class="text-base">Gastgeberinnen und Gastgeber</p>
           </div>
-          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="More about Team Coolinarik"></button>
+          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="Mehr über Team Coolinarik"></button>
         </article>
       </div>
     </section>
@@ -375,9 +381,9 @@
       <div class="cta">
         <div class="cta__image"><img class="cover" src="assets/service-1.jpg" alt=""></div>
         <div class="cta__content">
-          <h2 class="heading-4xl trim">Interested?</h2>
-          <p class="text-base">Let’s talk. Together with developers, property managers, and municipalities, we make it happen.</p>
-          <a class="button" href="kontakt.html">Book a free first conversation</a>
+          <h2 class="heading-4xl trim">Hast du Interesse?</h2>
+          <p class="text-base">Melde dich! Gemeinsam mit Entwicklern, Verwaltungen und Gemeinden setzen wir es um.</p>
+          <a class="button" href="kontakt.html">Kostenloses Erstgespräch buchen</a>
         </div>
       </div>
     </section>
@@ -389,13 +395,13 @@
     <div class="footer__inner">
       <div class="newsletter">
         <div class="newsletter__text">
-          <h2 class="heading-newsletter trim">Subscribe to the newsletter</h2>
-          <p class="text-base">Once a month, no advertising. Stories from the table, upcoming Feasts, and what we are learning.</p>
+          <h2 class="heading-newsletter trim">Newsletter abonnieren</h2>
+          <p class="text-base">Einmal im Monat, keine Werbung. Geschichten vom Tisch, kommende Feste und was wir dazulernen.</p>
         </div>
         <form class="newsletter__form" data-newsletter>
           <label class="visually-hidden" for="newsletter-email">Email</label>
           <input class="text-base" id="newsletter-email" type="email" name="email" placeholder="name@example.ch" required>
-          <button class="button" type="submit">Subscribe</button>
+          <button class="button" type="submit">Anmelden</button>
         </form>
       </div>
 
@@ -403,14 +409,14 @@
         <div class="footer__col">
           <p class="text-xs">Deheim Agency</p>
           <a class="link-button" href="https://maps.google.com/?q=Postfach+9392+3001+Bern" target="_blank" rel="noopener">
-            Directions on Google Maps
+            Anfahrt auf Google Maps
             <span class="link-button__icon" aria-hidden="true"><span class="icon icon--arrow-up-right"></span></span>
           </a>
           <p class="footer__line">Postfach 9392</p>
           <p class="footer__line">CH-3001 Bern</p>
         </div>
         <div class="footer__col">
-          <p class="text-xs">Contact</p>
+          <p class="text-xs">Kontakt</p>
           <a class="link-button" href="mailto:gruezi@deheim.org">
             gruezi@deheim.org
             <span class="link-button__icon" aria-hidden="true"><span class="icon icon--arrow-up-right"></span></span>
@@ -421,13 +427,13 @@
 
       <div class="footer__bottom">
         <div class="footer__lang">
-          <a class="text-base" href="#" lang="de" hreflang="de">DE</a>
-          <a class="text-base" href="#" lang="en" hreflang="en">EN</a>
-          <a class="text-base" href="#" lang="fr" hreflang="fr">FR</a>
+          <a class="text-base-b" href="./" lang="de" aria-current="true">DE</a>
+          <a class="text-base" href="en/" lang="en" hreflang="en">EN</a>
+          <a class="text-base" href="fr/" lang="fr" hreflang="fr">FR</a>
         </div>
         <div class="footer__legal text-base">
-          <a href="impressum.html">Legal notice</a>
-          <a href="datenschutz.html">Privacy</a>
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
         </div>
         <div class="footer__social">
           <a class="link-button" href="https://ch.linkedin.com/company/deheim-community" target="_blank" rel="noopener">LinkedIn <span class="link-button__icon link-button__icon--small" aria-hidden="true"><span class="icon icon--arrow-up-right-small"></span></span></a>
@@ -441,7 +447,7 @@
   <dialog class="team-dialog" aria-labelledby="team-dialog-name" data-team-dialog>
     <div class="team-dialog__inner">
       <div class="team-dialog__top">
-        <button class="fab team-dialog__close" type="button" aria-label="Close" data-team-close>
+        <button class="fab team-dialog__close" type="button" aria-label="Schliessen" data-team-close>
           <img src="assets/close.svg" alt="" width="13.591" height="13.591">
         </button>
       </div>
@@ -462,10 +468,10 @@
         </div>
       </div>
       <div class="team-dialog__nav">
-        <button class="fab" type="button" aria-label="Previous person" data-team-prev>
+        <button class="fab" type="button" aria-label="Vorherige Person" data-team-prev>
           <img class="fab__icon--flip" src="assets/arrow-right.svg" alt="" width="14.716" height="14.25">
         </button>
-        <button class="fab" type="button" aria-label="Next person" data-team-next>
+        <button class="fab" type="button" aria-label="Nächste Person" data-team-next>
           <img src="assets/arrow-right.svg" alt="" width="14.716" height="14.25">
         </button>
       </div>

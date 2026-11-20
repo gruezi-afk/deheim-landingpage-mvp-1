@@ -1,3 +1,57 @@
+// ===== Texte im Script in drei Sprachen (Sprache kommt aus <html lang="…">) =====
+const LANG = (document.documentElement.lang || 'en').slice(0, 2);
+const STRINGS = {
+  de: {
+    'Thanks! You’re subscribed.': 'Danke! Du bist angemeldet.',
+    'Open menu': 'Menü öffnen',
+    'Close menu': 'Menü schliessen',
+    'Neighborhood Onboarding': 'Nachbarschafts-Onboarding',
+    'Neighborhood Activation': 'Nachbarschafts-Aktivierung',
+    'Neighborhood Pizza Party': 'Nachbarschafts-Pizzafest',
+    'Partnership': 'Partnerschaft',
+    'Sponsoring': 'Sponsoring',
+    'General inquiry': 'Allgemeine Anfrage',
+    'Please enter your email address.': 'Bitte gib deine E-Mail-Adresse ein.',
+    'This email address isn’t valid. Example: name@example.com': 'Diese E-Mail-Adresse ist ungültig. Beispiel: name@beispiel.ch',
+    'Please fill in this field.': 'Bitte fülle dieses Feld aus.',
+    'Please confirm that you accept the privacy policy.': 'Bitte bestätige, dass du die Datenschutzerklärung akzeptierst.',
+    'Interest': 'Interesse',
+    'First name': 'Vorname',
+    'Last name': 'Nachname',
+    'Email': 'E-Mail',
+    'Follow-up: by phone call': 'Rückmeldung: lieber per Telefon',
+    'Follow-up: by email': 'Rückmeldung: per E-Mail',
+    'Inquiry': 'Anfrage',
+    'Thank you for your message!': 'Danke für deine Nachricht!',
+    'Your email app has opened with the prepared message. Please send it from there. If nothing opened, write to us directly at': 'Dein Mailprogramm wurde mit der vorbereiteten Nachricht geöffnet. Bitte sende sie dort ab. Falls sich nichts geöffnet hat, schreib uns direkt an',
+  },
+  fr: {
+    'Thanks! You’re subscribed.': 'Merci ! Votre inscription est enregistrée.',
+    'Open menu': 'Ouvrir le menu',
+    'Close menu': 'Fermer le menu',
+    'Neighborhood Onboarding': 'Accueil de quartier',
+    'Neighborhood Activation': 'Animation de quartier',
+    'Neighborhood Pizza Party': 'Pizza party de quartier',
+    'Partnership': 'Partenariat',
+    'Sponsoring': 'Sponsoring',
+    'General inquiry': 'Demande générale',
+    'Please enter your email address.': 'Veuillez saisir votre adresse e-mail.',
+    'This email address isn’t valid. Example: name@example.com': 'Cette adresse e-mail n’est pas valide. Exemple : nom@exemple.ch',
+    'Please fill in this field.': 'Veuillez remplir ce champ.',
+    'Please confirm that you accept the privacy policy.': 'Veuillez confirmer que vous acceptez la politique de confidentialité.',
+    'Interest': 'Intérêt',
+    'First name': 'Prénom',
+    'Last name': 'Nom',
+    'Email': 'E-mail',
+    'Follow-up: by phone call': 'Réponse : de préférence par téléphone',
+    'Follow-up: by email': 'Réponse : par e-mail',
+    'Inquiry': 'Demande',
+    'Thank you for your message!': 'Merci pour votre message !',
+    'Your email app has opened with the prepared message. Please send it from there. If nothing opened, write to us directly at': 'Votre messagerie s’est ouverte avec le message préparé. Veuillez l’envoyer depuis celle-ci. Si rien ne s’est ouvert, écrivez-nous directement à',
+  },
+};
+const t = (text) => (STRINGS[LANG] && STRINGS[LANG][text]) || text;
+
 // Endlos-Laufband (Hero): Inhalt verdoppeln, damit die Animation nahtlos wirkt
 document.querySelectorAll('.marquee__track').forEach((track) => {
   const group = track.firstElementChild;
@@ -167,7 +221,7 @@ if (newsletter) {
     const thanks = document.createElement('p');
     thanks.className = 'text-base newsletter__thanks';
     thanks.setAttribute('role', 'status');
-    thanks.textContent = 'Thanks! You’re subscribed.';
+    thanks.textContent = t('Thanks! You’re subscribed.');
     newsletter.replaceChildren(thanks);
   });
 }
@@ -179,7 +233,7 @@ if (nav && navToggle) {
   const setOpen = (open) => {
     nav.classList.toggle('is-open', open);
     navToggle.setAttribute('aria-expanded', String(open));
-    navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    navToggle.setAttribute('aria-label', open ? t('Close menu') : t('Open menu'));
   };
 
   navToggle.addEventListener('click', () => setOpen(!nav.classList.contains('is-open')));
@@ -207,11 +261,11 @@ if (mobileCta && footer && 'IntersectionObserver' in window) {
 const contactForm = document.querySelector('[data-contact-form]');
 if (contactForm) {
   const labels = {
-    onboarding: 'Neighborhood Onboarding',
-    activation: 'Neighborhood Activation',
-    pizza: 'Neighborhood Pizza Party',
-    partnership: 'Partnership',
-    sponsoring: 'Sponsoring',
+    onboarding: t('Neighborhood Onboarding'),
+    activation: t('Neighborhood Activation'),
+    pizza: t('Neighborhood Pizza Party'),
+    partnership: t('Partnership'),
+    sponsoring: t('Sponsoring'),
   };
 
   // Interesse aus dem Link vorauswählen, z. B. kontakt.html?interesse=fest
@@ -227,11 +281,11 @@ if (contactForm) {
   const fieldError = (input) => {
     const value = input.value.trim();
     if (input.type === 'email') {
-      if (!value) return 'Please enter your email address.';
-      if (!emailPattern.test(value)) return 'This email address isn’t valid. Example: name@example.com';
+      if (!value) return t('Please enter your email address.');
+      if (!emailPattern.test(value)) return t('This email address isn’t valid. Example: name@example.com');
       return '';
     }
-    return value ? '' : 'Please fill in this field.';
+    return value ? '' : t('Please fill in this field.');
   };
 
   const showFieldError = (input, message) => {
@@ -278,7 +332,7 @@ if (contactForm) {
 
     if (!privacy.checked) {
       privacy.setAttribute('aria-invalid', 'true');
-      errorBox.textContent = 'Please confirm that you accept the privacy policy.';
+      errorBox.textContent = t('Please confirm that you accept the privacy policy.');
       errorBox.hidden = false;
       invalid.push(privacy);
     } else {
@@ -292,22 +346,22 @@ if (contactForm) {
 
     // Noch ohne Server: öffnet das Mailprogramm mit einer vorbereiteten Nachricht
     const data = new FormData(contactForm);
-    const interest = labels[data.get('interesse')] || 'General inquiry';
+    const interest = labels[data.get('interesse')] || t('General inquiry');
     const body = [
-      `Interest: ${interest}`,
-      `First name: ${data.get('vorname')}`,
-      `Last name: ${data.get('name')}`,
-      `Email: ${data.get('email')}`,
-      data.get('anruf') ? 'Follow-up: by phone call' : 'Follow-up: by email',
+      `${t('Interest')}: ${interest}`,
+      `${t('First name')}: ${data.get('vorname')}`,
+      `${t('Last name')}: ${data.get('name')}`,
+      `${t('Email')}: ${data.get('email')}`,
+      data.get('anruf') ? t('Follow-up: by phone call') : t('Follow-up: by email'),
       '',
       data.get('nachricht') || '',
     ].join('\n');
-    window.location.href = `mailto:gruezi@deheim.org?subject=${encodeURIComponent(`Inquiry: ${interest}`)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:gruezi@deheim.org?subject=${encodeURIComponent(`${t('Inquiry')}: ${interest}`)}&body=${encodeURIComponent(body)}`;
 
     const thanks = document.createElement('div');
     thanks.className = 'contact__thanks';
     thanks.setAttribute('role', 'status');
-    thanks.innerHTML = '<p class="text-base-b">Thank you for your message!</p><p class="text-base">Your email app has opened with the prepared message. Please send it from there. If nothing opened, write to us directly at <a href="mailto:gruezi@deheim.org">gruezi@deheim.org</a>.</p>';
+    thanks.innerHTML = `<p class="text-base-b">${t('Thank you for your message!')}</p><p class="text-base">${t('Your email app has opened with the prepared message. Please send it from there. If nothing opened, write to us directly at')} <a href="mailto:gruezi@deheim.org">gruezi@deheim.org</a>.</p>`;
     contactForm.replaceChildren(thanks);
   });
 }
@@ -364,13 +418,6 @@ if (teamDialog && teamMembers.length && typeof teamDialog.showModal === 'functio
   // Fokus nach dem Schliessen zurück auf die Karte
   teamDialog.addEventListener('close', () => opener?.focus());
 }
-
-// Sprachwahl: Übersetzungen gibt es noch nicht, darum vorerst kein Seitensprung nach oben
-document.querySelectorAll('.lang-switch a, .footer__lang a').forEach((link) => {
-  if (link.getAttribute('href') === '#') {
-    link.addEventListener('click', (event) => event.preventDefault());
-  }
-});
 
 // ===== Micro-Interaktionen & Scroll-Effekte =====
 

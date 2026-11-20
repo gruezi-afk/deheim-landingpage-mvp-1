@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact – Deheim</title>
+  <meta name="description" content="Contactez Deheim. Nous vous répondons dans un délai de 1 à 2 jours ouvrables.">
+  <!-- Vorschau beim Teilen (WhatsApp, LinkedIn, Instagram, Slack …) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Deheim">
+  <meta property="og:title" content="Contact – Deheim">
+  <meta property="og:description" content="Nous vous répondons dans un délai de 1 à 2 jours ouvrables. Deheim fait des inconnus des voisins.">
+  <meta property="og:url" content="https://deheim-landing-page-v1.vercel.app/fr/kontakt.html">
+  <meta property="og:image" content="https://deheim-landing-page-v1.vercel.app/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Logo Deheim sur des façades illustrées">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://deheim-landing-page-v1.vercel.app/assets/og-image.jpg">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <!-- Schriften liegen lokal (assets/fonts): Google Sans (Text), Platypi (Titel) -->
+  <link rel="preload" href="../assets/fonts/google-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/platypi-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../styles.css?v=2026-11-21q">
+  <script>
+    // Animationen nur mit JavaScript und wenn «Bewegung reduzieren» nicht aktiv ist
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('motion');
+    }
+  </script>
+  <link rel="canonical" href="https://deheim-landing-page-v1.vercel.app/fr/kontakt.html">
+  <link rel="alternate" hreflang="de" href="https://deheim-landing-page-v1.vercel.app/kontakt.html">
+  <link rel="alternate" hreflang="en" href="https://deheim-landing-page-v1.vercel.app/en/kontakt.html">
+  <link rel="alternate" hreflang="fr" href="https://deheim-landing-page-v1.vercel.app/fr/kontakt.html">
+  <link rel="alternate" hreflang="x-default" href="https://deheim-landing-page-v1.vercel.app/kontakt.html">
+  <meta property="og:locale" content="fr_CH">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="site-header">
+    <nav class="nav">
+      <a class="nav__logo" href="index.html" aria-label="Deheim – accueil">
+        <img class="nav__logo-img" src="../assets/logo-deheim.svg" alt="" width="217" height="47">
+      </a>
+      <div class="nav__links" id="nav-links">
+        <a class="link-button link-button--nav-ext" href="vision.html">Vision <span class="link-button__icon" aria-hidden="true"><span class="icon icon--arrow-nav"></span></span></a>
+        <a class="link-button" href="index.html#services">Prestations</a>
+        <a class="link-button" href="index.html#team">Équipe</a>
+        <a class="button nav__menu-cta" href="kontakt.html">Contact</a>
+        <div class="lang-switch lang-switch--menu" role="group" aria-label="Choisir la langue">
+          <a href="../kontakt.html" lang="de" hreflang="de">DE</a>
+          <a href="../en/kontakt.html" lang="en" hreflang="en">EN</a>
+          <a href="../fr/kontakt.html" lang="fr" aria-current="true">FR</a>
+        </div>
+      </div>
+      <div class="nav__cta">
+        <div class="lang-switch" role="group" aria-label="Choisir la langue">
+          <a href="../kontakt.html" lang="de" hreflang="de">DE</a>
+          <a href="../en/kontakt.html" lang="en" hreflang="en">EN</a>
+          <a href="../fr/kontakt.html" lang="fr" aria-current="true">FR</a>
+        </div>
+        <a class="button" href="kontakt.html" aria-current="page">Contact</a>
+      </div>
+      <button class="fab nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Ouvrir le menu" data-nav-toggle>
+        <img class="nav__toggle-open" src="../assets/menu.svg" alt="" width="27" height="8.25">
+        <img class="nav__toggle-close" src="../assets/close-menu.svg" alt="" width="24.716" height="24.716">
+      </button>
+    </nav>
+  </header>
+
+  <main class="contact" id="top">
+    <div class="contact__intro">
+      <h1 class="contact__title">Contact</h1>
+      <p class="contact__lead">Nous vous répondons dans un délai de 1 à 2 jours ouvrables.</p>
+    </div>
+
+    <form class="contact__form" data-contact-form novalidate>
+      <fieldset class="contact__group">
+        <legend class="text-base-b contact__legend">Je suis intéressé·e par :</legend>
+        <div class="contact__choices">
+          <div class="contact__choices-col">
+              <label class="choice">
+                <input class="choice__input" type="radio" name="interesse" value="onboarding">
+                <span class="choice__label">Accueil de quartier</span>
+              </label>
+              <label class="choice">
+                <input class="choice__input" type="radio" name="interesse" value="activation">
+                <span class="choice__label">Animation de quartier</span>
+              </label>
+              <label class="choice">
+                <input class="choice__input" type="radio" name="interesse" value="pizza">
+                <span class="choice__label">Pizza party de quartier</span>
+              </label>
+          </div>
+          <div class="contact__choices-col">
+              <label class="choice">
+                <input class="choice__input" type="radio" name="interesse" value="partnership">
+                <span class="choice__label">Partenariat</span>
+              </label>
+              <label class="choice">
+                <input class="choice__input" type="radio" name="interesse" value="sponsoring">
+                <span class="choice__label">Sponsoring</span>
+              </label>
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="contact__fields">
+        <div class="field">
+          <label class="visually-hidden" for="contact-firstname">Prénom</label>
+          <input class="field__input" id="contact-firstname" aria-describedby="contact-firstname-error" name="vorname" type="text" placeholder="Prénom" autocomplete="given-name" required>
+          <p class="field__caption" id="contact-firstname-error" hidden></p>
+        </div>
+        <div class="field">
+          <label class="visually-hidden" for="contact-lastname">Nom</label>
+          <input class="field__input" id="contact-lastname" aria-describedby="contact-lastname-error" name="name" type="text" placeholder="Nom" autocomplete="family-name" required>
+          <p class="field__caption" id="contact-lastname-error" hidden></p>
+        </div>
+        <div class="field field--full">
+          <label class="visually-hidden" for="contact-email">E-mail</label>
+          <input class="field__input" id="contact-email" aria-describedby="contact-email-error" name="email" type="email" placeholder="E-mail" autocomplete="email" required>
+          <p class="field__caption" id="contact-email-error" hidden></p>
+        </div>
+      </div>
+
+      <div class="field field--message">
+        <label class="field__label" for="contact-message">Message</label>
+        <textarea class="field__input field__textarea" id="contact-message" name="nachricht" placeholder="Votre message…" rows="4"></textarea>
+      </div>
+
+      <div class="contact__options">
+        <label class="choice">
+          <input class="choice__input" type="checkbox" name="anruf" value="ja">
+          <span class="choice__label">Je préfère être rappelé·e plutôt que de recevoir un e-mail</span>
+        </label>
+        <label class="choice choice--checkbox">
+          <input class="choice__input" type="checkbox" name="datenschutz" required>
+          <span class="choice__label">J’ai lu et j’accepte la <a href="datenschutz.html" target="_blank">politique de confidentialité</a>.</span>
+        </label>
+      </div>
+
+      <p class="contact__error" role="alert" hidden data-contact-error></p>
+
+      <div>
+        <button class="button button--with-icon" type="submit">
+          <span>Envoyer</span>
+          <span class="button__fab" aria-hidden="true"><span class="icon icon--arrow-right"></span></span>
+        </button>
+      </div>
+    </form>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="newsletter">
+        <div class="newsletter__text">
+          <h2 class="heading-newsletter trim">S’abonner à la newsletter</h2>
+          <p class="text-base">Une fois par mois, sans publicité. Des histoires autour de la table, les prochaines fêtes et ce que nous apprenons.</p>
+        </div>
+        <form class="newsletter__form" data-newsletter>
+          <label class="visually-hidden" for="newsletter-email">E-mail</label>
+          <input class="text-base" id="newsletter-email" type="email" name="email" placeholder="name@example.ch" required>
+          <button class="button" type="submit">S’abonner</button>
+        </form>
+      </div>
+
+      <div class="footer__columns">
+        <div class="footer__col">
+          <p class="text-xs">Deheim Agency</p>
+          <a class="link-button" href="https://maps.google.com/?q=Postfach+9392+3001+Bern" target="_blank" rel="noopener">
+            Itinéraire sur Google Maps
+            <span class="link-button__icon" aria-hidden="true"><span class="icon icon--arrow-up-right"></span></span>
+          </a>
+          <p class="footer__line">Postfach 9392</p>
+          <p class="footer__line">CH-3001 Bern</p>
+        </div>
+        <div class="footer__col">
+          <p class="text-xs">Contact</p>
+          <a class="link-button" href="mailto:gruezi@deheim.org">
+            gruezi@deheim.org
+            <span class="link-button__icon" aria-hidden="true"><span class="icon icon--arrow-up-right"></span></span>
+          </a>
+          <a class="footer__line" href="tel:+41793641130">+41 79 364 11 30</a>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <div class="footer__lang">
+          <a class="text-base" href="../kontakt.html" lang="de" hreflang="de">DE</a>
+          <a class="text-base" href="../en/kontakt.html" lang="en" hreflang="en">EN</a>
+          <a class="text-base-b" href="../fr/kontakt.html" lang="fr" aria-current="true">FR</a>
+        </div>
+        <div class="footer__legal text-base">
+          <a href="impressum.html">Mentions légales</a>
+          <a href="datenschutz.html">Protection des données</a>
+        </div>
+        <div class="footer__social">
+          <a class="link-button" href="https://ch.linkedin.com/company/deheim-community" target="_blank" rel="noopener">LinkedIn <span class="link-button__icon link-button__icon--small" aria-hidden="true"><span class="icon icon--arrow-up-right-small"></span></span></a>
+          <a class="link-button" href="https://www.instagram.com/deheim.agency/" target="_blank" rel="noopener">Instagram <span class="link-button__icon link-button__icon--small" aria-hidden="true"><span class="icon icon--arrow-up-right-small"></span></span></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../script.js?v=2026-11-21q"></script>
+</body>
+</html>

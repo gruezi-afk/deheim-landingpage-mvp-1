@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vision – Deheim</title>
+  <meta name="description" content="Notre vision : des quartiers où l’on se connaît, où l’on s’entraide et où l’on aime rester. Regardez le TEDx Talk de Lukas Lauber sur la solitude dans le monde moderne.">
+  <!-- Vorschau beim Teilen (WhatsApp, LinkedIn, Instagram, Slack …) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Deheim">
+  <meta property="og:title" content="Vision – Deheim">
+  <meta property="og:description" content="Deheim transforme les immeubles d’habitation en communautés vivantes, grâce à des expériences partagées et à des traditions de voisinage durables.">
+  <meta property="og:url" content="https://deheim-landing-page-v1.vercel.app/fr/vision.html">
+  <meta property="og:image" content="https://deheim-landing-page-v1.vercel.app/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Logo Deheim sur des façades illustrées">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://deheim-landing-page-v1.vercel.app/assets/og-image.jpg">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <!-- Schriften liegen lokal (assets/fonts): Google Sans (Text), Platypi (Titel) -->
+  <link rel="preload" href="../assets/fonts/google-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/platypi-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../styles.css?v=2026-11-21q">
+  <script>
+    // Animationen nur mit JavaScript und wenn «Bewegung reduzieren» nicht aktiv ist
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('motion');
+    }
+  </script>
+  <link rel="canonical" href="https://deheim-landing-page-v1.vercel.app/fr/vision.html">
+  <link rel="alternate" hreflang="de" href="https://deheim-landing-page-v1.vercel.app/vision.html">
+  <link rel="alternate" hreflang="en" href="https://deheim-landing-page-v1.vercel.app/en/vision.html">
+  <link rel="alternate" hreflang="fr" href="https://deheim-landing-page-v1.vercel.app/fr/vision.html">
+  <link rel="alternate" hreflang="x-default" href="https://deheim-landing-page-v1.vercel.app/vision.html">
+  <meta property="og:locale" content="fr_CH">
+</head>
+<body>
+
+  <!-- Navigation -->
+  <header class="site-header">
+    <nav class="nav">
+      <a class="nav__logo" href="index.html" aria-label="Deheim – accueil">
+        <img class="nav__logo-img" src="../assets/logo-deheim.svg" alt="" width="217" height="47">
+      </a>
+      <div class="nav__links" id="nav-links">
+        <a class="link-button link-button--nav-ext" href="vision.html" aria-current="page">Vision <span class="link-button__icon" aria-hidden="true"><span class="icon icon--arrow-nav"></span></span></a>
+        <a class="link-button" href="index.html#services">Prestations</a>
+        <a class="link-button" href="index.html#team">Équipe</a>
+        <a class="button nav__menu-cta" href="kontakt.html">Contact</a>
+        <div class="lang-switch lang-switch--menu" role="group" aria-label="Choisir la langue">
+          <a href="../vision.html" lang="de" hreflang="de">DE</a>
+          <a href="../en/vision.html" lang="en" hreflang="en">EN</a>
+          <a href="../fr/vision.html" lang="fr" aria-current="true">FR</a>
+        </div>
+      </div>
+      <div class="nav__cta">
+        <div class="lang-switch" role="group" aria-label="Choisir la langue">
+          <a href="../vision.html" lang="de" hreflang="de">DE</a>
+          <a href="../en/vision.html" lang="en" hreflang="en">EN</a>
+          <a href="../fr/vision.html" lang="fr" aria-current="true">FR</a>
+        </div>
+        <a class="button" href="kontakt.html">Contact</a>
+      </div>
+      <button class="fab nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Ouvrir le menu" data-nav-toggle>
+        <img class="nav__toggle-open" src="../assets/menu.svg" alt="" width="27" height="8.25">
+        <img class="nav__toggle-close" src="../assets/close-menu.svg" alt="" width="24.716" height="24.716">
+      </button>
+    </nav>
+  </header>
+
+  <!-- Schwebender Kontakt-Button (nur Mobile) -->
+  <a class="button mobile-cta" href="kontakt.html" data-mobile-cta>Contact</a>
+
+  <main id="top" class="vision">
+
+    <!-- Titel (Figma Detailseite 12092:6714) -->
+    <section class="page-hero">
+      <h1 class="display trim">Notre vision lorem ipsum dolor sit amet</h1>
+    </section>
+
+    <!-- Video: lädt YouTube erst nach dem Klick (Datenschutz), Vorschaubild liegt lokal -->
+    <section class="video-section">
+      <div class="video" data-video="OW0-0BMGL8A" data-video-title="TEDx Talk de Lukas Lauber : comment combattre l’épidémie de solitude dans le monde moderne">
+        <button class="video__play" type="button" aria-label="Lire la vidéo : TEDx Talk de Lukas Lauber">
+          <img class="cover" src="../assets/vision-video.jpg" alt="" width="1280" height="720">
+          <span class="video__icon" aria-hidden="true"></span>
+        </button>
+      </div>
+      <p class="video__note text-xs">La vidéo est lue via YouTube. En cliquant, du contenu est chargé depuis YouTube (Google).</p>
+    </section>
+
+    <!-- Text (wie «Statement» auf der Startseite) -->
+    <section class="statement">
+      <p class="text-base-b statement__lead">Lorem ipsum dolor</p>
+      <div class="statement__body">
+        <p class="text-3xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+      </div>
+    </section>
+
+    <!-- Story-Karte (Figma 12092:6761) -->
+    <section class="story-section">
+      <article class="story">
+        <div class="story__image"><img class="cover" src="../assets/vision-story.png" alt="" loading="lazy"></div>
+        <div class="story__content">
+          <p class="text-base-b">Novembre 2026</p>
+          <div class="story__text">
+            <h2 class="story__title">Concours à Dubaï</h2>
+            <p class="story__lead">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
+          </div>
+          <a class="button" href="#">En savoir plus</a>
+        </div>
+      </article>
+    </section>
+
+    <section class="cta-section cta-section--standalone">
+      <div class="cta">
+        <div class="cta__image"><img class="cover" src="../assets/service-1.jpg" alt=""></div>
+        <div class="cta__content">
+          <h2 class="heading-4xl trim">Intéressé·e ?</h2>
+          <p class="text-base">Parlons-en. Avec les promoteurs, les gérances et les communes, nous concrétisons vos projets.</p>
+          <a class="button" href="kontakt.html">Réserver un premier entretien gratuit</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="newsletter">
+        <div class="newsletter__text">
+          <h2 class="heading-newsletter trim">S’abonner à la newsletter</h2>
+          <p class="text-base">Une fois par mois, sans publicité. Des histoires autour de la table, les prochaines fêtes et ce que nous apprenons.</p>
+        </div>
+        <form class="newsletter__form" data-newsletter>
+          <label class="visually-hidden" for="newsletter-email">E-mail</label>
+          <input class="text-base" id="newsletter-email" type="email" name="email" placeholder="name@example.ch" required>
+          <button class="button" type="submit">S’abonner</button>
+        </form>
+      </div>
+
+      <div class="footer__columns">
+        <div class="footer__col">
+          <p class="text-xs">Deheim Agency</p>
+          <a class="link-button" href="https://maps.google.com/?q=Postfach+9392+3001+Bern" target="_blank" rel="noopener">
+            Itinéraire sur Google Maps
+            <span class="link-button__icon" aria-hidden="true"><span class="icon icon--arrow-up-right"></span></span>
+          </a>
+          <p class="footer__line">Postfach 9392</p>
+          <p class="footer__line">CH-3001 Bern</p>
+        </div>
+        <div class="footer__col">
+          <p class="text-xs">Contact</p>
+          <a class="link-button" href="mailto:gruezi@deheim.org">
+            gruezi@deheim.org
+            <span class="link-button__icon" aria-hidden="true"><span class="icon icon--arrow-up-right"></span></span>
+          </a>
+          <a class="footer__line" href="tel:+41793641130">+41 79 364 11 30</a>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <div class="footer__lang">
+          <a class="text-base" href="../vision.html" lang="de" hreflang="de">DE</a>
+          <a class="text-base" href="../en/vision.html" lang="en" hreflang="en">EN</a>
+          <a class="text-base-b" href="../fr/vision.html" lang="fr" aria-current="true">FR</a>
+        </div>
+        <div class="footer__legal text-base">
+          <a href="impressum.html">Mentions légales</a>
+          <a href="datenschutz.html">Protection des données</a>
+        </div>
+        <div class="footer__social">
+          <a class="link-button" href="https://ch.linkedin.com/company/deheim-community" target="_blank" rel="noopener">LinkedIn <span class="link-button__icon link-button__icon--small" aria-hidden="true"><span class="icon icon--arrow-up-right-small"></span></span></a>
+          <a class="link-button" href="https://www.instagram.com/deheim.agency/" target="_blank" rel="noopener">Instagram <span class="link-button__icon link-button__icon--small" aria-hidden="true"><span class="icon icon--arrow-up-right-small"></span></span></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../script.js?v=2026-11-21q"></script>
+</body>
+</html>

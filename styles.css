@@ -1,3 +1,33 @@
+/* ===== Schriften =====
+   Beide frei (SIL Open Font License) und lokal eingebunden, nichts wird von Google geladen.
+   Google Sans: Laufschrift, variable Schrift 400–700.
+   Platypi: Titel, variable Schrift 300–800 (Gelica/Roca wären Adobe Fonts, nicht selbst hostbar). */
+@font-face {
+  font-family: "Google Sans";
+  src: url("assets/fonts/google-sans-latin.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Platypi";
+  src: url("assets/fonts/platypi-latin.woff2") format("woff2");
+  font-weight: 300 800;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+  font-family: "Platypi";
+  src: url("assets/fonts/platypi-latin-ext.woff2") format("woff2");
+  font-weight: 300 800;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
 /* ===== Design Tokens (aus Figma) ===== */
 :root {
   --neutral-100: #f1efef;
@@ -13,7 +43,7 @@
   --orange-200: #f6c9d3;
 
   --font-script: "Platypi", Georgia, serif;
-  --font-rt: "Mona Sans", system-ui, sans-serif;
+  --font-rt: "Google Sans", system-ui, sans-serif;
 
   --font-6xl: clamp(80px, 6.25vw, 100px);
   --font-4xl: clamp(42px, 4vw, 64px);
@@ -130,10 +160,11 @@ textarea {
   letter-spacing: -0.03em;
 }
 
-.text-3xl { font-size: var(--font-3xl); line-height: 1.2; }
-.text-2xl { font-size: var(--font-2xl); line-height: 1.27; font-weight: 600; }
-.text-xl  { font-size: var(--font-xl); line-height: 1.3; font-weight: 600; letter-spacing: -0.01em; }
-.text-lg  { font-size: var(--font-lg); line-height: 1.3; }
+/* Laufschrift-Stile nach Figma Styleguide (211:3657) */
+.text-3xl { font-size: var(--font-3xl); line-height: 1.3; }
+.text-2xl { font-size: var(--font-2xl); line-height: 1.27; }
+.text-xl  { font-size: var(--font-xl); line-height: 1.3; letter-spacing: -0.01em; }
+.text-lg  { font-size: var(--font-lg); line-height: 1.4; }
 .text-base { font-size: var(--font-base); line-height: 1.4; }
 .text-base-b { font-size: var(--font-base); line-height: 1.34; font-weight: 700; }
 .text-xs { font-size: var(--font-xs); line-height: 1.4; }
@@ -220,6 +251,16 @@ textarea {
   color: var(--green-200);
 }
 
+/* Aktive Seite in der Navigation: grün (Figma 12092:6467) */
+.nav__links .link-button[aria-current="page"] {
+  color: var(--green-200);
+}
+
+/* Navigationspunkt mit Pfeil (Vision): 24px-Iconbox direkt am Text, ohne Abstand */
+.link-button--nav-ext {
+  gap: 0;
+}
+
 .link-button:active {
   color: var(--green-400);
 }
@@ -262,6 +303,15 @@ textarea {
   height: 13.8px;
   -webkit-mask-image: url("assets/arrow-up-right.svg");
   mask-image: url("assets/arrow-up-right.svg");
+  transform: rotate(-90deg);
+}
+
+/* Pfeil in der Navigation (Figma «Arrow Up Right», 9px, gleich lange Schenkel) */
+.icon--arrow-nav {
+  width: 9px;
+  height: 9px;
+  -webkit-mask-image: url("assets/arrow-nav.svg");
+  mask-image: url("assets/arrow-nav.svg");
   transform: rotate(-90deg);
 }
 
@@ -432,8 +482,11 @@ textarea {
   padding-top: calc(132px + var(--space-l));
 }
 
+/* Mehr Luft zwischen Titel und Bildstreifen (Wunsch 20.11., mehr als Figma):
+   Desktop 80px = Gap 48 + 32 */
 .hero .display {
   padding: 0 var(--margin);
+  margin-bottom: 32px;
 }
 
 .hero-strip {
@@ -470,9 +523,11 @@ textarea {
 .tile--bottom { align-self: flex-end; }
 .tile--center { align-self: center; }
 
+/* Figma Hero (9866:12832): Bildstreifen → Text = Section-Abstand (120px).
+   Der Gap der Hero-Spalte (--space-l) zählt schon mit, darum oben die Differenz */
 .hero__intro {
   max-width: 820px;
-  padding: var(--space-l) var(--margin) var(--space-section);
+  padding: calc(var(--space-section) - var(--space-l)) var(--margin) var(--space-section);
   text-align: center;
   box-sizing: content-box;
 }
@@ -568,9 +623,10 @@ textarea {
 }
 
 /* ===== Statement ===== */
+/* Desktop: Lead links (340px), Text rechts (max. 987px); nie umbrechen, der Text wird schmaler */
 .statement {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: space-between;
   align-items: flex-start;
   gap: var(--space-l) var(--space-l);
@@ -580,6 +636,7 @@ textarea {
 }
 
 .statement__lead {
+  flex: none;
   width: 340px;
 }
 
@@ -684,33 +741,55 @@ textarea {
   max-width: 946px;
 }
 
-.testimonial-row {
-  display: flex;
-  gap: 16px;
-  padding-right: 16px;
+/* Eine Reihe zum Swipen bzw. Blättern mit den Pfeilen (Figma 12092:6291), kein Laufband */
+.testimonials__track {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--margin);
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
 }
 
+.testimonials__track::-webkit-scrollbar {
+  display: none;
+}
+
+.testimonial-row {
+  display: flex;
+  gap: 10px;
+  width: max-content;
+  padding: 0 var(--margin);
+}
+
+/* Figma «Testemonial Container» (10012:24407): Bild und Text in einer weissen Karte */
 .testimonial {
   display: flex;
-  gap: var(--space-xs);
   flex: 0 0 auto;
+  height: 319px;
+  scroll-snap-align: start;
+  padding: var(--space-xs);
+  border-radius: var(--radius-m);
+  background: var(--white);
 }
 
 .testimonial__image {
   position: relative;
+  flex: 0 0 auto;
   width: 304px;
-  height: 319px;
-  border-radius: var(--radius-tile);
+  border-radius: var(--radius-m);
   background: var(--tile-bg);
   overflow: hidden;
 }
 
+/* Porträts im Hochformat 3:4 (Figma «Bilder» → Aufbereitet), Hintergrund im Bild */
 .testimonial__image img {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 50% 15%;
 }
 
 .testimonial__card {
@@ -719,9 +798,7 @@ textarea {
   justify-content: space-between;
   gap: var(--space-xxs);
   width: 436px;
-  padding: 32px;
-  border-radius: var(--radius-m);
-  background: var(--white);
+  padding: var(--space-m);
 }
 
 .testimonial__quote {
@@ -744,24 +821,25 @@ textarea {
   font-weight: 700;
 }
 
-/* Pfeile gibt es nur auf Mobile (dort ist das Laufband eine Swipe-Reihe) */
+/* Pfeile unter den Karten, wie beim Team */
 .testimonials__controls {
-  display: none;
+  padding: 0 var(--margin);
 }
 
-/* ===== CTA ===== */
-/* CTA steht nach dem Team: oben kein eigener Abstand (Team-Section bringt ihn mit) */
+/* ===== CTA (Figma 9866:12871 / Tablet 10012:21728 / Mobile 10012:22099) ===== */
+/* CTA steht nach dem Team. Die Team-Section bringt unten schon --space-xl mit,
+   darum oben nur die Differenz zum Figma-Abstand (Desktop 120px) */
 .cta-section {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding: 0 var(--margin) var(--space-section);
+  padding: calc(var(--space-section) - var(--space-xl)) var(--margin) var(--space-section);
 }
 
 .cta {
   display: flex;
   align-items: stretch;
   gap: var(--space-section);
-  padding: 32px;
+  padding: var(--space-s);
   border-radius: var(--radius-m);
   background: var(--blue-200);
 }
@@ -923,12 +1001,28 @@ textarea {
     padding: var(--space-m) var(--margin);
   }
 
+  /* Figma Tablet (12093:2556): Leiste 8px Innenabstand, Logo 123px mit 30px Rand,
+     Sprachwahl 14px, 16px bis zum Kontakt-Button */
   .nav {
-    gap: var(--space-m);
+    gap: 24px;
+    padding: var(--space-xs);
   }
 
   .nav__logo {
-    padding: 0 var(--space-xs);
+    padding: 0 30px;
+  }
+
+  .nav__logo-img {
+    height: 26.5px;
+  }
+
+  .nav__cta {
+    gap: var(--space-s);
+  }
+
+  .nav__cta .lang-switch {
+    gap: var(--space-xs);
+    font-size: 14px;
   }
 
   /* Hero */
@@ -937,17 +1031,20 @@ textarea {
     padding-top: 132px;
   }
 
+  /* Tablet: Titel → Bildstreifen 96px (64 + 32 Abstand des Streifens) */
   .hero .display {
-    padding: var(--space-l) var(--margin);
+    padding: var(--space-l) var(--margin) 64px;
+    margin-bottom: 0;
   }
 
   .hero-strip {
     margin-top: 32px;
   }
 
+  /* Figma Tablet: Bildstreifen → Text 64px (32px Gap + 32px Innenabstand) */
   .hero__intro {
     max-width: 678px;
-    padding: var(--space-m) var(--margin) 120px;
+    padding: 64px var(--margin) 120px;
   }
 
   /* Zahlen */
@@ -982,17 +1079,27 @@ textarea {
   }
 
   /* Statement */
+  /* Tablet (Figma Text 10012:21713): untereinander, Lead 16px fett, Text LG, 30px Abstand */
   .statement {
+    flex-direction: column;
     flex-wrap: nowrap;
-    gap: var(--space-l);
+    gap: 30px;
     padding: var(--space-xl) var(--margin);
   }
 
   .statement__lead,
   .statement__body {
-    flex: 1 1 0;
-    width: auto;
+    flex: none;
+    width: 100%;
     min-width: 0;
+  }
+
+  .statement__lead {
+    font-size: 16px;
+  }
+
+  .statement__body .text-lg {
+    font-size: 23px;
   }
 
   /* Abschnitts-Titel */
@@ -1001,15 +1108,15 @@ textarea {
     padding-right: var(--margin);
   }
 
-  /* CTA */
+  /* CTA: Figma Tablet unten 30px; oben bringt die Team-Section schon 96px mit */
   .cta-section {
-    padding: 0 var(--margin) var(--space-xl);
+    padding: 0 var(--margin) var(--space-m);
   }
 
   .cta {
     align-items: center;
     gap: var(--space-l);
-    padding: var(--space-s);
+    padding: var(--space-xs);
   }
 
   .cta__image {
@@ -1020,7 +1127,7 @@ textarea {
 
   .cta__content {
     flex: 1 1 0;
-    gap: var(--space-m);
+    gap: var(--space-s);
     padding: 0;
   }
 
@@ -1073,35 +1180,61 @@ textarea {
     min-width: 0;
     max-width: none;
   }
+
+  /* Testimonials (Figma Tablet 12092:2246): Karte mit Bild oben, Text darunter */
+  .testimonials .testimonial-row {
+    gap: 16px;
+  }
+
+  .testimonials .testimonial {
+    flex-direction: column;
+    gap: var(--space-xs);
+    width: 413px;
+    height: auto;
+  }
+
+  .testimonials .testimonial__image {
+    width: 100%;
+    height: 233px;
+  }
+
+  /* Querformat: Kopf und Oberkörper zeigen (wie in Figma).
+     Pro Bild anpassbar mit style="--img-y: …" am img */
+  .testimonials .testimonial__image img {
+    object-position: 50% var(--img-y, 25%);
+  }
+
+  .testimonials .testimonial__card {
+    justify-content: flex-start;
+    gap: var(--space-s);
+    width: 100%;
+    padding: var(--space-s);
+  }
+
 }
 
-/* ===== Responsive: Mobile (Figma 393px) ===== */
-@media (max-width: 600px) {
-  :root {
-    --font-6xl: 48px;
-    --font-lg: 23px;
-    --margin: 12px;
-    --space-section: 56px;
-  }
-
-  html {
-    scroll-padding-top: 110px;
-  }
-
+/* ===== Navigation mit Burger-Menü (Figma Mobile 10012:25223, Menü 10012:24559) =====
+   schon ab 767px: darüber passt die Leiste mit allen Einträgen nicht mehr */
+@media (max-width: 767px) {
   /* Navigation mit Hamburger-Menü */
   .site-header {
-    padding: 24px var(--margin);
+    padding: 24px 12px;
   }
 
   .nav {
     position: relative;
     justify-content: space-between;
-    padding: var(--space-xs) var(--space-xs) var(--space-xs) var(--space-s);
+    padding: var(--space-xs) var(--space-s); /* Figma: 16px seitlich, 8px oben/unten */
   }
 
+  /* Figma Mobile (10012:25223): Logo 171px breit, 4px eingerückt */
   .nav__logo {
     flex: 0 1 auto;
     padding: 0 var(--space-xxs);
+  }
+
+  .nav__logo-img {
+    height: 37px;
   }
 
   .nav__cta {
@@ -1136,10 +1269,16 @@ textarea {
     visibility: visible;
   }
 
+  /* Figma Menu-Mobile: 36px */
   .nav__links .link-button {
-    font-size: var(--font-3xl);
+    font-size: 36px;
     font-weight: 500;
     line-height: 1.2;
+  }
+
+  /* Im Vollbild-Menü ohne Pfeil (Figma Menu-Mobile 10012:24559) */
+  .nav__links .link-button__icon {
+    display: none;
   }
 
   /* Services/Team mittig, Kontakt und Sprachwahl unten */
@@ -1183,6 +1322,7 @@ textarea {
   .nav.is-open .nav__links > :nth-child(2) { transition-delay: 0.14s; }
   .nav.is-open .nav__links > :nth-child(3) { transition-delay: 0.2s; }
   .nav.is-open .nav__links > :nth-child(4) { transition-delay: 0.26s; }
+  .nav.is-open .nav__links > :nth-child(5) { transition-delay: 0.32s; }
 
   /* Menü-Button bleibt weiss wie in Figma (kein grauer Hover auf Touch-Geräten) */
   .nav .nav__toggle:not(:disabled):hover {
@@ -1214,6 +1354,20 @@ textarea {
     opacity: 0;
     visibility: hidden;
   }
+}
+
+/* ===== Responsive: Mobile (Figma 393px) ===== */
+@media (max-width: 600px) {
+  :root {
+    --font-6xl: 48px;
+    --font-lg: 23px;
+    --margin: 12px;
+    --space-section: 56px;
+  }
+
+  html {
+    scroll-padding-top: 110px;
+  }
 
   .mobile-cta {
     display: inline-flex;
@@ -1235,10 +1389,10 @@ textarea {
     padding-top: 120px;
   }
 
-  /* H1 auf Mobile grösser: skaliert mit der Breite (393px ≈ 59px), max. 64px */
+  /* H1 auf Mobile: skaliert mit der Breite (393px ≈ 53px), max. 56px */
   .hero .display {
-    padding: 32px var(--margin) var(--space-section);
-    font-size: min(64px, 15vw);
+    padding: 32px var(--margin) 72px; /* Titel → Bildstreifen 72px */
+    font-size: min(56px, 13.5vw);
     letter-spacing: -0.01em;
   }
 
@@ -1352,67 +1506,23 @@ textarea {
     letter-spacing: -0.48px;
   }
 
-  /* Mobile: kein Laufband, sondern eine Reihe zum Swipen (eine Karte pro Wisch) */
-  .testimonials .marquee--reverse {
-    display: none;
-  }
-
-  .testimonials .marquee {
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-padding-inline: var(--margin);
-    overscroll-behavior-x: contain;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-
-  .testimonials .marquee::-webkit-scrollbar {
-    display: none;
-  }
-
-  .testimonials .marquee__track {
-    width: auto;
-    animation: none;
-    transform: none;
-  }
-
-  /* Die Kopie fürs Endlos-Laufband wird auf Mobile nicht gebraucht */
-  .testimonials .marquee__track > .testimonial-row[aria-hidden] {
-    display: none;
-  }
-
+  /* Swipe-Reihe kommt aus dem Tablet-Block. Hier nur: schmalere Abstände und
+     Karte etwas schmaler als der Screen, damit die nächste anschaut */
   .testimonials .testimonial-row {
     gap: 8px;
-    padding: 0 var(--margin);
   }
 
-  /* Karte etwas schmaler als der Screen, damit die nächste anschaut und zum Wischen einlädt */
   .testimonials .testimonial {
-    flex-direction: column;
     width: calc(100vw - 2 * var(--margin) - 32px);
-    scroll-snap-align: start;
   }
 
-  .testimonials .testimonial__image {
-    width: 100%;
-    height: 240px;
-  }
-
-  .testimonials .testimonial__card {
-    flex: 1;
-    width: 100%;
-    padding: 24px;
-  }
-
-  /* Pfeile unter den Karten, wie beim Team */
   .testimonials__controls {
-    display: flex;
-    padding: 0 var(--margin) 32px; /* Abstand nach oben kommt vom gap der Section */
+    padding-bottom: 32px; /* Abstand nach oben kommt vom gap der Section */
   }
 
-  /* CTA */
+  /* CTA: Figma Mobile 56px oben und unten (Team bringt oben schon 48px mit) */
   .cta-section {
-    padding: 0 var(--margin) var(--space-section);
+    padding: 8px var(--margin) var(--space-section);
   }
 
   .cta {
@@ -1428,22 +1538,30 @@ textarea {
 
   .cta__content {
     gap: 24px;
+    padding: var(--space-xs);
   }
 
-  /* Footer */
+  /* Footer (Figma Footer-Default Mobile 10012:24329):
+     Weiss 24px oben/unten, 16px seitlich, Ecken 12px; Abstände innen 24px */
   .footer__inner {
     gap: var(--space-l);
-    padding: 30px var(--space-s);
-    border-radius: 32px 32px 0 0;
+    padding: 24px var(--space-s);
+    border-radius: var(--radius-m) var(--radius-m) 0 0;
   }
 
   .newsletter {
-    gap: 30px;
-    padding: 30px var(--space-s);
+    gap: 24px;
+    padding: var(--space-s);
   }
 
   .newsletter__text {
-    padding: 8px var(--space-s) 0;
+    gap: 24px;
+    padding: var(--space-xs) 0;
+  }
+
+  /* Newsletter-Titel gleich gross wie «Interested?» in der CTA-Karte (42px) */
+  .heading-newsletter {
+    font-size: var(--font-4xl);
   }
 
   .newsletter__form {
@@ -1456,7 +1574,7 @@ textarea {
 
   .footer__columns {
     flex-direction: column;
-    gap: 30px;
+    gap: 24px;
     padding: 0 var(--space-s);
   }
 
@@ -1464,8 +1582,10 @@ textarea {
     max-width: none;
   }
 
+  /* Social (mit Linie) → 24px → Sprache → 16px → Impressum/Datenschutz */
   .footer__bottom {
     grid-template-columns: 1fr;
+    row-gap: 24px;
     padding: 0 var(--space-s);
   }
 
@@ -1473,10 +1593,11 @@ textarea {
     flex-wrap: wrap;
     justify-content: space-between;
     gap: var(--space-s);
+    padding-bottom: 24px;
   }
 
   .footer__legal {
-    margin-top: -14px;
+    margin-top: -8px;
   }
 }
 
@@ -1849,31 +1970,34 @@ html:has(.team-dialog[open]) {
   from { opacity: 0; transform: translateY(12px); }
 }
 
+/* Desktop (Figma Team-Overlay 9994:16188): links Foto über die ganze Höhe mit Kontakt unten,
+   rechts X oben, Name/Rolle/Bio oben ausgerichtet, Pfeile unten rechts */
 .team-dialog__inner {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  column-gap: var(--space-xl);
+  row-gap: var(--space-l);
   height: 100%;
-  padding: var(--space-l);
+  padding: 30px;
   overflow-y: auto;
 }
 
 .team-dialog__top {
+  grid-column: 2;
+  grid-row: 1;
   display: flex;
   justify-content: flex-end;
 }
 
 .team-dialog__body {
-  flex: 1 1 auto;
-  display: flex;
-  align-items: stretch;
-  gap: var(--space-xl);
-  min-height: 0;
-  padding: 0 var(--space-xl) 0 var(--space-l);
+  display: contents;
 }
 
 .team-dialog__media {
+  grid-column: 1;
+  grid-row: 1 / -1;
   position: relative;
-  flex: 1 1 0;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -1921,10 +2045,11 @@ html:has(.team-dialog[open]) {
 }
 
 .team-dialog__text {
-  flex: 1 1 0;
+  grid-column: 2;
+  grid-row: 2;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   gap: var(--space-l);
   min-width: 0;
 }
@@ -1956,6 +2081,8 @@ html:has(.team-dialog[open]) {
 }
 
 .team-dialog__nav {
+  grid-column: 2;
+  grid-row: 3;
   display: flex;
   justify-content: flex-end;
   gap: 10px;
@@ -1965,58 +2092,90 @@ html:has(.team-dialog[open]) {
   background: var(--neutral-300);
 }
 
-/* Tablet */
+/* Tablet (Figma Team-Overlay, Tablet 10017:4830): eine Spalte.
+   Name + Rolle mit X oben, Bio, Kontakt, Foto (382px) mit Pfeilen unten rechts im Foto.
+   Raster statt Spalten, damit die Pfeile im Foto liegen und nie den Text verdecken. */
 @media (max-width: 1100px) {
+  /* fit-content: ein offenes Overlay ist oben und unten verankert und würde sich sonst strecken */
   .team-dialog {
     width: min(786px, 100vw - 48px);
-    height: auto;
+    height: fit-content;
     max-height: calc(100dvh - 48px);
   }
 
   .team-dialog__inner {
-    gap: var(--space-l);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: auto auto auto auto;
+    column-gap: var(--space-s);
+    row-gap: 0;
+    height: auto;
     max-height: calc(100dvh - 48px);
-    padding: var(--space-l) 32px;
+    padding: 30px;
   }
 
-  .team-dialog__body {
-    align-items: center;
-    gap: 30px;
-    padding: 0 21px 0 0;
-  }
-
-  .team-dialog__media {
-    gap: 21px;
-    min-height: 0;
-    padding: 0;
-  }
-
-  .team-dialog__photo {
-    position: relative;
-    inset: auto;
-    height: 382px;
-  }
-
-  .team-dialog__contact {
-    flex-direction: column;
-    padding: 24px;
-  }
-
+  .team-dialog__body,
+  .team-dialog__media,
   .team-dialog__text {
-    padding-left: 30px;
+    display: contents;
+  }
+
+  .team-dialog__top {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: start;
   }
 
   .team-dialog__heading {
-    gap: 16px;
+    grid-column: 1;
+    grid-row: 1;
+    gap: var(--space-s);
+  }
+
+  .team-dialog__bio {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    margin-top: var(--space-l);
+  }
+
+  .team-dialog__contact {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    flex-direction: column;
+    gap: var(--space-xs);
+    margin-top: 30px;
+    padding: 24px;
+  }
+
+  .team-dialog__photo {
+    grid-column: 1 / -1;
+    grid-row: 4;
+    position: relative;
+    inset: auto;
+    /* Figma 382px; auf niedrigen Screens (Tablet quer) kleiner, damit möglichst nichts scrollt */
+    height: clamp(240px, 100dvh - 560px, 382px);
+    margin-top: 30px;
+  }
+
+  /* Pfeile unten rechts im Foto, 30px vom Rand */
+  .team-dialog__nav {
+    grid-column: 1 / -1;
+    grid-row: 4;
+    align-self: end;
+    justify-self: end;
+    position: relative;
+    z-index: 1;
+    padding: 30px;
   }
 }
 
 /* Mobile */
 @media (max-width: 600px) {
+  /* 16px Rand rundherum, damit man die Seite dahinter noch ahnt */
   .team-dialog {
-    width: 100vw;
-    height: 100dvh;
-    max-height: 100dvh;
+    width: calc(100vw - 32px);
+    height: calc(100dvh - 32px);
+    max-height: calc(100dvh - 32px);
     border-radius: 32px;
   }
 
@@ -2115,63 +2274,67 @@ html:has(.team-dialog[open]) {
   padding-top: var(--stack-offset, 48px);
 }
 
-/* Service-Karte (Figma: Card-Long). Raster: Nummer | Titel/Zielgruppe + Text/Link | Bild
-   Desktop: 2 Zeilen (Kopf, Text) links, Bild rechts über beide Zeilen */
+/* Service-Karte (Figma: Card-Long 12037:3703, Stand 20.11.)
+   Desktop: links Text (Nummer + Titel / Zielgruppe + Text / Link), rechts Bild */
 .benefit-card {
-  --text-pad: var(--space-m);
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr);
-  grid-template-rows: auto 1fr;
-  column-gap: var(--space-l);
-  row-gap: var(--space-l);
-  padding: calc(var(--space-m) + var(--text-pad));
-  padding-right: var(--space-m);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: clamp(var(--space-l), 7.5vw, var(--space-section));
+  padding: var(--space-m);
   border-radius: var(--radius-m);
   background: var(--card-bg);
 }
 
+.benefit-card__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: start;
+  gap: var(--space-l);
+  min-width: 0;
+  padding: var(--space-m);
+}
+
+/* Nummer und Titel in einer Zeile. Der Kopf ist ein Container, damit der Titel
+   nie breiter als seine Spalte wird («Neighborhood» ist ca. 6.6 × Schriftgrösse breit) */
+.benefit-card__head {
+  --head-offset: 80px; /* Nummer + Abstand */
+  display: flex;
+  align-items: flex-start;
+  align-self: stretch;
+  gap: var(--space-l);
+  min-width: 0;
+  container-type: inline-size;
+}
+
 .benefit-card__number {
-  grid-column: 1;
-  grid-row: 1;
+  flex-shrink: 0;
   font-size: var(--font-base);
   font-weight: 700;
   line-height: 1.34;
 }
 
-.benefit-card__head {
-  grid-column: 2;
-  grid-row: 1;
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-l);
-  min-width: 0;
-}
-
 .benefit-card__title {
   font-family: var(--font-script);
   font-weight: 500;
-  font-size: var(--font-4xl);
+  font-size: min(var(--font-4xl), calc((100cqi - var(--head-offset)) / 6.7));
   line-height: 1;
   letter-spacing: -0.03em;
   text-box: trim-both cap alphabetic;
 }
 
-.benefit-card__audience {
-  font-size: var(--font-xl);
-  font-weight: 600;
-  line-height: 1.3;
-  letter-spacing: -0.01em;
-  text-box: trim-both cap alphabetic;
-}
-
+/* Zielgruppe (Base B) direkt über dem Text */
 .benefit-card__body {
-  grid-column: 2;
-  grid-row: 2;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  gap: var(--space-l);
+  gap: 12px;
   min-width: 0;
+}
+
+.benefit-card__audience {
+  font-size: var(--font-base);
+  font-weight: 700;
+  line-height: 1.34;
 }
 
 .benefit-card__text {
@@ -2179,19 +2342,15 @@ html:has(.team-dialog[open]) {
   line-height: 1.4;
 }
 
-/* Bild mit Verlauf und grossem «Scope» in Weiss unten links */
+/* Bild mit Verlauf und «Scope» in Weiss unten links */
 .benefit-card__media {
-  grid-column: 3;
-  grid-row: 1 / -1;
   position: relative;
   display: flex;
   align-items: flex-end;
+  align-self: stretch;
   min-width: 0;
   min-height: 360px;
-  /* Bild reicht bis 30px an den Kartenrand, Text hat 60px Innenabstand */
-  margin: calc(-1 * var(--text-pad)) 0 calc(-1 * var(--text-pad)) clamp(0px, 7.5vw - var(--space-l), 72px);
   padding: var(--space-l);
-  /* Bilder weniger stark abgerundet (12px wie alle anderen Bilder) */
   border-radius: var(--radius-m);
   overflow: hidden;
   container-type: inline-size;
@@ -2209,11 +2368,11 @@ html:has(.team-dialog[open]) {
   position: relative;
   z-index: 1;
   color: var(--white);
-  /* Max. Figma-Grösse, aber an die Bildbreite angepasst; Zeilen gleichmässig umbrechen */
-  font-size: min(var(--font-4xl), 12cqi);
+  /* Figma Card-Long (9949:7115): XL 27px bold; bei sehr schmalem Bild kleiner */
+  font-size: min(var(--font-xl), 9cqi);
   font-weight: 700;
-  line-height: 1.12;
-  letter-spacing: -0.02em;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
   text-wrap: balance;
   text-box: trim-both cap alphabetic;
 }
@@ -2234,25 +2393,78 @@ html:has(.team-dialog[open]) {
 /* Tablet (Figma: Card-Long, Variant2) */
 @media (max-width: 1100px) {
   .benefit-card {
-    --text-pad: 0px;
-    column-gap: 30px;
-    row-gap: 30px;
+    align-items: center;
+    column-gap: var(--space-l);
     padding: 30px;
   }
 
-  .benefit-card__head,
-  .benefit-card__body {
+  .benefit-card__content {
+    align-self: center;
     gap: 30px;
+    padding: 0;
+  }
+
+  .benefit-card__head {
+    --head-offset: 60px;
+    gap: 30px;
+  }
+
+  .benefit-card__body {
+    gap: var(--space-s);
   }
 
   .benefit-card__media {
     min-height: 380px;
-    margin: 0 0 0 18px;
     padding: 32px;
   }
 }
 
-/* Mobile (Figma: Card-Long, Variant3): Nummer + Titel, Text, Bild, Link */
+/* Schmales Tablet und Mobile (Figma: Card-Long, Variant3):
+   unter 768px ist für zwei Spalten zu wenig Platz. Nummer + Titel, Zielgruppe, Text, Bild, Link */
+@media (max-width: 767px) {
+  /* Ohne Stapeleffekt: die Karten sind unterschiedlich hoch und fast so hoch wie der Bildschirm */
+  .benefits__list {
+    gap: var(--space-s);
+  }
+
+  .benefit {
+    position: static;
+    padding-top: 0;
+  }
+
+  .benefit-card {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 24px;
+    padding: 32px 24px;
+  }
+
+  /* Alle Teile stehen direkt untereinander, damit das Bild vor den Link kann */
+  .benefit-card__content,
+  .benefit-card__body {
+    display: contents;
+  }
+
+  .benefit-card__head {
+    --head-offset: 50px;
+    gap: 24px;
+  }
+
+  .benefit-card__media {
+    order: 1;
+    height: clamp(256px, 50vw, 360px);
+    min-height: 0;
+    padding: 32px;
+  }
+
+  .benefit-card .link-button {
+    order: 2;
+    align-self: flex-start;
+  }
+}
+
+/* Mobile: Schriftgrössen und Abstände der Section */
 @media (max-width: 600px) {
   .benefits {
     padding: var(--space-section) 0;
@@ -2262,71 +2474,10 @@ html:has(.team-dialog[open]) {
     padding-bottom: 24px;
   }
 
-  .benefits__list {
-    gap: var(--space-s);
-  }
-
-  /* Ohne Stapeleffekt: die Karten sind fast so hoch wie der Bildschirm */
-  .benefit {
-    position: static;
-    padding-top: 0;
-  }
-
-  .benefit-card {
-    grid-template-columns: auto minmax(0, 1fr);
-    grid-template-rows: none;
-    gap: 24px;
-    padding: 32px 24px;
-    container-type: inline-size;
-  }
-
-  .benefit-card__number {
-    font-size: 17px;
-  }
-
-  .benefit-card__head {
-    gap: 0;
-  }
-
-  /* Max. 42px wie in Figma, aber nie breiter als die Karte, damit «Neighborhood» immer passt */
-  .benefit-card__title {
-    font-size: min(42px, calc((100cqi - 44px) / 6.8));
-  }
-
-  /* Zielgruppe ist im Mobile-Design nicht vorgesehen */
-  .benefit-card__audience {
-    display: none;
-  }
-
-  .benefit-card__body {
-    display: contents;
-  }
-
+  .benefit-card__number,
+  .benefit-card__audience,
   .benefit-card__text {
-    grid-column: 1 / -1;
-    order: 1;
     font-size: 17px;
-  }
-
-  .benefit-card__media {
-    grid-column: 1 / -1;
-    grid-row: auto;
-    order: 2;
-    height: 256px;
-    min-height: 0;
-    margin: 0;
-    padding: 32px;
-  }
-
-  /* Figma: 42px; bei langem Scope etwas kleiner, damit «3 workshops,» in eine Zeile passt */
-  .benefit-card__scope {
-    font-size: min(42px, 15cqi);
-  }
-
-  .benefit-card .link-button {
-    grid-column: 1 / -1;
-    order: 3;
-    justify-self: start;
   }
 }
 
@@ -2405,6 +2556,25 @@ html:has(.team-dialog[open]) {
   transform: none;
 }
 
+/* Service- und CTA-Karten: ruhiger. Die ganze Karte hebt sich leicht an,
+   Text und Bild haben keine eigenen Effekte */
+.motion .benefit-card.reveal,
+.motion .cta.reveal,
+.motion .story.reveal,
+.motion .video.reveal {
+  transform: translateY(24px) scale(0.985);
+  transition:
+    opacity 0.9s ease-out,
+    transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.motion .benefit-card.reveal.is-visible,
+.motion .cta.reveal.is-visible,
+.motion .story.reveal.is-visible,
+.motion .video.reveal.is-visible {
+  transform: none;
+}
+
 /* 3. Bilder werden von unten aufgedeckt und zoomen leicht heraus
    (Maske liegt auf dem Bild, damit der Container für die Sichtbarkeits-Erkennung messbar bleibt) */
 .motion .reveal-img > img {
@@ -2466,7 +2636,8 @@ html:has(.team-dialog[open]) {
 }
 
 .link-button:hover .icon--arrow-up-right,
-.link-button:hover .icon--arrow-up-right-small {
+.link-button:hover .icon--arrow-up-right-small,
+.link-button:hover .icon--arrow-nav {
   animation: arrow-through-diagonal 0.6s var(--ease-out);
 }
 
@@ -2590,6 +2761,10 @@ html:has(.team-dialog[open]) {
     padding-top: calc(160px + var(--space-l));
   }
 
+  .hero .display {
+    margin-bottom: 40px; /* Titel → Bildstreifen 96px (Gap 56 + 40) */
+  }
+
   .hero-strip__group {
     gap: 22px;
     height: 518px;
@@ -2611,9 +2786,12 @@ html:has(.team-dialog[open]) {
   }
 
   /* Testimonials */
+  .testimonial {
+    height: 394px; /* Bild 378px + 2 × 8px Innenabstand */
+  }
+
   .testimonial__image {
     width: 360px;
-    height: 378px;
   }
 
   .testimonial__card {
@@ -2670,47 +2848,49 @@ html:has(.team-dialog[open]) {
     font-size: 16px;
   }
 
-  /* Service-Karten (Figma: Card-Long, Property=XL): Nummer+Titel | Text+Link | Bild */
+  /* Service-Karten (Figma: Card-Long, Property=XL): Nummer+Titel | Zielgruppe+Text+Link | Bild */
   .benefit-card {
-    --text-pad: 0px;
-    grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
-    grid-template-rows: auto;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-rows: auto 1fr;
     column-gap: 120px;
     padding: 48px;
   }
 
-  .benefit-card__head {
-    grid-column: 2;
-    margin-left: -72px;
+  .benefit-card__content {
+    display: contents;
   }
 
-  .benefit-card__audience {
-    font-size: 28px;
-    line-height: 1.27;
+  .benefit-card__head {
+    --head-offset: 90px;
+    grid-column: 1;
+    grid-row: 1;
   }
 
   .benefit-card__body {
-    grid-column: 3;
+    grid-column: 2;
     grid-row: 1;
-    align-self: stretch;
-    justify-content: space-between;
+    gap: 24px;
   }
 
   .benefit-card__text {
     font-size: 24px;
   }
 
-  .benefit-card__media {
-    grid-column: 4;
-    grid-row: 1;
-    height: 338px;
-    min-height: 0;
-    margin: 0;
+  .benefit-card .link-button {
+    grid-column: 2;
+    grid-row: 2;
+    align-self: end;
+    justify-self: start;
+    margin-top: var(--space-l);
   }
 
-  .benefit-card__scope {
-    font-size: min(64px, 12cqi);
+  .benefit-card__media {
+    grid-column: 3;
+    grid-row: 1 / -1;
+    height: 338px;
+    min-height: 0;
   }
+
 }
 
 
@@ -2757,5 +2937,428 @@ html:has(.team-dialog[open]) {
 
   .carousel-section .section-title__text p {
     padding: 0 var(--margin) 32px;
+  }
+}
+
+/* ===== Karussells mit der Maus ziehen ===== */
+@media (hover: hover) and (pointer: fine) {
+  [data-carousel-track] {
+    cursor: grab;
+  }
+
+  /* Während dem Ziehen: kein Einrasten, kein Text markieren */
+  [data-carousel-track].is-dragging {
+    cursor: grabbing;
+    scroll-snap-type: none;
+    scroll-behavior: auto;
+    user-select: none;
+  }
+}
+
+/* =====================================================================
+   Vision-Seite (Figma «Detailseite» 12092:6353)
+   ===================================================================== */
+
+/* Titel: wie im Hero der Startseite, 120px Seitenrand auf Desktop */
+.page-hero {
+  padding: calc(132px + var(--space-l)) var(--space-section) var(--space-l);
+}
+
+.page-hero .display {
+  max-width: 1264px;
+  margin: 0 auto;
+}
+
+/* Video 16:9, YouTube wird erst nach dem Klick geladen */
+.video-section {
+  padding: var(--space-l) var(--margin);
+}
+
+.video {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-m);
+  background: var(--neutral-800);
+  overflow: hidden;
+}
+
+.video__play {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+/* leichter Schleier, damit der Play-Button gut sichtbar ist */
+.video__play::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.25));
+}
+
+.video__icon {
+  position: relative;
+  z-index: 1;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: var(--white);
+  transition: transform 0.3s var(--ease-out, ease);
+}
+
+/* Dreieck */
+.video__icon::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 54%;
+  width: 26px;
+  height: 30px;
+  background: var(--neutral-800);
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+  transform: translate(-50%, -50%);
+}
+
+.video__play:hover .video__icon,
+.video__play:focus-visible .video__icon {
+  transform: scale(1.08);
+}
+
+.video__play:focus-visible {
+  outline: 3px solid var(--neutral-800);
+  outline-offset: -3px;
+}
+
+.video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.video__note {
+  margin-top: var(--space-xs);
+  color: var(--neutral-500);
+}
+
+/* Story-Karte: Bild links, Text rechts */
+.story-section {
+  padding: 0 var(--margin);
+}
+
+.story {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: stretch;
+  gap: var(--space-l);
+  padding: var(--space-s);
+  border-radius: var(--radius-m);
+  background: var(--white);
+}
+
+/* Höhe über min-height (Figma 798px bei 1600px Breite), Breite kommt aus der Spalte */
+.story__image {
+  position: relative;
+  min-height: clamp(360px, 50vw, 798px);
+  border-radius: var(--radius-m);
+  overflow: hidden;
+}
+
+.story__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: var(--space-m);
+  padding: var(--space-l);
+}
+
+.story__text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-l);
+}
+
+.story__title {
+  font-family: var(--font-script);
+  font-weight: 500;
+  font-size: var(--font-4xl);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  text-box: trim-both cap alphabetic;
+}
+
+.story__lead {
+  font-size: var(--font-2xl);
+  line-height: 1.27;
+}
+
+.story__content .button {
+  margin-top: var(--space-s);
+}
+
+/* CTA ohne Team davor: eigener Abstand oben (Figma 120px) */
+.cta-section--standalone {
+  padding-top: var(--space-section);
+}
+
+/* Tablet */
+@media (max-width: 1100px) {
+  .page-hero {
+    padding: calc(132px + var(--space-l)) var(--margin) var(--space-l);
+  }
+
+  .video-section {
+    padding: 32px var(--margin);
+  }
+
+  .story {
+    gap: 30px;
+  }
+
+  .story__content {
+    padding: var(--space-s);
+  }
+
+  .story__lead {
+    font-size: var(--font-lg);
+  }
+}
+
+/* Mobile: Story untereinander */
+@media (max-width: 767px) {
+  .story {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .story__image {
+    min-height: 0;
+    aspect-ratio: 4 / 3;
+  }
+
+  .story__content {
+    padding: var(--space-xs) var(--space-xs) var(--space-s);
+    gap: 24px;
+  }
+
+  .story__text {
+    gap: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .page-hero {
+    padding: calc(120px + 32px) var(--margin) 32px;
+  }
+
+  .page-hero .display {
+    font-size: min(56px, 13.5vw);
+    letter-spacing: -0.01em;
+  }
+
+  .video-section {
+    padding: 24px var(--margin);
+  }
+
+  .video__icon {
+    width: 64px;
+    height: 64px;
+  }
+
+  .video__icon::before {
+    width: 18px;
+    height: 21px;
+  }
+
+  .story__lead {
+    font-size: 19px;
+  }
+}
+
+/* Vision: grosser Text (3XL) auf kleineren Screens etwas kleiner */
+@media (max-width: 1100px) {
+  .vision .statement .text-3xl {
+    font-size: var(--font-2xl);
+  }
+}
+
+@media (max-width: 600px) {
+  .vision .statement .text-3xl {
+    font-size: 21px;
+    line-height: 1.35;
+  }
+}
+
+/* =====================================================================
+   Impressum und Datenschutz (Figma 12092:7348 / 12092:7119)
+   Links Titel (bleibt beim Scrollen stehen), rechts Text in Abschnitten
+   ===================================================================== */
+
+/* Vereinfachte Navigation: nur Logo und Kontakt, auch auf Mobile */
+.nav--simple .nav__cta {
+  display: flex;
+}
+
+.nav--simple .nav__logo,
+.nav--simple .nav__cta {
+  flex: 1 0 0;
+}
+
+.legal {
+  display: grid;
+  grid-template-columns: 469px minmax(0, 857px);
+  column-gap: var(--space-l);
+  padding: 132px var(--margin) var(--space-xl);
+}
+
+.legal__aside {
+  align-self: start;
+  position: sticky;
+  top: 132px;
+  padding: var(--space-section) var(--space-xl) 0 0;
+}
+
+.legal__title {
+  font-family: var(--font-script);
+  font-weight: 500;
+  font-size: var(--font-4xl);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  text-box: trim-both cap alphabetic;
+}
+
+.legal__content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+  padding: var(--space-section) 0;
+  font-size: var(--font-lg);
+  line-height: 1.4;
+}
+
+.legal__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+}
+
+.legal__section h2 {
+  font-size: var(--font-3xl);
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.legal__section strong {
+  font-weight: 700;
+}
+
+.legal__section a {
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+  overflow-wrap: anywhere;
+}
+
+.legal__section a:hover {
+  color: var(--green-400);
+}
+
+/* Aktiver Footer-Link (Impressum/Datenschutz) */
+.footer__legal a[aria-current="page"] {
+  font-weight: 700;
+}
+
+/* Tablet: Titel über dem Text */
+@media (max-width: 1100px) {
+  .legal {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 132px var(--margin) var(--space-xl);
+  }
+
+  .legal__aside {
+    position: static;
+    padding: var(--space-l) 0 0;
+  }
+
+  .legal__content {
+    gap: 64px;
+    padding: var(--space-l) 0 0;
+    max-width: 857px;
+    font-size: 23px;
+  }
+
+  .legal__section h2 {
+    font-size: var(--font-2xl);
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .legal {
+    padding-top: 120px;
+  }
+
+  .legal__aside {
+    padding-top: 32px;
+  }
+
+  .legal__content {
+    gap: var(--space-l);
+    padding-top: 32px;
+    font-size: 19px;
+  }
+
+  .legal__section h2 {
+    font-size: 23px;
+  }
+
+  /* Logo und Kontakt-Button in einer Zeile */
+  .nav--simple {
+    padding: var(--space-xs) var(--space-xs) var(--space-xs) var(--space-s);
+  }
+
+  .nav--simple .nav__logo {
+    flex: 0 1 auto;
+  }
+
+  .nav--simple .nav__cta {
+    flex: 0 0 auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .legal__content {
+    font-size: 17px;
+  }
+
+  .legal__section h2 {
+    font-size: 21px;
+  }
+}
+
+/* Impressum/Datenschutz auf grossen Screens (ab 1920px, z. B. 4K):
+   wie die Kontaktseite. Titel im ersten Drittel, Text beginnt beim ersten Drittel */
+@media (min-width: 1920px) {
+  .legal {
+    grid-template-columns: 1fr 2fr;
+    padding-top: 160px;
+  }
+
+  .legal__aside {
+    top: 160px;
+    padding-right: 0;
+  }
+
+  /* Zeilen nicht zu lang werden lassen */
+  .legal__content {
+    max-width: 1100px;
   }
 }

@@ -1,11 +1,4 @@
-// Zweite Testimonial-Reihe: Kopie der ersten, läuft in Gegenrichtung
-const template = document.querySelector('[data-marquee-template] .marquee__track');
-const cloneTarget = document.querySelector('[data-marquee-clone]');
-if (template && cloneTarget) {
-  cloneTarget.appendChild(template.cloneNode(true));
-}
-
-// Endlos-Laufbänder: Inhalt verdoppeln, damit die Animation nahtlos wirkt
+// Endlos-Laufband (Hero): Inhalt verdoppeln, damit die Animation nahtlos wirkt
 document.querySelectorAll('.marquee__track').forEach((track) => {
   const group = track.firstElementChild;
   const copy = group.cloneNode(true);
@@ -32,11 +25,138 @@ document.querySelectorAll('[data-carousel]').forEach((section) => {
     next.disabled = track.scrollLeft >= max - 1;
   };
 
-  prev.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
-  next.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
+  // Weiches Gleiten zu einer Position (eigene Animation, damit das Einrasten
+  // des Browsers nicht dazwischenspringt). Einrasten erst am Ende wieder an.
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let glideFrame = null;
+
+  const stopGlide = () => {
+    if (glideFrame) cancelAnimationFrame(glideFrame);
+    glideFrame = null;
+  };
+
+  const glideTo = (target) => {
+    stopGlide();
+    const max = track.scrollWidth - track.clientWidth;
+    target = Math.max(0, Math.min(max, target));
+    const from = track.scrollLeft;
+    const distance = target - from;
+    const finish = () => {
+      track.scrollLeft = target;
+      track.classList.remove('is-dragging');
+      glideFrame = null;
+    };
+    if (Math.abs(distance) < 1 || reduceMotion.matches) {
+      finish();
+      return;
+    }
+    track.classList.add('is-dragging');
+    const duration = Math.min(700, Math.max(350, 300 + Math.abs(distance) * 0.5));
+    const start = performance.now();
+    const ease = (t) => 1 - Math.pow(1 - t, 4); // schnell los, sanft auslaufen
+    const tick = (now) => {
+      const t = Math.min(1, (now - start) / duration);
+      track.scrollLeft = from + distance * ease(t);
+      if (t < 1) glideFrame = requestAnimationFrame(tick);
+      else finish();
+    };
+    glideFrame = requestAnimationFrame(tick);
+  };
+
+  // Ziel-Karte für eine Position (Karte i liegt bei i × Schrittweite)
+  const snapPoint = (position) => {
+    const s = step();
+    return Math.round(position / s) * s;
+  };
+
+  prev.addEventListener('click', () => glideTo(snapPoint(track.scrollLeft) - step()));
+  next.addEventListener('click', () => glideTo(snapPoint(track.scrollLeft) + step()));
   track.addEventListener('scroll', update, { passive: true });
   window.addEventListener('resize', update);
   update();
+
+  // Mit der Maus ziehen (Touch und Trackpad scrollen von selbst)
+  let dragStartX = 0;
+  let dragStartScroll = 0;
+  let dragging = false;
+  let dragged = false;
+  let samples = []; // letzte Mauspositionen, für den Schwung beim Loslassen
+
+  track.addEventListener('pointerdown', (event) => {
+    if (event.pointerType !== 'mouse' || event.button !== 0) return;
+    stopGlide(); // mitten im Gleiten wieder packen
+    dragging = true;
+    dragged = false;
+    dragStartX = event.clientX;
+    dragStartScroll = track.scrollLeft;
+    samples = [{ x: event.clientX, t: event.timeStamp }];
+  });
+
+  track.addEventListener('pointermove', (event) => {
+    if (!dragging) return;
+    if (!dragged) {
+      if (Math.abs(event.clientX - dragStartX) < 5) return; // kleiner Wackler = normaler Klick
+      dragged = true;
+      dragStartX = event.clientX; // ab hier mitziehen, ohne Ruck
+      dragStartScroll = track.scrollLeft;
+      track.classList.add('is-dragging');
+      track.setPointerCapture(event.pointerId);
+    }
+    track.scrollLeft = dragStartScroll - (event.clientX - dragStartX);
+    samples.push({ x: event.clientX, t: event.timeStamp });
+    if (samples.length > 5) samples.shift();
+  });
+
+  const endDrag = (event) => {
+    if (!dragging) return;
+    dragging = false;
+    if (!dragged) return;
+    // Tempo der letzten Bewegung (px pro ms); ältere Bewegungen zählen nicht
+    const first = samples[0];
+    const last = samples[samples.length - 1];
+    const dt = last.t - first.t;
+    const fresh = event.timeStamp - last.t < 100;
+    const velocity = dt > 0 && fresh ? (last.x - first.x) / dt : 0;
+    // Mit Schwung weiter gleiten, dann auf die nächste Karte einrasten
+    const projected = track.scrollLeft - velocity * 250;
+    let target = snapPoint(projected);
+    // Höchstens eine Karte weiter als dort, wo losgelassen wurde
+    const s = step();
+    const here = track.scrollLeft;
+    target = Math.max(snapPoint(here) - s, Math.min(snapPoint(here) + s, target));
+    glideTo(target);
+  };
+  track.addEventListener('pointerup', endDrag);
+  track.addEventListener('pointercancel', endDrag);
+
+  // Nach dem Ziehen keinen Klick auslösen (z. B. Team-Karte öffnen)
+  track.addEventListener('click', (event) => {
+    if (dragged) {
+      event.preventDefault();
+      event.stopPropagation();
+      dragged = false;
+    }
+  }, true);
+
+  // Bilder nicht als Datei «wegziehen»
+  track.addEventListener('dragstart', (event) => event.preventDefault());
+});
+
+// Video (Vision-Seite): YouTube wird erst nach dem Klick geladen, ohne Cookies (youtube-nocookie).
+// Bis dahin wird nur das lokal gespeicherte Vorschaubild gezeigt, es geht nichts an Google.
+document.querySelectorAll('[data-video]').forEach((video) => {
+  const button = video.querySelector('.video__play');
+  if (!button) return;
+  button.addEventListener('click', () => {
+    const iframe = document.createElement('iframe');
+    iframe.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(video.dataset.video)}?autoplay=1&rel=0&playsinline=1`;
+    iframe.title = video.dataset.videoTitle || 'YouTube video';
+    iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+    iframe.allowFullscreen = true;
+    iframe.referrerPolicy = 'strict-origin-when-cross-origin';
+    button.replaceWith(iframe);
+    iframe.focus();
+  });
 });
 
 // Newsletter: noch ohne Anbindung, zeigt nur eine Bestätigung
@@ -59,7 +179,7 @@ if (nav && navToggle) {
   const setOpen = (open) => {
     nav.classList.toggle('is-open', open);
     navToggle.setAttribute('aria-expanded', String(open));
-    navToggle.setAttribute('aria-label', open ? 'Menü schliessen' : 'Menü öffnen');
+    navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
   };
 
   navToggle.addEventListener('click', () => setOpen(!nav.classList.contains('is-open')));
@@ -107,11 +227,11 @@ if (contactForm) {
   const fieldError = (input) => {
     const value = input.value.trim();
     if (input.type === 'email') {
-      if (!value) return 'Bitte gib deine Email-Adresse ein.';
-      if (!emailPattern.test(value)) return 'Diese Email-Adresse ist ungültig. Beispiel: name@beispiel.ch';
+      if (!value) return 'Please enter your email address.';
+      if (!emailPattern.test(value)) return 'This email address isn’t valid. Example: name@example.com';
       return '';
     }
-    return value ? '' : 'Bitte fülle dieses Feld aus.';
+    return value ? '' : 'Please fill in this field.';
   };
 
   const showFieldError = (input, message) => {
@@ -158,7 +278,7 @@ if (contactForm) {
 
     if (!privacy.checked) {
       privacy.setAttribute('aria-invalid', 'true');
-      errorBox.textContent = 'Bitte bestätige die Datenschutzerklärung.';
+      errorBox.textContent = 'Please confirm that you accept the privacy policy.';
       errorBox.hidden = false;
       invalid.push(privacy);
     } else {
@@ -172,22 +292,22 @@ if (contactForm) {
 
     // Noch ohne Server: öffnet das Mailprogramm mit einer vorbereiteten Nachricht
     const data = new FormData(contactForm);
-    const interest = labels[data.get('interesse')] || 'Allgemeine Anfrage';
+    const interest = labels[data.get('interesse')] || 'General inquiry';
     const body = [
-      `Interesse: ${interest}`,
-      `Vorname: ${data.get('vorname')}`,
-      `Name: ${data.get('name')}`,
+      `Interest: ${interest}`,
+      `First name: ${data.get('vorname')}`,
+      `Last name: ${data.get('name')}`,
       `Email: ${data.get('email')}`,
-      data.get('anruf') ? 'Rückmeldung: lieber per Anruf' : 'Rückmeldung: per Email',
+      data.get('anruf') ? 'Follow-up: by phone call' : 'Follow-up: by email',
       '',
       data.get('nachricht') || '',
     ].join('\n');
-    window.location.href = `mailto:gruezi@deheim.org?subject=${encodeURIComponent(`Anfrage: ${interest}`)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:gruezi@deheim.org?subject=${encodeURIComponent(`Inquiry: ${interest}`)}&body=${encodeURIComponent(body)}`;
 
     const thanks = document.createElement('div');
     thanks.className = 'contact__thanks';
     thanks.setAttribute('role', 'status');
-    thanks.innerHTML = '<p class="text-base-b">Danke für deine Nachricht!</p><p class="text-base">Dein Mailprogramm wurde mit der vorbereiteten Nachricht geöffnet. Bitte sende sie dort ab. Falls sich nichts geöffnet hat, schreib uns direkt an <a href="mailto:gruezi@deheim.org">gruezi@deheim.org</a>.</p>';
+    thanks.innerHTML = '<p class="text-base-b">Thank you for your message!</p><p class="text-base">Your email app has opened with the prepared message. Please send it from there. If nothing opened, write to us directly at <a href="mailto:gruezi@deheim.org">gruezi@deheim.org</a>.</p>';
     contactForm.replaceChildren(thanks);
   });
 }
@@ -280,7 +400,7 @@ updateScrolled();
 if (document.documentElement.classList.contains('motion')) {
   // Überschriften in Wörter aufteilen (Zeilenumbrüche bleiben erhalten)
   const splitHeadings = document.querySelectorAll(
-    '.hero h1, .section-title h2, .cta h2, .contact__title, .heading-newsletter'
+    '.hero h1, .page-hero h1, .section-title h2, .contact__title, .heading-newsletter'
   );
   splitHeadings.forEach((heading) => {
     let index = 0;
@@ -307,14 +427,16 @@ if (document.documentElement.classList.contains('motion')) {
   // Elemente, die beim Scrollen hochgleiten. Gruppen werden gestaffelt.
   const revealSingles = [
     '.hero__intro', '.hero-strip', '.facts__aside', '.statement__lead', '.statement__body',
-    '.testimonials__intro', '.testimonials .marquee', '.benefit-card', '.newsletter',
+    '.testimonials__intro', '.testimonials__track', '.benefit-card', '.cta', '.newsletter',
+    '.video', '.story',
     '.contact__lead', '.team-dialog__inner',
   ];
   const revealGroups = [
-    '.facts__grid > .stat-card', '.cta__content > *', '#team .team-card',
+    '.facts__grid > .stat-card', '#team .team-card',
     '.footer__columns > *', '.footer__bottom > *', '.contact__form > *',
   ];
-  const revealImages = ['.benefit-card__media', '.cta__image'];
+  // Service- und CTA-Karten: keine Effekte im Inneren, die Karte erscheint als Ganzes
+  const revealImages = [];
 
   revealSingles.forEach((selector) => {
     document.querySelectorAll(selector).forEach((el) => {

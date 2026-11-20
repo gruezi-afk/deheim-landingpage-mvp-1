@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impressum – Deheim</title>
+  <meta name="description" content="Impressum der Website von Deheim: Verein Deheim, Courgevaux.">
+  <!-- Vorschau beim Teilen (WhatsApp, LinkedIn, Instagram, Slack …) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Deheim">
+  <meta property="og:title" content="Impressum – Deheim">
+  <meta property="og:description" content="Deheim turns residential buildings into thriving communities, with shared experiences and lasting neighborhood traditions.">
+  <meta property="og:url" content="https://deheim-landing-page-v1.vercel.app/impressum.html">
+  <meta property="og:image" content="https://deheim-landing-page-v1.vercel.app/assets/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Deheim logo on illustrated house facades">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://deheim-landing-page-v1.vercel.app/assets/og-image.jpg">
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  <!-- Schriften liegen lokal (assets/fonts): Google Sans (Text), Platypi (Titel) -->
+  <link rel="preload" href="assets/fonts/google-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/platypi-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css?v=2026-11-21q">
+  <script>
+    // Animationen nur mit JavaScript und wenn «Bewegung reduzieren» nicht aktiv ist
+    if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('motion');
+    }
+  </script>
+</head>
+<body>
+
+  <!-- Navigation (Figma Rechtsseiten: nur Logo und Kontakt) -->
+  <header class="site-header">
+    <nav class="nav nav--simple">
+      <a class="nav__logo" href="index.html" aria-label="Deheim – home">
+        <img class="nav__logo-img" src="assets/logo-deheim.svg" alt="" width="217" height="47">
+      </a>
+      <div class="nav__cta">
+        <a class="button" href="kontakt.html">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="top" class="legal" lang="de">
+    <div class="legal__aside">
+      <h1 class="legal__title">Impressum</h1>
+    </div>
+    <div class="legal__content">
+      <section class="legal__section">
+        <h2>Betreiberin der Website</h2>
+        <p>Verein Deheim<br>
+          c/o Lauber Community Services<br>
+          Haut-des-Vignes 32<br>
+          1796 Courgevaux<br>
+          Schweiz</p>
+        <p>E-Mail: <a href="mailto:gruezi@deheim.org">gruezi@deheim.org</a><br>
+          Telefon: +41 79 364 11 30</p>
+        <p>Vertretungsberechtigte Person: Lukas Lauber</p>
+      </section>
+      <section class="legal__section">
+        <h2>Haftungsausschluss</h2>
+        <p>Wir prüfen die Inhalte dieser Website sorgfältig. Für Richtigkeit, Vollständigkeit und Aktualität können wir trotzdem keine Gewähr übernehmen. Haftungsansprüche wegen Schäden, die aus dem Zugriff auf die Inhalte oder deren Nutzung entstehen, sind ausgeschlossen, soweit das Gesetz es zulässt.</p>
+      </section>
+      <section class="legal__section">
+        <h2>Links zu anderen Websites</h2>
+        <p>Verweise auf Websites Dritter liegen ausserhalb unserer Verantwortung. Für deren Inhalte sind allein die jeweiligen Betreiber verantwortlich.</p>
+      </section>
+      <section class="legal__section">
+        <h2>Urheberrechte</h2>
+        <p>Texte, Bilder und Grafiken auf dieser Website gehören Deheim oder den genannten Rechteinhabern. Wer Inhalte weiterverwenden möchte, braucht vorher unsere schriftliche Zustimmung.</p>
+      </section>
+      <section class="legal__section">
+        <h2>Konzept und Gestaltung</h2>
+        <p>Gwendolyn Wetli, <a href="https://www.linkedin.com/in/gwendolyn-wetli-76979a175" target="_blank" rel="noopener">LinkedIn</a></p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="newsletter">
+        <div class="newsletter__text">
+          <h2 class="heading-newsletter trim">Subscribe to the newsletter</h2>
+          <p class="text-base">Once a month, no advertising. Stories from the table, upcoming Feasts, and what we are learning.</p>
+        </div>
+        <form class="newsletter__form" data-newsletter>
+          <label class="visually-hidden" for="newsletter-email">Email</label>
+          <input class="text-base" id="newsletter-email" type="email" name="email" placeholder="name@example.ch" required>
+          <button class="button" type="submit">Subscribe</button>
+        </form>
+      </div>
+
+      <div class="footer__columns">
+        <div class="footer__col">
+          <p class="text-xs">Deheim Agency</p>
+          <a class="link-button" href="https://maps.google.com/?q=Postfach+9392+3001+Bern" target="_blank" rel="noopener">
+            Directions on Google Maps
+            <span class="link-button__icon" aria-hidden="true"><span class="icon icon--arrow-up-right"></span></span>
+          </a>
+          <p class="footer__line">Postfach 9392</p>
+          <p class="footer__line">CH-3001 Bern</p>
+        </div>
+        <div class="footer__col">
+          <p class="text-xs">Contact</p>
+          <a class="link-button" href="mailto:gruezi@deheim.org">
+            gruezi@deheim.org
+            <span class="link-button__icon" aria-hidden="true"><span class="icon icon--arrow-up-right"></span></span>
+          </a>
+          <a class="footer__line" href="tel:+41793641130">+41 79 364 11 30</a>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <div class="footer__lang">
+          <a class="text-base" href="#" lang="de" hreflang="de">DE</a>
+          <a class="text-base" href="#" lang="en" hreflang="en">EN</a>
+          <a class="text-base" href="#" lang="fr" hreflang="fr">FR</a>
+        </div>
+        <div class="footer__legal text-base">
+          <a href="impressum.html" aria-current="page">Legal notice</a>
+          <a href="datenschutz.html">Privacy</a>
+        </div>
+        <div class="footer__social">
+          <a class="link-button" href="https://ch.linkedin.com/company/deheim-community" target="_blank" rel="noopener">LinkedIn <span class="link-button__icon link-button__icon--small" aria-hidden="true"><span class="icon icon--arrow-up-right-small"></span></span></a>
+          <a class="link-button" href="https://www.instagram.com/deheim.agency/" target="_blank" rel="noopener">Instagram <span class="link-button__icon link-button__icon--small" aria-hidden="true"><span class="icon icon--arrow-up-right-small"></span></span></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js?v=2026-11-21q"></script>
+</body>
+</html>

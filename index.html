@@ -1,29 +1,29 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Deheim – We turn strangers into neighbors</title>
-  <meta name="description" content="Deheim schafft Nachbarschaften, in denen sich Menschen kennen, helfen und gerne bleiben.">
+  <meta name="description" content="Deheim turns strangers into neighbors. We create neighborhoods where people know each other, help each other, and love to stay.">
   <!-- Vorschau beim Teilen (WhatsApp, LinkedIn, Instagram, Slack …) -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Deheim">
   <meta property="og:title" content="Deheim – We turn strangers into neighbors">
-  <meta property="og:description" content="Deheim turns residential buildings into thriving communities, with shared experiences and lasting neighbourhood traditions.">
+  <meta property="og:description" content="Deheim turns residential buildings into thriving communities, with shared experiences and lasting neighborhood traditions.">
   <meta property="og:url" content="https://deheim-landing-page-v1.vercel.app/">
   <meta property="og:image" content="https://deheim-landing-page-v1.vercel.app/assets/og-image.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Deheim Logo auf illustrierten Hausfassaden">
+  <meta property="og:image:alt" content="Deheim logo on illustrated house facades">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:image" content="https://deheim-landing-page-v1.vercel.app/assets/og-image.jpg">
   <link rel="icon" href="/favicon.ico" sizes="48x48">
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Mona+Sans:wght@500;600;700&family=Platypi:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <!-- Schriften liegen lokal (assets/fonts): Google Sans (Text), Platypi (Titel) -->
+  <link rel="preload" href="assets/fonts/google-sans-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/platypi-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css?v=2026-11-21q">
   <script>
     // Animationen nur mit JavaScript und wenn «Bewegung reduzieren» nicht aktiv ist
     if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -36,28 +36,29 @@
   <!-- Navigation -->
   <header class="site-header">
     <nav class="nav">
-      <a class="nav__logo" href="#top" aria-label="Deheim – zur Startseite">
+      <a class="nav__logo" href="#top" aria-label="Deheim – home">
         <img class="nav__logo-img" src="assets/logo-deheim.svg" alt="" width="217" height="47">
       </a>
       <div class="nav__links" id="nav-links">
+        <a class="link-button link-button--nav-ext" href="vision.html">Vision <span class="link-button__icon" aria-hidden="true"><span class="icon icon--arrow-nav"></span></span></a>
         <a class="link-button" href="#services">Services</a>
         <a class="link-button" href="#team">Team</a>
-        <a class="button nav__menu-cta" href="kontakt.html">Kontakt</a>
-        <div class="lang-switch lang-switch--menu" role="group" aria-label="Sprache wählen">
-          <a href="#" lang="de" aria-current="true">DE</a>
-          <a href="#" lang="en" hreflang="en">EN</a>
+        <a class="button nav__menu-cta" href="kontakt.html">Contact</a>
+        <div class="lang-switch lang-switch--menu" role="group" aria-label="Choose language">
+          <a href="#" lang="de" hreflang="de">DE</a>
+          <a href="#" lang="en" aria-current="true">EN</a>
           <a href="#" lang="fr" hreflang="fr">FR</a>
         </div>
       </div>
       <div class="nav__cta">
-        <div class="lang-switch" role="group" aria-label="Sprache wählen">
-          <a href="#" lang="de" aria-current="true">DE</a>
-          <a href="#" lang="en" hreflang="en">EN</a>
+        <div class="lang-switch" role="group" aria-label="Choose language">
+          <a href="#" lang="de" hreflang="de">DE</a>
+          <a href="#" lang="en" aria-current="true">EN</a>
           <a href="#" lang="fr" hreflang="fr">FR</a>
         </div>
-        <a class="button" href="kontakt.html">Kontakt</a>
+        <a class="button" href="kontakt.html">Contact</a>
       </div>
-      <button class="fab nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menü öffnen" data-nav-toggle>
+      <button class="fab nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Open menu" data-nav-toggle>
         <img class="nav__toggle-open" src="assets/menu.svg" alt="" width="27" height="8.25">
         <img class="nav__toggle-close" src="assets/close-menu.svg" alt="" width="24.716" height="24.716">
       </button>
@@ -65,7 +66,7 @@
   </header>
 
   <!-- Schwebender Kontakt-Button (nur Mobile) -->
-  <a class="button mobile-cta" href="kontakt.html" data-mobile-cta>Kontakt</a>
+  <a class="button mobile-cta" href="kontakt.html" data-mobile-cta>Contact</a>
 
   <main id="top">
 
@@ -76,39 +77,20 @@
       <div class="hero-strip marquee" aria-hidden="true">
         <div class="marquee__track">
           <div class="hero-strip__group">
-            <div class="tile tile--top" style="--tile-bg: var(--green-200)">
-              <img src="assets/hero-1.png" alt="">
-            </div>
-            <div class="tile tile--bottom">
-              <img src="assets/hero-base.png" alt="">
-              <img src="assets/hero-2.jpg" alt="">
-            </div>
-            <div class="tile tile--top">
-              <img src="assets/hero-3.png" alt="">
-            </div>
-            <div class="tile tile--bottom">
-              <img src="assets/hero-base.png" alt="">
-              <img src="assets/hero-4a.png" alt="">
-              <img src="assets/hero-4b.png" alt="">
-            </div>
-            <div class="tile tile--center">
-              <img src="assets/hero-base.png" alt="">
-              <img src="assets/hero-2.jpg" alt="">
-              <img src="assets/hero-5.jpg" alt="">
-            </div>
-            <div class="tile tile--top" style="--tile-bg: var(--blue-200)">
-              <img src="assets/hero-6.png" alt="">
-            </div>
-            <div class="tile tile--bottom">
-              <img src="assets/hero-base.png" alt="">
-              <img src="assets/hero-7.png" alt="">
-            </div>
+            <div class="tile tile--top"><img src="assets/hero-tile-1.jpg" alt=""></div>
+            <div class="tile tile--bottom"><img src="assets/hero-tile-2.jpg" alt=""></div>
+            <div class="tile tile--top"><img src="assets/hero-tile-3.jpg" alt=""></div>
+            <div class="tile tile--bottom"><img src="assets/hero-tile-4.jpg" alt=""></div>
+            <div class="tile tile--center"><img src="assets/hero-tile-5.jpg" alt=""></div>
+            <div class="tile tile--top"><img src="assets/hero-tile-6.jpg" alt=""></div>
+            <div class="tile tile--bottom"><img src="assets/hero-tile-7.jpg" alt=""></div>
+            <div class="tile tile--top"><img src="assets/hero-tile-8.jpg" alt=""></div>
           </div>
         </div>
       </div>
 
       <p class="text-lg hero__intro">
-        Deheim transforms residential buildings into thriving communities. By helping residents co-create shared experiences and lasting neighbourhood traditions, we foster belonging and make properties more desirable places to live.
+        Deheim transforms residential buildings into thriving communities. By helping residents co-create shared experiences and lasting neighborhood traditions, we foster belonging and make properties more desirable places to live.
       </p>
     </section>
 
@@ -161,13 +143,15 @@
       <ol class="benefits__list">
         <li class="benefit" style="--stack-offset: 48px">
           <article class="benefit-card" style="--card-bg: var(--blue-200)">
-            <span class="benefit-card__number">01</span>
-            <div class="benefit-card__head">
-              <h3 class="benefit-card__title">Neighborhood Onboarding</h3>
-              <p class="benefit-card__audience">For new developments</p>
-            </div>
-            <div class="benefit-card__body">
-              <p class="benefit-card__text">Before or shortly after move-in, we bring residents together in a workshop to shape their neighborhood’s culture and first traditions. Then everyone meets at a welcome party with local producers and good food.</p>
+            <div class="benefit-card__content">
+              <div class="benefit-card__head">
+                <span class="benefit-card__number">01</span>
+                <h3 class="benefit-card__title">Neighborhood Onboarding</h3>
+              </div>
+              <div class="benefit-card__body">
+                <p class="benefit-card__audience">For new developments</p>
+                <p class="benefit-card__text">Before or shortly after move-in, we bring residents together in a workshop to shape their neighborhood’s culture and first traditions. Then everyone meets at a welcome party with local producers and good food.</p>
+              </div>
               <a class="link-button" href="kontakt.html?interesse=onboarding">Let’s talk <span class="link-button__icon" aria-hidden="true"><span class="icon icon--arrow-right"></span></span></a>
             </div>
             <div class="benefit-card__media">
@@ -178,13 +162,15 @@
         </li>
         <li class="benefit" style="--stack-offset: 78px">
           <article class="benefit-card" style="--card-bg: var(--orange-200)">
-            <span class="benefit-card__number">02</span>
-            <div class="benefit-card__head">
-              <h3 class="benefit-card__title">Neighborhood Activation</h3>
-              <p class="benefit-card__audience">For managed properties that need a fresh start</p>
-            </div>
-            <div class="benefit-card__body">
-              <p class="benefit-card__text">Many neighbors have lived next door for years without meeting. We create easy, low-threshold ways to meet: a workshop, a farm visit, a co-creative dinner. Then we help residents turn what works into lasting traditions. More on request.</p>
+            <div class="benefit-card__content">
+              <div class="benefit-card__head">
+                <span class="benefit-card__number">02</span>
+                <h3 class="benefit-card__title">Neighborhood Activation</h3>
+              </div>
+              <div class="benefit-card__body">
+                <p class="benefit-card__audience">For managed properties that need a fresh start</p>
+                <p class="benefit-card__text">Many neighbors have lived next door for years without meeting. We create easy, low-threshold ways to meet: a workshop, a farm visit, a co-creative dinner. Then we help residents turn what works into lasting traditions. More on request.</p>
+              </div>
               <a class="link-button" href="kontakt.html?interesse=activation">Let’s talk <span class="link-button__icon" aria-hidden="true"><span class="icon icon--arrow-right"></span></span></a>
             </div>
             <div class="benefit-card__media">
@@ -195,13 +181,15 @@
         </li>
         <li class="benefit" style="--stack-offset: 110px">
           <article class="benefit-card" style="--card-bg: var(--green-200)">
-            <span class="benefit-card__number">03</span>
-            <div class="benefit-card__head">
-              <h3 class="benefit-card__title">Neighborhood Pizza Party</h3>
-              <p class="benefit-card__audience">For managed properties that need a fresh start</p>
-            </div>
-            <div class="benefit-card__body">
-              <p class="benefit-card__text">The easiest way to start. We bring the ovens, our crew, local ingredients, and music. A short workshop over the dough first, then the courtyard opens for everyone: grab a pizza, or make your own.</p>
+            <div class="benefit-card__content">
+              <div class="benefit-card__head">
+                <span class="benefit-card__number">03</span>
+                <h3 class="benefit-card__title">Neighborhood Pizza Party</h3>
+              </div>
+              <div class="benefit-card__body">
+                <p class="benefit-card__audience">For a quick and easy first step</p>
+                <p class="benefit-card__text">The easiest way to start. We bring the ovens, our crew, local ingredients, and music. A short workshop over the dough first, then the courtyard opens for everyone: grab a pizza, or make your own.</p>
+              </div>
               <a class="link-button" href="kontakt.html?interesse=pizza">Let’s talk <span class="link-button__icon" aria-hidden="true"><span class="icon icon--arrow-right"></span></span></a>
             </div>
             <div class="benefit-card__media">
@@ -220,64 +208,60 @@
         <p class="text-lg testimonials__intro">The moment two people who would never have met start talking. Here is what that sounds like, from the cooking workshops where it all began.</p>
       </div>
 
-      <div class="marquee" style="--marquee-duration: 120s" data-marquee-template data-carousel-track>
-        <div class="marquee__track">
-          <div class="testimonial-row">
-            <figure class="testimonial" data-carousel-item>
-              <div class="testimonial__image" style="--tile-bg: var(--blue-200)"><img src="assets/hero-6.png" alt=""></div>
-              <div class="testimonial__card">
-                <blockquote class="testimonial__quote">«At the start nobody talks, you know how it is. Then someone hands you an onion and a knife and asks you to show the young man next to you how your mother did it. After that, you can’t stop them from talking.»</blockquote>
-                <figcaption><span class="testimonial__name">Doris, 66</span></figcaption>
-              </div>
-            </figure>
-            <figure class="testimonial" data-carousel-item>
-              <div class="testimonial__image" style="--tile-bg: var(--green-200)"><img src="assets/hero-1.png" alt=""></div>
-              <div class="testimonial__card">
-                <blockquote class="testimonial__quote">«Meeting people from completely different backgrounds is amazing. Staring at a stranger is hard, there’s pressure. But when you can escape into peeling apples, it’s a different vibe.»</blockquote>
-                <figcaption><span class="testimonial__name">Andri, 65</span></figcaption>
-              </div>
-            </figure>
-            <figure class="testimonial" data-carousel-item>
-              <div class="testimonial__image" style="--tile-bg: var(--blue-200)"><img src="assets/hero-6.png" alt=""></div>
-              <div class="testimonial__card">
-                <blockquote class="testimonial__quote">«I won the pizza contest. The prize was a bottle of wine, so I gave it to Joel. Now he has to drive me to my hobby horsing competition.»</blockquote>
-                <figcaption><span class="testimonial__name">Lina, 9</span></figcaption>
-              </div>
-            </figure>
-            <figure class="testimonial" data-carousel-item>
-              <div class="testimonial__image" style="--tile-bg: var(--green-200)"><img src="assets/hero-1.png" alt=""></div>
-              <div class="testimonial__card">
-                <blockquote class="testimonial__quote">«We came with our kids to the Easter cooking workshop. The kids met the farmer who brought the eggs, we met three families from our area. It brought us closer, and we made new friends.»</blockquote>
-                <figcaption><span class="testimonial__name">Sandra, 39</span></figcaption>
-              </div>
-            </figure>
-            <figure class="testimonial" data-carousel-item>
-              <div class="testimonial__image" style="--tile-bg: var(--blue-200)"><img src="assets/hero-6.png" alt=""></div>
-              <div class="testimonial__card">
-                <blockquote class="testimonial__quote">«I live alone, and I like meeting new people here. I’ve been to a few events now. And honestly, the food just slaps.»</blockquote>
-                <figcaption><span class="testimonial__name">Joel, 30</span></figcaption>
-              </div>
-            </figure>
-            <figure class="testimonial" data-carousel-item>
-              <div class="testimonial__image" style="--tile-bg: var(--green-200)"><img src="assets/hero-1.png" alt=""></div>
-              <div class="testimonial__card">
-                <blockquote class="testimonial__quote">«The only senior I ever really talked to was my grandma. Now I have good friends triple my age, and that has lifted up my life.»</blockquote>
-                <figcaption><span class="testimonial__name">Yaari, 19</span></figcaption>
-              </div>
-            </figure>
-          </div>
+      <!-- Eine Reihe zum Swipen/Blättern mit Pfeilen, jedes Zitat einmal (kein Laufband) -->
+      <div class="testimonials__track" data-carousel-track>
+        <div class="testimonial-row">
+          <figure class="testimonial" data-carousel-item>
+            <div class="testimonial__image"><img src="assets/testimonial-1.jpg" alt="" loading="lazy"></div>
+            <div class="testimonial__card">
+              <blockquote class="testimonial__quote">«At the start nobody talks, you know how it is. Then someone hands you an onion and a knife and asks you to show the young man next to you how your mother did it. After that, you can’t stop them from talking.»</blockquote>
+              <figcaption><span class="testimonial__name">Doris, 66</span></figcaption>
+            </div>
+          </figure>
+          <figure class="testimonial" data-carousel-item>
+            <div class="testimonial__image"><img src="assets/testimonial-2.jpg" alt="" loading="lazy"></div>
+            <div class="testimonial__card">
+              <blockquote class="testimonial__quote">«Meeting people from completely different backgrounds is amazing. Staring at a stranger is hard, there’s pressure. But when you can escape into peeling apples, it’s a different vibe.»</blockquote>
+              <figcaption><span class="testimonial__name">Andri, 65</span></figcaption>
+            </div>
+          </figure>
+          <figure class="testimonial" data-carousel-item>
+            <div class="testimonial__image"><img src="assets/testimonial-3.jpg?v=2" alt="" style="--img-y: 5%" loading="lazy"></div>
+            <div class="testimonial__card">
+              <blockquote class="testimonial__quote">«I won the pizza contest. The prize was a bottle of wine, so I gave it to Joel. Now he has to drive me to my hobby horsing competition.»</blockquote>
+              <figcaption><span class="testimonial__name">Lina, 9</span></figcaption>
+            </div>
+          </figure>
+          <figure class="testimonial" data-carousel-item>
+            <div class="testimonial__image"><img src="assets/testimonial-4.jpg" alt="" loading="lazy"></div>
+            <div class="testimonial__card">
+              <blockquote class="testimonial__quote">«We came with our kids to the Easter cooking workshop. The kids met the farmer who brought the eggs, we met three families from our area. It brought us closer, and we made new friends.»</blockquote>
+              <figcaption><span class="testimonial__name">Sandra, 39</span></figcaption>
+            </div>
+          </figure>
+          <figure class="testimonial" data-carousel-item>
+            <div class="testimonial__image"><img src="assets/testimonial-5.jpg" alt="" loading="lazy"></div>
+            <div class="testimonial__card">
+              <blockquote class="testimonial__quote">«I live alone, and I like meeting new people here. I’ve been to a few events now. And honestly, the food just slaps.»</blockquote>
+              <figcaption><span class="testimonial__name">Joel, 30</span></figcaption>
+            </div>
+          </figure>
+          <figure class="testimonial" data-carousel-item>
+            <div class="testimonial__image"><img src="assets/testimonial-6.jpg" alt="" loading="lazy"></div>
+            <div class="testimonial__card">
+              <blockquote class="testimonial__quote">«The only senior I ever really talked to was my grandma. Now I have good friends triple my age, and that has lifted up my life.»</blockquote>
+              <figcaption><span class="testimonial__name">Yaari, 19</span></figcaption>
+            </div>
+          </figure>
         </div>
       </div>
 
-      <div class="marquee marquee--reverse" style="--marquee-duration: 120s" aria-hidden="true" data-marquee-clone></div>
-
-      <!-- Pfeile nur auf Mobile sichtbar -->
       <div class="carousel-controls testimonials__controls">
-        <button class="fab" type="button" data-carousel-prev aria-label="Zurück">
+        <button class="fab" type="button" data-carousel-prev aria-label="Previous">
           <img class="fab__icon fab__icon--disabled fab__icon--flip" src="assets/arrow-left.svg" alt="">
           <img class="fab__icon fab__icon--enabled fab__icon--flip" src="assets/arrow-right.svg" alt="">
         </button>
-        <button class="fab" type="button" data-carousel-next aria-label="Weiter">
+        <button class="fab" type="button" data-carousel-next aria-label="Next">
           <img class="fab__icon fab__icon--disabled" src="assets/arrow-left.svg" alt="">
           <img class="fab__icon fab__icon--enabled" src="assets/arrow-right.svg" alt="">
         </button>
@@ -292,11 +276,11 @@
           <p class="text-lg team__intro">Hosts, designers, and cooks. Not consultants.</p>
         </div>
         <div class="carousel-controls">
-          <button class="fab" type="button" data-carousel-prev aria-label="Zurück">
+          <button class="fab" type="button" data-carousel-prev aria-label="Previous">
             <img class="fab__icon fab__icon--disabled fab__icon--flip" src="assets/arrow-left.svg" alt="">
             <img class="fab__icon fab__icon--enabled fab__icon--flip" src="assets/arrow-right.svg" alt="">
           </button>
-          <button class="fab" type="button" data-carousel-next aria-label="Weiter">
+          <button class="fab" type="button" data-carousel-next aria-label="Next">
             <img class="fab__icon fab__icon--disabled" src="assets/arrow-left.svg" alt="">
             <img class="fab__icon fab__icon--enabled" src="assets/arrow-right.svg" alt="">
           </button>
@@ -304,84 +288,84 @@
       </div>
       <div class="carousel" data-carousel-track>
         <article class="team-card" data-team-member data-team-contact data-bio="Luki founded Deheim and leads sales, business development and our neighborhood projects. After winning the SHC Challenge in 2021, he opened a design hotel with 114 communal-living flats and founded coolinarik.ch, which connects people through cooking workshops.">
-          <img class="cover" src="assets/team-1.jpg" alt="Porträt von Lukas Lauber" loading="lazy">
+          <img class="cover" src="assets/team-1.jpg" alt="Portrait of Lukas Lauber" loading="lazy">
           <div class="team-card__text">
             <h3 class="heading-4xl trim">Lukas Lauber</h3>
             <p class="text-base">Founder &amp; Business Development</p>
           </div>
-          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="Mehr über Lukas Lauber"></button>
+          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="More about Lukas Lauber"></button>
         </article>
         <article class="team-card" data-team-member data-bio="Alanis leads the curation and planning of our common spaces. With a Master’s in Architecture from ETH Zurich, she designs how shared spaces work in everyday life and hosts pre-move-in workshops. She is also a seasoned chef who has run numerous pop-ups.">
-          <img class="cover" src="assets/team-2.jpg" alt="Porträt von Alanis Diem" loading="lazy">
+          <img class="cover" src="assets/team-2.jpg" alt="Portrait of Alanis Diem" loading="lazy">
           <div class="team-card__text">
             <h3 class="heading-4xl trim">Alanis Diem</h3>
             <p class="text-base">Common Space Design &amp; Social Programming</p>
           </div>
-          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="Mehr über Alanis Diem"></button>
+          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="More about Alanis Diem"></button>
         </article>
         <article class="team-card" data-team-member data-bio="Beāte brings a sharp eye for branding and deep knowledge of real estate. She is completing a Master’s in Real Estate and has worked at Swiss Life Asset Managers for over four years. At Deheim, she is our sparring partner for positioning and communication.">
-          <img class="cover" src="assets/team-3.jpg" alt="Porträt von Beāte Gaida Garleja" loading="lazy">
+          <img class="cover" src="assets/team-3.jpg" alt="Portrait of Beāte Gaida Garleja" loading="lazy">
           <div class="team-card__text">
             <h3 class="heading-4xl trim">Beāte Gaida Garleja</h3>
             <p class="text-base">Residential Real Estate Advisor</p>
           </div>
-          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="Mehr über Beāte Gaida Garleja"></button>
+          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="More about Beāte Gaida Garleja"></button>
         </article>
         <article class="team-card" data-team-member data-bio="Raphaël is an EHL graduate and leads event and experience execution. Previously Event Operations Manager at Slowness Hospitality, he programs events, finds local talents and builds the structures that make concepts deliverable.">
-          <img class="cover" src="assets/team-raphael.jpg" alt="Porträt von Raphaël Vallette d’Osia" loading="lazy">
+          <img class="cover" src="assets/team-raphael.jpg" alt="Portrait of Raphaël Vallette d’Osia" loading="lazy">
           <div class="team-card__text">
             <h3 class="heading-4xl trim">Raphaël Vallette d’Osia</h3>
             <p class="text-base">Event Production &amp; Cultural Programming</p>
           </div>
-          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="Mehr über Raphaël Vallette d’Osia"></button>
+          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="More about Raphaël Vallette d’Osia"></button>
         </article>
         <article class="team-card" data-team-member data-bio="Tobias is an experienced workshop host in transcultural collaboration with a Master’s in Psychology. He guides residents as they share traditions, brainstorm ideas and decide together which neighborhood initiatives to bring to life.">
-          <img class="cover" src="assets/team-tobias.jpg" alt="Porträt von Tobias Boschung" loading="lazy">
+          <img class="cover" src="assets/team-tobias.jpg" alt="Portrait of Tobias Boschung" loading="lazy">
           <div class="team-card__text">
             <h3 class="heading-4xl trim">Tobias Boschung</h3>
             <p class="text-base">Facilitator Co-Creation</p>
           </div>
-          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="Mehr über Tobias Boschung"></button>
+          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="More about Tobias Boschung"></button>
         </article>
         <article class="team-card" data-team-member data-bio="Tanya is a Service Designer and UX Researcher. She develops co-creative formats that bring residents, communities and stakeholders together to shape the future of shared living.">
-          <img class="cover" src="assets/team-tanya.jpg" alt="Porträt von Tanya Raschle" loading="lazy">
+          <img class="cover" src="assets/team-tanya.jpg" alt="Portrait of Tanya Raschle" loading="lazy">
           <div class="team-card__text">
             <h3 class="heading-4xl trim">Tanya Raschle</h3>
             <p class="text-base">Service Design &amp; Co-Creative Formats</p>
           </div>
-          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="Mehr über Tanya Raschle"></button>
+          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="More about Tanya Raschle"></button>
         </article>
         <article class="team-card" data-team-member data-bio="Mauro is a cooking teacher, experienced chef and core member of COOLINARIK. He hosts workshops for diverse groups and creates an atmosphere where everyone enjoys cooking together – tasty, safe and full of smiles.">
-          <img class="cover" src="assets/team-mauro.jpg" alt="Porträt von Mauro Leuenberger" loading="lazy">
+          <img class="cover" src="assets/team-mauro.jpg" alt="Portrait of Mauro Leuenberger" loading="lazy">
           <div class="team-card__text">
             <h3 class="heading-4xl trim">Mauro Leuenberger</h3>
             <p class="text-base">Community Cooking &amp; Workshop Lead</p>
           </div>
-          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="Mehr über Mauro Leuenberger"></button>
+          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="More about Mauro Leuenberger"></button>
         </article>
         <article class="team-card" data-team-member data-bio="Emma is our Sustainability Advisor with a Master’s in Sustainability Management. She analyzes buildings’ energy and waste use, focuses on agroecological food systems and connects communities with local farmers.">
-          <img class="cover" src="assets/team-emma.jpg" alt="Porträt von Emma Gouverneyre" loading="lazy">
+          <img class="cover" src="assets/team-emma.jpg" alt="Portrait of Emma Gouverneyre" loading="lazy">
           <div class="team-card__text">
             <h3 class="heading-4xl trim">Emma Gouverneyre</h3>
             <p class="text-base">Sustainable Living Strategist</p>
           </div>
-          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="Mehr über Emma Gouverneyre"></button>
+          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="More about Emma Gouverneyre"></button>
         </article>
         <article class="team-card" data-team-member data-bio="Gwendolyn joined after her bachelor’s project on Deheim. With a background in Interaction Design, she develops the website, curates partner properties, works on SEO and documents life in our neighborhoods.">
-          <img class="cover" src="assets/team-gwendolyn.jpg" alt="Porträt von Gwendolyn Wetli" loading="lazy">
+          <img class="cover" src="assets/team-gwendolyn.jpg" alt="Portrait of Gwendolyn Wetli" loading="lazy">
           <div class="team-card__text">
             <h3 class="heading-4xl trim">Gwendolyn Wetli</h3>
             <p class="text-base">UX Design &amp; Documentation</p>
           </div>
-          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="Mehr über Gwendolyn Wetli"></button>
+          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="More about Gwendolyn Wetli"></button>
         </article>
         <article class="team-card" data-team-member data-bio="Our network of passionate workshop hosts – from pizzaiolos and fermentation specialists to Afghan chefs and mochi makers – invites residents to cook, taste and learn together in relaxed, hands-on workshops.">
-          <img class="cover" src="assets/team-coolinarik.jpg" alt="Gruppenfoto von Team Coolinarik" loading="lazy">
+          <img class="cover" src="assets/team-coolinarik.jpg" alt="Group photo of Team Coolinarik" loading="lazy">
           <div class="team-card__text">
             <h3 class="heading-4xl trim">Team Coolinarik</h3>
             <p class="text-base">Hosts</p>
           </div>
-          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="Mehr über Team Coolinarik"></button>
+          <button class="team-card__open" type="button" data-team-open aria-haspopup="dialog" aria-label="More about Team Coolinarik"></button>
         </article>
       </div>
     </section>
@@ -437,13 +421,13 @@
 
       <div class="footer__bottom">
         <div class="footer__lang">
-          <a class="text-base-b" href="#" lang="de" aria-current="true">DE</a>
+          <a class="text-base" href="#" lang="de" hreflang="de">DE</a>
           <a class="text-base" href="#" lang="en" hreflang="en">EN</a>
           <a class="text-base" href="#" lang="fr" hreflang="fr">FR</a>
         </div>
         <div class="footer__legal text-base">
-          <a href="#">Legal notice</a>
-          <a href="#">Privacy</a>
+          <a href="impressum.html">Legal notice</a>
+          <a href="datenschutz.html">Privacy</a>
         </div>
         <div class="footer__social">
           <a class="link-button" href="https://ch.linkedin.com/company/deheim-community" target="_blank" rel="noopener">LinkedIn <span class="link-button__icon link-button__icon--small" aria-hidden="true"><span class="icon icon--arrow-up-right-small"></span></span></a>
@@ -457,7 +441,7 @@
   <dialog class="team-dialog" aria-labelledby="team-dialog-name" data-team-dialog>
     <div class="team-dialog__inner">
       <div class="team-dialog__top">
-        <button class="fab team-dialog__close" type="button" aria-label="Schliessen" data-team-close>
+        <button class="fab team-dialog__close" type="button" aria-label="Close" data-team-close>
           <img src="assets/close.svg" alt="" width="13.591" height="13.591">
         </button>
       </div>
@@ -478,16 +462,16 @@
         </div>
       </div>
       <div class="team-dialog__nav">
-        <button class="fab" type="button" aria-label="Vorherige Person" data-team-prev>
+        <button class="fab" type="button" aria-label="Previous person" data-team-prev>
           <img class="fab__icon--flip" src="assets/arrow-right.svg" alt="" width="14.716" height="14.25">
         </button>
-        <button class="fab" type="button" aria-label="Nächste Person" data-team-next>
+        <button class="fab" type="button" aria-label="Next person" data-team-next>
           <img src="assets/arrow-right.svg" alt="" width="14.716" height="14.25">
         </button>
       </div>
     </div>
   </dialog>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=2026-11-21q"></script>
 </body>
 </html>

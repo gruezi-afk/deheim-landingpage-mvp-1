@@ -1,0 +1,22 @@
+{
+  "redirects": [
+    { "source": "/team-4", "destination": "/#team", "permanent": true },
+
+    { "source": "/services-9", "destination": "/#services", "permanent": true },
+    { "source": "/services-7", "destination": "/#services", "permanent": true },
+    { "source": "/copy-of-services-1", "destination": "/#services", "permanent": true },
+    { "source": "/copy-of-community-visioning-workshop", "destination": "/#services", "permanent": true },
+    { "source": "/copy-of-community-activation-package", "destination": "/#services", "permanent": true },
+    { "source": "/municipality", "destination": "/#services", "permanent": true },
+    { "source": "/developer", "destination": "/#services", "permanent": true },
+    { "source": "/lifestyle-real-estate-development", "destination": "/#services", "permanent": true },
+
+    { "source": "/blog", "destination": "/", "permanent": true },
+    { "source": "/blog/:path*", "destination": "/", "permanent": true },
+    { "source": "/post/:path*", "destination": "/", "permanent": true },
+    { "source": "/courses", "destination": "/", "permanent": true },
+    { "source": "/courses/:path*", "destination": "/", "permanent": true },
+    { "source": "/donation-thank-you-page", "destination": "/", "permanent": true },
+    { "source": "/matchmaker-survey", "destination": "/kontakt.html", "permanent": true }
+  ]
+}

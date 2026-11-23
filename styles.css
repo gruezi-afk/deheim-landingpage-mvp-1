@@ -3369,3 +3369,25 @@ html:has(.team-dialog[open]) {
     max-width: 1100px;
   }
 }
+
+/* Vision: Bildunterschrift unter dem Video, mehrere Absätze in der Story-Karte */
+.video__caption {
+  max-width: 987px;
+  margin-top: var(--space-s);
+}
+
+.story__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-s);
+}
+
+.story__body a {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.story__dedication {
+  font-style: italic;
+  opacity: 0.75;
+}

@@ -15,7 +15,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 SRC = ROOT / 'src'
-BASE_URL = 'https://deheim-landing-page-v1.vercel.app/'
+BASE_URL = 'https://deheim.org/'
 
 # Sprache: (Ordner, Locale für og:locale)
 LANGS = {'de': ('', 'de_CH'), 'en': ('en/', 'en_US'), 'fr': ('fr/', 'fr_CH')}
